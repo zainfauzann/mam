@@ -1,0 +1,24 @@
+# Source / raw asset dumps — not for deployment
+uploads/
+
+# Working captures during design
+screenshots/
+debug/
+
+# Design-canvas tool state
+.design-canvas.state.json
+
+# Designer playground (React+JSX via Babel standalone) — not production
+MAM Wireframes.html
+*.jsx
+
+# PowerPoint source decks — not for public deploy unless linked from downloads.html
+*.pptx
+
+# Editor / OS noise
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+.DS_Store

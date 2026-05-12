@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>About MAM — Motorsports Association of Malaysia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="mam.css" />
+<style>
+  /* About-specific */
+  .about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:start}
+  .about-grid h2{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;letter-spacing:-.025em;text-transform:uppercase}
+  .about-grid h2 .em{color:var(--red)}
+  .about-grid p{color:var(--gray-7);font-size:15px;line-height:1.7;margin-bottom:14px}
+  .about-grid p:first-of-type::first-letter{font-family:var(--display);font-size:64px;font-weight:800;float:left;line-height:.85;margin:6px 12px 0 0;color:var(--red)}
+  .pull{border-left:3px solid var(--red);padding:10px 0 10px 22px;font-family:var(--display);font-size:22px;font-weight:600;line-height:1.3;color:var(--ink);margin:24px 0;letter-spacing:-.01em}
+
+  .vm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-left:1px solid var(--gray-2);border-top:1px solid var(--gray-2)}
+  .vm{padding:36px 32px;border-right:1px solid var(--gray-2);border-bottom:1px solid var(--gray-2);background:#fff}
+  .vm .num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--red)}
+  .vm h3{font-family:var(--display);font-size:28px;font-weight:800;letter-spacing:-.02em;margin-top:14px;text-transform:uppercase}
+  .vm p{color:var(--gray-7);margin-top:12px;line-height:1.6}
+
+  .timeline{position:relative;padding-left:32px;border-left:2px solid var(--gray-2)}
+  .tl-row{position:relative;padding-bottom:36px}
+  .tl-row::before{content:"";position:absolute;left:-41px;top:6px;width:18px;height:18px;background:#fff;border:3px solid var(--red);border-radius:50%}
+  .tl-row .yr{font-family:var(--display);font-size:32px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+  .tl-row h4{font-family:var(--display);font-size:18px;font-weight:700;margin-top:4px}
+  .tl-row p{color:var(--gray-7);margin-top:6px;font-size:14px;line-height:1.55;max-width:600px}
+
+  .disc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .disc{aspect-ratio:1/1.05;background-size:cover;background-position:center;padding:24px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;cursor:pointer;color:#fff}
+  .disc::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.9) 100%);z-index:0;transition:background .35s ease}
+  .disc::after{content:"";position:absolute;inset:0;background:rgba(225,6,0,0);transition:background .35s ease;z-index:0}
+  .disc:hover::after{background:rgba(225,6,0,.45)}
+  .disc:hover::before{background:linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.55) 100%)}
+  .disc>*{position:relative;z-index:1}
+  .disc .num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:#fff;opacity:.85}
+  .disc .icon{width:56px;height:56px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.7);align-self:flex-start;background:rgba(0,0,0,.25);backdrop-filter:blur(2px)}
+  .disc .icon svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:1.5}
+  .disc h4{font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-.01em;line-height:1.1;color:#fff;text-transform:uppercase}
+  .disc p{font-size:12px;color:rgba(255,255,255,.85);margin-top:4px}
+
+  .bigstats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid #2a2a2a;border-left:1px solid #2a2a2a}
+  .bigstat{padding:36px 28px;border-right:1px solid #2a2a2a;border-bottom:1px solid #2a2a2a}
+  .bigstat .v{font-family:var(--display);font-size:72px;font-weight:800;letter-spacing:-.03em;line-height:1;color:#fff}
+  .bigstat .v .em{color:var(--red)}
+  .bigstat .l{font-size:13px;color:#bbb;margin-top:10px;line-height:1.4}
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<!-- Page hero -->
+<section class="phero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a><span class="sep">/</span> About MAM</div>
+    <h1>The national governing body<br/>for <span class="em">Malaysian motorsport.</span></h1>
+    <p class="sub">The Motorsports Association of Malaysia was incorporated on 28 February 2007. Recognised by the Ministry of Youth and Sports and officially sanctioned by the FIA and FIM to oversee all four-wheel and two-wheel motorsport activities in Malaysia.</p>
+    <div class="meta-row">
+      <div class="item">Incorporated<strong>28 Feb 2007</strong></div>
+      <div class="item">Headquarters<strong>Kuala Lumpur</strong></div>
+      <div class="item">Sanctioned by<strong>FIA · FIM</strong></div>
+      <div class="item">Affiliate clubs<strong>80+</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- Story -->
+<section class="section">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="label" style="font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:flex;align-items:center;gap:10px">
+          <span style="width:24px;height:1px;background:var(--red);display:inline-block"></span>Our story
+        </div>
+        <h2>One association,<br/><span class="em">every discipline.</span></h2>
+      </div>
+      <div>
+        <p>Incorporated on 28 February 2007, the Motorsports Association of Malaysia — Persatuan Sukan Permotoran Malaysia — is the national governing body for motorsport in the country. We are recognised by the Ministry of Youth and Sports (KBS) and officially sanctioned by the FIA (four-wheel) and FIM (two-wheel) — the only Malaysian body recognised by the Fédération Internationale de l'Automobile (FIA) and FIM Asia.</p>
+        <p>From the earliest hill climbs of the post-independence era to today's continental championships at Sepang, MAM has sanctioned, regulated and developed every discipline — circuit, rally, karting, drag, motocross, time attack, drift, hill climb, autocross, autoslalom, vintage and 4×4.</p>
+        <div class="pull">"We exist so that every Malaysian who wants to race — at any level — can do so safely, fairly, and with their results recognised worldwide."</div>
+        <p>Today MAM administers competition licences for over 1,200 active drivers and riders, sanctions 60+ events per year, and oversees a network of 80+ affiliate clubs across all 13 states and federal territories.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Vision / Mission / Mandate -->
+<section class="section gray" style="padding-top:64px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">Mandate</div>
+        <h2>Why we exist</h2>
+      </div>
+    </div>
+    <div class="vm-grid">
+      <div class="vm">
+        <div class="num">01 / Vision</div>
+        <h3>Malaysia, a regional<br/>motorsport leader.</h3>
+        <p>To position Malaysia as Southeast Asia's premier destination for safe, world-class motorsport competition and talent development.</p>
+      </div>
+      <div class="vm">
+        <div class="num">02 / Mission</div>
+        <h3>Sanction. Develop.<br/>Represent.</h3>
+        <p>Sanction every motorsport event in Malaysia under uniform safety and sporting regulations; develop riders, drivers and officials at every level; represent Malaysia at FIA and FIM Asia.</p>
+      </div>
+      <div class="vm">
+        <div class="num">03 / Mandate</div>
+        <h3>Authority by<br/>recognition.</h3>
+        <p>MAM is the only ASN/FMN in Malaysia. Every internationally recognised motorsport result, licence and record from this country flows through us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">Heritage</div>
+        <h2>Seven decades, one mission</h2>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="yr">1963</div>
+        <h4>The National Expansion</h4>
+        <p>Following the formation of the Federation of Malaysia, the primary automotive body (originally the Automobile Association of Malaya) is rechartered to cover the newly joined states of Sabah and Sarawak — establishing the first unified national framework for road rules and competitive racing across the country.</p>
+      </div>
+      <div class="tl-row">
+        <div class="yr">1985</div>
+        <h4>International recognition &amp; Shah Alam</h4>
+        <p>The opening of the Shah Alam Circuit (Batu Tiga) marks Malaysia's entry into international-grade racing. The governing bodies of this era oversee the transition from local club racing to hosting the World Sportscar Championship and later the Malaysian Motorcycle Grand Prix.</p>
+      </div>
+      <div class="tl-row">
+        <div class="yr">1999</div>
+        <h4>The Sepang revolution</h4>
+        <p>The inauguration of Sepang International Circuit (SIC) fundamentally changes the landscape. With the arrival of Formula 1, the need for a highly specialised sporting authority becomes paramount — and technical and sporting management aligns strictly with FIA and FIM standards.</p>
+      </div>
+      <div class="tl-row">
+        <div class="yr">2007</div>
+        <h4>Formal incorporation of MAM</h4>
+        <p>The Motorsports Association of Malaysia is officially incorporated on 28 February 2007 — a modern, streamlined governing body dedicated specifically to the sporting side of motorsports, separate from general automobile associations.</p>
+      </div>
+      <div class="tl-row">
+        <div class="yr">2019</div>
+        <h4>Transition of authority</h4>
+        <p>FIA and FIM officially transfer the National Sporting Authority (ASN) and National Federation (FMN) status from the Automobile Association of Malaysia (AAM) to MAM — solidifying MAM as the sole authority for sanctioning races and issuing licences in Malaysia.</p>
+      </div>
+      <div class="tl-row">
+        <div class="yr">2026</div>
+        <h4>Today's roadmap</h4>
+        <p>MAM operates as a robust ecosystem focused on long-term sustainability — the National Karting framework feeding talent into global ladders, 1,200+ licence holders and 80+ affiliated clubs under one code, and the renewed 2026–2030 FIM cycle anchoring Malaysia as an Asia-Pacific racing hub.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Disciplines -->
+<section class="section gray">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">What we sanction</div>
+        <h2>Disciplines under MAM</h2>
+      </div>
+    </div>
+    <div class="disc-grid">
+      <div class="disc" style="background-image:url('assets/disc-circuit.jpg')">
+        <div>
+          <span class="num">01</span>
+          <div class="icon" style="margin-top:14px">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+          </div>
+        </div>
+        <div>
+          <h4>Circuit</h4>
+          <p>ARRC · Time Attack · GT</p>
+        </div>
+      </div>
+      <div class="disc" style="background-image:url('assets/disc-rally.jpg')">
+        <div>
+          <span class="num">02</span>
+          <div class="icon" style="margin-top:14px">
+            <svg viewBox="0 0 24 24"><path d="M3 17l6-9 4 5 3-3 5 7"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+          </div>
+        </div>
+        <div>
+          <h4>Rally</h4>
+          <p>Borneo Safari · Sarawak Sprint</p>
+        </div>
+      </div>
+      <div class="disc" style="background-image:url('assets/disc-karting.jpg')">
+        <div>
+          <span class="num">03</span>
+          <div class="icon" style="margin-top:14px">
+            <svg viewBox="0 0 24 24"><path d="M5 17l4-4 3 3 7-7"/><path d="M14 9h6v6"/></svg>
+          </div>
+        </div>
+        <div>
+          <h4>Karting</h4>
+          <p>National Series · CIK-FIA</p>
+        </div>
+      </div>
+      <div class="disc" style="background-image:url('assets/disc-drag.jpg')">
+        <div>
+          <span class="num">04</span>
+          <div class="icon" style="margin-top:14px">
+            <svg viewBox="0 0 24 24"><path d="M3 12h18M5 8l-2 4 2 4M19 8l2 4-2 4"/></svg>
+          </div>
+        </div>
+        <div>
+          <h4>Drag</h4>
+          <p>Malaysia Drag Cup</p>
+        </div>
+      </div>
+      <div class="disc" style="background-image:url('assets/disc-motocross.jpg')">
+        <div>
+          <span class="num">05</span>
+          <div class="icon" style="margin-top:14px">
+            <svg viewBox="0 0 24 24"><path d="M4 17l4-7 4 4 4-6 4 9"/><circle cx="8" cy="18" r="1.5"/><circle cx="16" cy="18" r="1.5"/></svg>
+          </div>
+        </div>
+        <div>
+          <h4>Motocross</h4>
+          <p>MX Nationals · Pit Bike</p>
+        </div>
+      </div>
+      <div class="disc" style="background-image:url('assets/disc-offroad.jpg')">
+        <div>
+          <span class="num">06</span>
+          <div class="icon" style="margin-top:14px">
+            <svg viewBox="0 0 24 24"><path d="M3 13c2-2 5-2 7 0s5 2 7 0 3-2 4-2"/><path d="M3 17c2-2 5-2 7 0s5 2 7 0 3-2 4-2"/></svg>
+          </div>
+        </div>
+        <div>
+          <h4>Off-Road</h4>
+          <p>4×4 · Trial</p>
+        </div>
+      </div>
+      <div class="disc" style="background-image:url('assets/disc-eracing.jpg')">
+        <div>
+          <span class="num">07</span>
+          <div class="icon" style="margin-top:14px">
+            <svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
+          </div>
+        </div>
+        <div>
+          <h4>E-Racing</h4>
+          <p>Sim · Esports · EV series</p>
+        </div>
+      </div>
+      <div class="disc" style="background-image:url('assets/disc-endurance.jpg')">
+        <div>
+          <span class="num">08</span>
+          <div class="icon" style="margin-top:14px">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+        </div>
+        <div>
+          <h4>Endurance</h4>
+          <p>Sepang 1000km · GT</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Big stats -->
+<section class="section dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">By the numbers</div>
+        <h2>MAM today</h2>
+      </div>
+    </div>
+    <div class="bigstats">
+      <div class="bigstat"><div class="v">1,200<span class="em">+</span></div><div class="l">Active competition licences issued (2025)</div></div>
+      <div class="bigstat"><div class="v">60<span class="em">+</span></div><div class="l">Sanctioned events per calendar year</div></div>
+      <div class="bigstat"><div class="v">80<span class="em">+</span></div><div class="l">Affiliate clubs across 13 states</div></div>
+      <div class="bigstat"><div class="v">12<span class="em">+</span></div><div class="l">Disciplines under uniform regulation</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Recognition -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">International standing</div>
+        <h2>Recognised. Aligned. Affiliated.</h2>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+      <div style="border:1px solid var(--gray-2);padding:32px 24px">
+        <div style="font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.02em">FIA</div>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase;margin-top:6px">Member · ASN</div>
+        <p style="color:var(--gray-7);margin-top:14px;font-size:13px;line-height:1.6">National Sporting Authority for the Fédération Internationale de l'Automobile.</p>
+      </div>
+      <div style="border:1px solid var(--gray-2);padding:32px 24px">
+        <div style="font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.02em">FIM</div>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase;margin-top:6px">Federation member</div>
+        <p style="color:var(--gray-7);margin-top:14px;font-size:13px;line-height:1.6">Affiliated FMN for two-wheel motorsport, sanctioned by the Fédération Internationale de Motocyclisme.</p>
+      </div>
+      <div style="border:1px solid var(--gray-2);padding:32px 24px">
+        <div style="font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.02em">OCM</div>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase;margin-top:6px">National council</div>
+        <p style="color:var(--gray-7);margin-top:14px;font-size:13px;line-height:1.6">Olympic Council of Malaysia — affiliated national sport association.</p>
+      </div>
+      <div style="border:1px solid var(--gray-2);padding:32px 24px">
+        <div style="font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.02em">KBS</div>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase;margin-top:6px">Government</div>
+        <p style="color:var(--gray-7);margin-top:14px;font-size:13px;line-height:1.6">Registered under the Sports Commissioner of Malaysia (KBS).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="mam-chrome.js"></script>
+</body>
+</html>

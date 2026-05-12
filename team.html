@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Team Members — MAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="mam.css" />
+<style>
+  /* Filter bar */
+  .fbar{display:flex;gap:8px;flex-wrap:wrap;padding:24px 0;border-bottom:1px solid var(--gray-2);margin-bottom:36px}
+  .fbar .pill{padding:9px 18px;border:1px solid var(--gray-2);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-weight:600;background:#fff}
+  .fbar .pill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .fbar .pill:hover:not(.on){border-color:var(--ink)}
+
+  /* Lead leadership card */
+  .lead-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-left:1px solid var(--gray-2);border-top:1px solid var(--gray-2);margin-bottom:64px}
+  .lead{padding:0;border-right:1px solid var(--gray-2);border-bottom:1px solid var(--gray-2);background:#fff;display:flex;flex-direction:column;transition:box-shadow .35s ease, transform .35s ease;position:relative;cursor:pointer}
+  .lead:hover{box-shadow:0 18px 40px rgba(0,0,0,.08);transform:translateY(-3px);z-index:2}
+  .lead .ph{aspect-ratio:4/5;background:var(--gray-1);position:relative;overflow:hidden;transition:background .4s ease}
+  .lead:hover .ph{background:#f3eceb}
+  .lead .ph .silh{position:absolute;inset:0;display:grid;place-items:end center;padding-bottom:0;color:var(--gray-3);font-family:var(--display);font-size:160px;font-weight:800;line-height:.78;letter-spacing:-.05em;z-index:0;user-select:none;opacity:.55;transition:color .4s ease, opacity .4s ease, transform .5s cubic-bezier(.2,.7,.2,1)}
+  .lead:hover .ph .silh{color:var(--red);opacity:.85;transform:translateY(-6px) scale(1.04)}
+  .lead .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;mix-blend-mode:multiply;z-index:1;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .lead:hover .ph img{transform:scale(1.035)}
+  .lead .ph::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.55) 100%);z-index:2;pointer-events:none}
+  .lead .ph::after{content:"";position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--red);z-index:3;transition:width .45s cubic-bezier(.2,.7,.2,1)}
+  .lead:hover .ph::after{width:100%}
+  .lead .ph .role{position:absolute;top:18px;left:18px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;background:var(--red);color:#fff;padding:6px 10px;z-index:3;transition:padding .3s ease, letter-spacing .3s ease}
+  .lead:hover .ph .role{padding:6px 14px;letter-spacing:.22em}
+  .lead .body{padding:24px 24px 28px;transition:background .3s ease}
+  .lead .name{font-family:var(--display);font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.05;text-transform:uppercase;transition:color .25s ease}
+  .lead:hover .name{color:var(--red)}
+  .lead .title{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-top:6px}
+  .lead .term{font-size:12px;color:var(--gray-7);margin-top:10px;font-family:var(--mono);letter-spacing:.06em}
+  .lead p.bio{color:var(--gray-7);margin-top:14px;font-size:13px;line-height:1.6}
+
+  /* Working Committee — slimmer 6-col variant */
+  .wc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:64px}
+  .wc{background:#fff;display:flex;flex-direction:column;transition:box-shadow .35s ease, transform .35s ease;position:relative;cursor:pointer}
+  .wc:hover{box-shadow:0 14px 32px rgba(0,0,0,.08);transform:translateY(-3px);z-index:2}
+  .wc .ph{aspect-ratio:4/5;background:var(--gray-1);position:relative;overflow:hidden;transition:background .4s ease}
+  .wc:hover .ph{background:#f3eceb}
+  .wc .ph .silh{position:absolute;inset:0;display:grid;place-items:end center;color:var(--gray-3);font-family:var(--display);font-size:96px;font-weight:800;line-height:.78;letter-spacing:-.05em;z-index:0;user-select:none;opacity:.55;transition:color .4s ease, opacity .4s ease, transform .5s cubic-bezier(.2,.7,.2,1)}
+  .wc:hover .ph .silh{color:var(--red);opacity:.85;transform:translateY(-4px) scale(1.04)}
+  .wc .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;mix-blend-mode:multiply;z-index:1;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .wc:hover .ph img{transform:scale(1.035)}
+  .wc .ph::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--red);z-index:3;transition:width .45s cubic-bezier(.2,.7,.2,1)}
+  .wc:hover .ph::after{width:100%}
+  .wc .body{padding:16px 16px 20px}
+  .wc .role{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:700;line-height:1.4;min-height:28px}
+  .wc .name{font-family:var(--display);font-size:15px;font-weight:800;letter-spacing:-.01em;line-height:1.15;margin-top:8px;text-transform:uppercase;transition:color .25s ease}
+  .wc:hover .name{color:var(--red)}
+  @media (max-width:980px){.wc-grid{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:560px){.wc-grid{grid-template-columns:repeat(2,1fr)}}
+
+  /* Officials grid */
+  .off-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-left:1px solid var(--gray-2);border-top:1px solid var(--gray-2)}
+  .off{padding:24px;border-right:1px solid var(--gray-2);border-bottom:1px solid var(--gray-2);background:#fff;display:flex;flex-direction:column;gap:14px;cursor:pointer;transition:background .2s}
+  .off:hover{background:var(--gray-1)}
+  .off .av{width:64px;height:64px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em}
+  .off:hover .av{background:var(--red)}
+  .off .name{font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+  .off .title{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+  .off .meta{font-size:12px;color:var(--gray-7);margin-top:auto;display:flex;gap:14px;padding-top:10px;border-top:1px solid var(--gray-2)}
+  .off .meta span{display:flex;flex-direction:column;gap:2px}
+  .off .meta .k{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-5)}
+
+  /* Commissions */
+  .comm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-left:1px solid var(--gray-2);border-top:1px solid var(--gray-2)}
+  .comm{padding:28px;border-right:1px solid var(--gray-2);border-bottom:1px solid var(--gray-2);background:#fff}
+  .comm .num{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--red)}
+  .comm h4{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.01em;margin-top:10px}
+  .comm .chair{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-7);margin-top:14px}
+  .comm .members{margin-top:6px;font-size:13px;line-height:1.6;color:var(--gray-9)}
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<section class="phero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a><span class="sep">/</span> Team Members</div>
+    <h1>The people<br/>behind <span class="em">the flag.</span></h1>
+    <p class="sub">Council, executives, commissioners and senior officials directing motorsport in Malaysia for the 2025–2027 term.</p>
+    <div class="meta-row">
+      <div class="item">Term<strong>2025 – 2027</strong></div>
+      <div class="item">Council members<strong>15</strong></div>
+      <div class="item">Commissions<strong>15</strong></div>
+      <div class="item">Senior officials<strong>40+</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- Filter -->
+<section class="section" style="padding-top:24px;padding-bottom:0">
+  <div class="wrap">
+    <div class="fbar">
+      <span class="pill on">All</span>
+      <span class="pill">Council</span>
+      <span class="pill">Executive</span>
+      <span class="pill">Commissions</span>
+      <span class="pill">Stewards</span>
+      <span class="pill">Race Direction</span>
+      <span class="pill">Technical</span>
+      <span class="pill">Medical</span>
+    </div>
+  </div>
+</section>
+
+<!-- Council leads -->
+<section class="section" style="padding-top:24px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">Office bearers</div>
+        <h2>Executive Committee Members</h2>
+      </div>
+      <span style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase">Term 2025 – 2027</span>
+    </div>
+    <div class="lead-grid">
+      <div class="lead">
+        <div class="ph"><span class="role">Presiden</span><div class="silh">MM</div><img src="assets/exec-mokhzani.png" alt="Tan Sri Mokhzani Mahathir" style="object-position:50% 8%" /></div>
+        <div class="body">
+          <div class="name">Tan Sri Mokhzani Mahathir</div>
+          <div class="title">President</div>
+          <div class="term">Elected · Term 2025–2027</div>
+          <p class="bio">Chairman of the Executive Committee and Malaysia's principal representative to FIA and FIM. Leads the national governance agenda for 2025–2027.</p>
+        </div>
+      </div>
+      <div class="lead">
+        <div class="ph"><span class="role">Timbalan Presiden</span><div class="silh">MR</div><img src="assets/exec-rhiza.png" alt="Dato' Mohammed Rhiza Ghazi" style="object-position:50% 8%" /></div>
+        <div class="body">
+          <div class="name">Dato' Mohammed Rhiza Ghazi</div>
+          <div class="title">Deputy President</div>
+          <div class="term">Elected · Term 2025–2027</div>
+          <p class="bio">Deputises for the President across council operations and chairs the Sporting Commission overseeing national championships.</p>
+        </div>
+      </div>
+      <div class="lead">
+        <div class="ph"><span class="role">Setiausaha Agung</span><div class="silh">SN</div><img src="assets/exec-nanthan.png" alt="S.N. Nanthan" style="object-position:50% 8%" /></div>
+        <div class="body">
+          <div class="name">S.N. Nanthan</div>
+          <div class="title">Secretary General</div>
+          <div class="term">Appointed · Term 2025–2027</div>
+          <p class="bio">Custodian of the National Sporting Code and primary liaison with FIA and FIM Asia. Oversees licensing, stewards and regulatory affairs.</p>
+        </div>
+      </div>
+      <div class="lead">
+        <div class="ph"><span class="role">Bendahari</span><div class="silh">RR</div><img src="assets/exec-razlan.png" alt="Dato' Razlan Razali" style="object-position:50% 8%" /></div>
+        <div class="body">
+          <div class="name">Dato' Razlan Razali</div>
+          <div class="title">Treasurer</div>
+          <div class="term">Appointed · Term 2025–2027</div>
+          <p class="bio">Custodian of MAM's finances and commercial partnerships. Three decades at SIC and FIM Asia overseeing motorsport business operations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Working Committee Members -->
+<section class="section gray" style="padding-top:24px;padding-bottom:48px">
+  <div class="wrap" style="padding: 50px 48px 0px">
+    <div class="sec-head">
+      <div>
+        <div class="label">Operational team</div>
+        <h2>Working Committee Members</h2>
+      </div>
+      <span style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase">Term 2025 – 2027</span>
+    </div>
+    <div class="wc-grid">
+      <div class="wc">
+        <div class="ph"><div class="silh">MI</div><img src="assets/wc-izzat.jpg" alt="Mohamed Izzat Amirrul" /></div>
+        <div class="body">
+          <div class="role">Eksekutif Sukan Permotoran</div>
+          <div class="name">Mohamed Izzat Amirrul</div>
+        </div>
+      </div>
+      <div class="wc">
+        <div class="ph"><div class="silh">JI</div><img src="assets/wc-jai.jpg" alt="Jai Ismail" /></div>
+        <div class="body">
+          <div class="role">Penasihat Penjenamaan</div>
+          <div class="name">Jai Ismail</div>
+        </div>
+      </div>
+      <div class="wc">
+        <div class="ph"><div class="silh">SN</div><img src="assets/nanthan-committee.jpg" alt="S.N. Nanthan" /></div>
+        <div class="body">
+          <div class="role">Setiausaha Agung</div>
+          <div class="name">S.N. Nanthan</div>
+        </div>
+      </div>
+      <div class="wc">
+        <div class="ph"><div class="silh">NL</div><img src="assets/wc-lina.jpg" alt="Nor Lina Ayob" /></div>
+        <div class="body">
+          <div class="role">Ketua Komunikasi</div>
+          <div class="name">Nor Lina Ayob</div>
+        </div>
+      </div>
+      <div class="wc">
+        <div class="ph"><div class="silh">RS</div><img src="assets/wc-rasidah.jpg" alt="Rasidah Surif" /></div>
+        <div class="body">
+          <div class="role">Ketua Komersial dan Penajaan</div>
+          <div class="name">Rasidah Surif</div>
+        </div>
+      </div>
+      <div class="wc">
+        <div class="ph"><div class="silh">MB</div><img src="assets/wc-beheshti.jpg" alt="Muhammad Beheshti" /></div>
+        <div class="body">
+          <div class="role">Eksekutif Sukan Permotoran</div>
+          <div class="name">Muhammad Beheshti</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Commissions -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">Specialist bodies</div>
+        <h2>Commission Members</h2>
+      </div>
+    </div>
+    <div class="comm-grid">
+      <div class="comm">
+        <h4>Legal</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Y.Bhg Dato' Mohammed Rhiza Ghazi<br/>
+          Richard Wee Thiam Seng<br/>
+          Mohamad Ari Zulkarnain
+        </div>
+      </div>
+      <div class="comm">
+        <h4>Drivers Safety</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Admi Shahrul<br/>
+          Faidzil Alang
+        </div>
+      </div>
+      <div class="comm">
+        <h4>Riders Safety</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Wazi Abdul Hamid<br/>
+          Abdul Halim Mohd Zahid
+        </div>
+      </div>
+      <div class="comm">
+        <h4>Medical</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Dr. Nor Azlin Zainal Abidin<br/>
+          Col (Dr) Saravanan Annamalai<br/>
+          Dr Sunil Shunmuganathan
+        </div>
+      </div>
+      <div class="comm">
+        <h4>Officials</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Fazli Mukhtar Affandi<br/>
+          Mashithoh Hashim
+        </div>
+      </div>
+      <div class="comm">
+        <h4>Steward</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Shaharuddin Yahya<br/>
+          Ahmad Razman Mustafa<br/>
+          Saiful Amri Abdullah
+        </div>
+      </div>
+      <div class="comm">
+        <h4>Track Safety</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Rosland Kamaruddin<br/>
+          James Leong<br/>
+          Ravindran A/L Muniandy
+        </div>
+      </div>
+      <div class="comm">
+        <h4>2 Wheels</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Kuan Meng Heng<br/>
+          Shahrol Yuzy Ahmad Zaini<br/>
+          Zulfahmi Khairuddin
+        </div>
+      </div>
+      <div class="comm">
+        <h4>4 Wheels</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Adian Yein Khalid<br/>
+          Jazeman Jaafar<br/>
+          Tengku Djan Ley Tengku Mahaleel
+        </div>
+      </div>
+      <div class="comm">
+        <h4>Karting</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          James Leong<br/>
+          Nik Iruwan Nik Izani<br/>
+          Ahmad Hadri Haris
+        </div>
+      </div>
+      <div class="comm">
+        <h4>E-Sports</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Alex Yoong<br/>
+          Jason Chong<br/>
+          Razmin Mazli
+        </div>
+      </div>
+      <div class="comm">
+        <h4>Regulations &amp; Technical</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Saiful Amri Abdullah<br/>
+          Ahmad Razman Mustafa<br/>
+          Raja Norzaini
+        </div>
+      </div>
+      <div class="comm">
+        <h4>Women in Motorsports</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Shazlifa Arbee<br/>
+          Norfadilah Zainal Abidin
+        </div>
+      </div>
+      <div class="comm">
+        <h4>Motorsports Development</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Y.Bhg Tan Sri Mokhzani Mahathir<br/>
+          Y.Bhg Dato' Mohammed Rhiza Ghazi<br/>
+          Dato' Ahmad Razlan Ahmad Razali
+        </div>
+      </div>
+      <div class="comm">
+        <h4>Rally</h4>
+        <div class="chair">Members</div>
+        <div class="members">
+          Hj Sutan Mustaffa Salihin<br/>
+          Roduwan Rashid<br/>
+          Mohd Kurnia Abdol Sakor
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="mam-chrome.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>News — MAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="mam.css" />
+<style>
+  .fbar{display:flex;gap:8px;flex-wrap:wrap;padding:24px 0;border-bottom:1px solid var(--gray-2);margin-bottom:36px;align-items:center}
+  .fbar .pill{padding:9px 18px;border:1px solid var(--gray-2);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-weight:600;background:#fff}
+  .fbar .pill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .fbar .pill:hover:not(.on){border-color:var(--ink)}
+  .fbar .search{margin-left:auto;display:flex;align-items:center;gap:10px;border:1px solid var(--gray-2);padding:8px 14px;background:#fff;min-width:280px}
+  .fbar .search svg{width:14px;height:14px;stroke:var(--gray-7);fill:none;stroke-width:1.8}
+  .fbar .search input{border:none;outline:none;font-family:var(--body);font-size:13px;width:100%}
+
+  .lead-story{display:grid;grid-template-columns:1.6fr 1fr;gap:0;border:1px solid var(--gray-2);margin-bottom:64px}
+  .lead-story .img{aspect-ratio:16/10;background:var(--gray-2);position:relative;overflow:hidden}
+  .lead-story .img img{width:100%;height:100%;object-fit:cover}
+  .lead-story .img .cat{position:absolute;left:0;top:0;background:var(--red);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:7px 12px}
+  .lead-story .body{padding:40px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+  .lead-story .lab{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+  .lead-story h2{font-family:var(--display);font-weight:800;font-size:42px;line-height:1.05;letter-spacing:-.02em}
+  .lead-story p{color:var(--gray-7);font-size:15px;line-height:1.6}
+  .lead-story .meta{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--gray-7);text-transform:uppercase;margin-top:auto;display:flex;gap:18px}
+
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 24px}
+
+  .pagi{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:64px}
+  .pagi button{width:42px;height:42px;border:1px solid var(--gray-2);background:#fff;font-family:var(--mono);font-size:13px;font-weight:600;cursor:pointer}
+  .pagi button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .pagi button:hover:not(.on){border-color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<section class="phero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a><span class="sep">/</span> News</div>
+    <h1>The MAM <span class="em">Newsroom.</span></h1>
+    <p class="sub">Race results, regulation updates, press releases and what's next on the calendar — straight from the national sporting authority.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:24px">
+  <div class="wrap">
+    <div class="fbar">
+      <span class="pill on">All</span>
+      <span class="pill">Race results</span>
+      <span class="pill">Regulation</span>
+      <span class="pill">Press</span>
+      <span class="pill">Karting</span>
+      <span class="pill">Road racing</span>
+      <span class="pill">Rally</span>
+      <span class="pill">Drag</span>
+      <div class="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input placeholder="Search articles, results, riders…" />
+      </div>
+    </div>
+
+    <!-- Lead story -->
+    <article class="lead-story">
+      <div class="img">
+        <img src="assets/featured-news.webp" alt="MotoGP pack racing into turn one" />
+        <span class="cat">Featured · Road Racing</span>
+      </div>
+      <div class="body">
+        <span class="lab">— Race report</span>
+        <h2>Hafizh Syahrin takes pole at Sepang ARRC Round 3</h2>
+        <p>Malaysia's number one returns to the top step in qualifying after a tense final lap dual with Indonesia's Andi Farid. The SS600 grid is now the closest in three seasons.</p>
+        <div class="meta"><span>12 May 2026</span><span>4 min read</span><span>By Faisal Akhtar</span></div>
+      </div>
+    </article>
+
+    <!-- Grid -->
+    <div class="news-grid">
+      <article class="card">
+        <div class="img"><img src="assets/awards-night-2025.jpg" alt="" /><span class="cat">Awards</span></div>
+        <div class="body"><div class="meta">04 May 2026 · 3 min</div><h3>AEON Credit MAM Awards Night 2025 winners!</h3><p>Honouring the year's champions across road racing, karting, drag and rally at MAM's flagship recognition night.</p></div>
+      </article>
+      <article class="card">
+        <div class="img"><img src="assets/apmc-2025-team-malaysia.jpg" alt="" /><span class="cat">International</span></div>
+        <div class="body"><div class="meta">05 May 2026 · 5 min</div><h3>Asia Pacific Motorsports Championship 2025 — Team Malaysia</h3><p>Recap of Team Malaysia's APMC campaign — podiums, records and the rookies who stepped up.</p></div>
+      </article>
+      <article class="card">
+        <div class="img"><img src="assets/mfos-2025.jpg" alt="" /><span class="cat">Community</span></div>
+        <div class="body"><div class="meta">06 May 2026 · 4 min</div><h3>The People of MFOS 2025</h3><p>Faces, stories and behind-the-scenes from Malaysia Festival of Speed 2025.</p></div>
+      </article>
+      <article class="card">
+        <div class="img"><img src="assets/mam-agm-2025.png" alt="" /><span class="cat">Federation</span></div>
+        <div class="body"><div class="meta">07 May 2026 · 3 min</div><h3>MAM Annual General Meeting 2025</h3><p>Outcomes from the 2025 AGM — new office bearers and the 2026–2027 mandate.</p></div>
+      </article>
+      <article class="card">
+        <div class="img"><img src="assets/disc-karting.jpg" alt="" /><span class="cat">Karting</span></div>
+        <div class="body"><div class="meta">04 May 2026 · 3 min</div><h3>Tangkak hosts Round 5 of National Karting Series</h3><p>A record 184 entries across seven classes — the largest karting field MAM has sanctioned in 2026.</p></div>
+      </article>
+      <article class="card">
+        <div class="img"><img src="assets/disc-motocross.jpg" alt="" /><span class="cat">Motocross</span></div>
+        <div class="body"><div class="meta">06 Apr 2026 · 3 min</div><h3>Bukit Jalil MX track passes FIM homologation</h3><p>The KL venue receives Group B homologation — eligible to host Asia MX rounds from 2027.</p></div>
+      </article>
+      <article class="card">
+        <div class="img"><img src="assets/disc-offroad.jpg" alt="" /><span class="cat">Rally</span></div>
+        <div class="body"><div class="meta">22 Apr 2026 · 4 min</div><h3>Borneo Safari 2026 dates confirmed: 14–22 November</h3><p>Nine-day cross-country with the Sabah 4×4 Adventure Club. Entries open 1 July.</p></div>
+      </article>
+      <article class="card">
+        <div class="img"><img src="assets/disc-drag.jpg" alt="" /><span class="cat">Drag</span></div>
+        <div class="body"><div class="meta">18 Apr 2026 · 3 min</div><h3>Drag Cup Round 1: New national 7.8s record at Batu Tiga</h3><p>Marcus Lee resets the open class record with a 7.821s run at Saturday's eliminations.</p></div>
+      </article>
+      <article class="card">
+        <div class="img"><img src="assets/disc-circuit.jpg" alt="" /><span class="cat">Circuit</span></div>
+        <div class="body"><div class="meta">14 Apr 2026 · 5 min</div><h3>Malaysia Speed Festival returns to Sepang in October</h3><p>The flagship national event expands to four classes plus an invitational GT3 cup race.</p></div>
+      </article>
+    </div>
+
+    <div class="pagi">
+      <button>‹</button>
+      <button class="on">1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>…</button>
+      <button>14</button>
+      <button>›</button>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="mam-chrome.js"></script>
+</body>
+</html>

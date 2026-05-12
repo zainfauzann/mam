@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Contact — MAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="mam.css" />
+<style>
+  .layout{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:start}
+  .form{background:#fff;border:1px solid var(--gray-2);padding:40px}
+  .form h2{font-family:var(--display);font-weight:800;font-size:32px;line-height:1;letter-spacing:-.025em;text-transform:uppercase}
+  .form p.lead{color:var(--gray-7);margin:14px 0 28px;font-size:14px;line-height:1.6}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{margin-bottom:16px;display:flex;flex-direction:column;gap:6px}
+  .field label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray-7);font-weight:600}
+  .field input,.field select,.field textarea{border:1px solid var(--gray-3);background:#fff;padding:13px 14px;font-family:var(--body);font-size:14px;outline:none;transition:border-color .15s}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ink)}
+  .field textarea{resize:vertical;min-height:120px}
+  .topic{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px}
+  .topic .opt{padding:11px 12px;border:1px solid var(--gray-2);font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-weight:600;text-align:center;background:#fff}
+  .topic .opt.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .send{background:var(--red);color:#fff;border:none;padding:16px 28px;font-family:var(--body);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:10px;margin-top:8px}
+  .send:hover{background:var(--red-deep)}
+
+  /* Sidebar */
+  .info{display:flex;flex-direction:column;gap:24px}
+  .info-block{background:var(--ink);color:#fff;padding:32px}
+  .info-block.alt{background:#fff;color:var(--ink);border:1px solid var(--gray-2)}
+  .info-block .lab{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .info-block .lab::before{content:"";width:24px;height:1px;background:var(--red)}
+  .info-block h3{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.05;letter-spacing:-.015em;text-transform:uppercase}
+  .info-block .det{margin-top:18px;display:flex;flex-direction:column;gap:14px;font-size:14px;line-height:1.6}
+  .info-block .det .it{display:flex;gap:14px;align-items:flex-start}
+  .info-block .det .ic{width:32px;height:32px;border:1px solid currentColor;display:grid;place-items:center;flex-shrink:0;opacity:.8}
+  .info-block .det .ic svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6}
+  .info-block .det .k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.7}
+  .info-block .det .v{margin-top:2px}
+  .info-block.alt .lab{color:var(--red)}
+
+  .map{aspect-ratio:16/9;background:var(--gray-1);border:1px solid var(--gray-2);position:relative;overflow:hidden}
+  .map .pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);background:var(--red);color:#fff;padding:10px 16px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+  .map .pin::after{content:"";position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);width:0;height:0;border:8px solid transparent;border-top-color:var(--red);border-bottom:0}
+  .map .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--gray-2) 1px,transparent 1px),linear-gradient(90deg,var(--gray-2) 1px,transparent 1px);background-size:32px 32px;opacity:.5}
+  .map .road{position:absolute;left:0;right:0;top:50%;height:48px;background:#ddd;border-top:1px dashed #aaa;border-bottom:1px dashed #aaa;transform:translateY(-50%) rotate(-6deg)}
+
+  .faq{margin-top:24px;border-top:1px solid var(--gray-2)}
+  .faq-row{padding:18px 0;border-bottom:1px solid var(--gray-2);cursor:pointer}
+  .faq-row .q{display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-size:16px;font-weight:700}
+  .faq-row .q .ix{color:var(--red);font-family:var(--mono);font-size:18px;font-weight:300}
+  .faq-row .a{margin-top:8px;color:var(--gray-7);font-size:13px;line-height:1.6;display:none}
+  .faq-row.open .a{display:block}
+
+  @media (max-width:1100px){.layout{grid-template-columns:1fr}.row2{grid-template-columns:1fr}.topic{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<section class="phero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a><span class="sep">/</span> Contact Us</div>
+    <h1>Get in touch with <span class="em">MAM.</span></h1>
+    <p class="sub">Licence enquiries, event sanctioning, press, partnerships — reach the right desk on the first try.</p>
+    <div class="meta-row">
+      <div class="item">Office hours<strong>Mon – Fri · 9am – 5pm</strong></div>
+      <div class="item">Telephone<strong>+603-77315888</strong></div>
+      <div class="item">Email<strong>admin@mam.com.my</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="layout">
+      <!-- Form -->
+      <form class="form" onsubmit="event.preventDefault();alert('In a real site this would submit to MAM secretariat.')">
+        <h2>Send us a message</h2>
+        <p class="lead">Pick the topic that fits — your message will route directly to the responsible desk.</p>
+
+        <div class="field"><label>Topic</label></div>
+        <div class="topic">
+          <span class="opt on">General</span>
+          <span class="opt">Licence</span>
+          <span class="opt">Event Permit</span>
+          <span class="opt">Officials</span>
+          <span class="opt">Press &amp; Media</span>
+          <span class="opt">Partnerships</span>
+        </div>
+
+        <div class="row2">
+          <div class="field"><label>Full name</label><input type="text" placeholder="e.g. Adam Khalid" /></div>
+          <div class="field"><label>Email</label><input type="email" placeholder="you@example.com" /></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Phone</label><input type="tel" placeholder="+60 12 345 6789" /></div>
+          <div class="field"><label>Affiliate club / organisation</label><input type="text" placeholder="Optional" /></div>
+        </div>
+        <div class="field"><label>Subject</label><input type="text" placeholder="Brief subject line" /></div>
+        <div class="field"><label>Message</label><textarea placeholder="Tell us how we can help…"></textarea></div>
+
+        <button type="submit" class="send">Send Message →</button>
+      </form>
+
+      <!-- Sidebar -->
+      <div class="info">
+        <div class="info-block">
+          <div class="lab">Headquarters</div>
+          <h3>MAM Secretariat<br/>Sri Penchala, KL</h3>
+          <div class="det">
+            <div class="it">
+              <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s7-7 7-12a7 7 0 1 0-14 0c0 5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <div><div class="k">Address</div><div class="v">2nd Floor, The Nizra Building<br/>No.8, Jalan Sri Penchala<br/>Kampung Sungai Penchala<br/>60000 Kuala Lumpur</div></div>
+            </div>
+            <div class="it">
+              <span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12 12 0 0 0 2.81.72A2 2 0 0 1 22 16.92z"/></svg></span>
+              <div><div class="k">Telephone</div><div class="v">+603-77315888</div></div>
+            </div>
+            <div class="it">
+              <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg></span>
+              <div><div class="k">Email</div><div class="v">admin@mam.com.my</div></div>
+            </div>
+            <div class="it">
+              <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg></span>
+              <div><div class="k">Office hours</div><div class="v">Mon – Fri · 9:00 – 17:00 MYT<br/>Closed on public holidays</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="map">
+          <div class="grid-bg"></div>
+          <div class="road"></div>
+          <div class="pin">📍 MAM HQ · Sri Penchala</div>
+        </div>
+
+        <div class="info-block alt">
+          <div class="lab">Direct desks</div>
+          <h3 style="color:var(--ink)">Specialist contacts</h3>
+          <div class="det" style="color:var(--ink)">
+            <div class="it"><span class="ic" style="color:var(--ink)"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h8M8 11h8"/></svg></span><div><div class="k">Licences</div><div class="v">licences@mam.com.my</div></div></div>
+            <div class="it"><span class="ic" style="color:var(--ink)"><svg viewBox="0 0 24 24"><path d="M4 7h16v12H4z"/><path d="M8 3v4M16 3v4"/></svg></span><div><div class="k">Event permits</div><div class="v">events@mam.com.my</div></div></div>
+            <div class="it"><span class="ic" style="color:var(--ink)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><div><div class="k">Press &amp; media</div><div class="v">press@mam.com.my</div></div></div>
+            <div class="it"><span class="ic" style="color:var(--ink)"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></span><div><div class="k">Partnerships</div><div class="v">partners@mam.com.my</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div style="margin-top:96px">
+      <div class="sec-head">
+        <div>
+          <div class="label" style="font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:10px;margin-bottom:10px">
+            <span style="width:24px;height:1px;background:var(--red);display:inline-block"></span>Common questions
+          </div>
+          <h2 style="font-family:var(--display);font-weight:800;font-size:clamp(32px,4vw,48px);line-height:1;letter-spacing:-.025em;text-transform:uppercase">Before you reach out</h2>
+        </div>
+      </div>
+      <div class="faq">
+        <div class="faq-row open" onclick="this.classList.toggle('open')"><div class="q">How do I apply for a competition licence? <span class="ix">−</span></div><div class="a">Download the relevant form from the Downloads page (Driver / Rider / Officials), complete the FIA Annex L medical, and submit to the MAM Secretariat. Processing takes 10–14 working days. New applicants must complete a one-day induction at HQ.</div></div>
+        <div class="faq-row" onclick="this.classList.toggle('open')"><div class="q">What is the lead time to apply for an event permit? <span class="ix">+</span></div><div class="a">Minimum 60 days before the event date. Permits include the application, supplementary regulations, risk assessment and proof of insurance. International events require 90 days.</div></div>
+        <div class="faq-row" onclick="this.classList.toggle('open')"><div class="q">Is my Malaysian licence valid in other countries? <span class="ix">+</span></div><div class="a">Yes — MAM-issued FIA International Grades are recognised across all 80+ FIA ASNs worldwide. FIM Asia road racing licences are recognised across the FIM Asia region.</div></div>
+        <div class="faq-row" onclick="this.classList.toggle('open')"><div class="q">How do I become an MAM official or steward? <span class="ix">+</span></div><div class="a">Officials' licences are graded D → A. Apply for Grade D after attending an introductory clinic. Progression requires logged event hours and recommendation from a discipline commission.</div></div>
+        <div class="faq-row" onclick="this.classList.toggle('open')"><div class="q">Can my club affiliate with MAM? <span class="ix">+</span></div><div class="a">Yes. Clubs that organise sanctioned events or promote driver/rider development may apply for affiliate status. The application includes proof of registration with the Sports Commissioner, by-laws, and a list of office bearers.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="mam-chrome.js"></script>
+</body>
+</html>
