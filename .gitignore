@@ -12,7 +12,7 @@ debug/
 MAM Wireframes.html
 *.jsx
 
-# PowerPoint source decks — not for public deploy unless linked from downloads.html
+# PowerPoint source decks — not for public deploy unless linked from documents.html
 *.pptx
 
 # Editor / OS noise

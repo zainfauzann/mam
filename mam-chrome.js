@@ -18,48 +18,95 @@
   const mega = {
     about: {
       cols: [
-        { h: 'The Association', links: [
-          ['About MAM','about.html','Our story, mandate &amp; recognition'],
-          ['Vision &amp; Mission','about.html#vm','Why we exist'],
-          ['Heritage &amp; Timeline','about.html#timeline','Seventy years on the grid'],
-          ['Governance','about.html','Council, statutes &amp; bylaws'],
+        { h: 'Our People', links: [
+          ['Office Bearers','our-people.html#leads','President · Deputy · Sec-Gen · Treasurer'],
+          ['Working Committee','our-people.html#wc','Operational team'],
+          ['Commissions','our-people.html#commissions','Fifteen specialist bodies'],
+          ['Term 2025 – 2027','our-people.html','Mandate &amp; appointments'],
         ]},
-        { h: 'Disciplines', links: [
+        { h: 'Sports / Discipline', links: [
           ['All disciplines','about.html#disciplines','Twelve under one authority'],
           ['Circuit &amp; Road Racing','about.html#disciplines','Touring, GT, ARRC, Cub Prix'],
           ['Karting','about.html#disciplines','National junior pathway'],
           ['Rally &amp; Off-Road','about.html#disciplines','Stage rally, 4×4, Borneo Safari'],
         ]},
-        { h: 'Recognition', links: [
-          ['FIA','about.html','National Sporting Authority'],
-          ['FIM Asia','about.html','Federation member'],
-          ['Olympic Council of Malaysia','about.html','National council'],
-          ['Sports Commissioner (KBS)','about.html','Government registration'],
+        { h: 'The Association', links: [
+          ['About MAM','about.html','Our story, mandate &amp; recognition'],
+          ['Vision &amp; Mission','about.html#vm','Why we exist'],
+          ['Heritage &amp; Timeline','about.html#timeline','Seventy years on the grid'],
+          ['Recognition (FIA · FIM)','about.html','International standing'],
         ]},
       ],
       feat: { lab:'Featured', h:'Seven decades, one mission', p:'From 1956 hill climbs to Sepang MotoGP — read the MAM heritage timeline.', href:'about.html' }
     },
-    team: {
+    membership: {
       cols: [
-        { h: 'Council', links: [
-          ['Office Bearers','team.html#leads','President · Deputy · Sec-Gen'],
-          ['Council Members','team.html','15-seat governing council'],
-          ['Term 2025 – 2027','team.html','Mandate &amp; appointments'],
+        { h: 'Inscription Fees', links: [
+          ['Fee schedule 2026','membership.html#fees','All tiers, printable'],
+          ['Driver / Rider','membership.html#fees','Per-licence inscription'],
+          ['Affiliate clubs','membership.html#fees','Annual federation due'],
+          ['Officials','membership.html#fees','Steward · scrutineer · marshal'],
         ]},
-        { h: 'Officials', links: [
-          ['Stewards','team.html#officials','Chief stewards by discipline'],
-          ['Race Direction','team.html#officials','Clerks of course &amp; directors'],
-          ['Technical Delegates','team.html#officials','Scrutineering &amp; tech'],
-          ['Medical &amp; Safety','team.html#officials','CMO and intervention teams'],
+        { h: 'Affiliation Process', links: [
+          ['How affiliation works','membership.html#process','Step-by-step path'],
+          ['Eligibility','membership.html#process','Who can apply'],
+          ['Required documents','membership.html#process','Articles · constitution · roster'],
+          ['Renewal cycle','membership.html#process','Annual reaffirmation'],
         ]},
-        { h: 'Commissions', links: [
-          ['All commissions','team.html#commissions','Nine specialist bodies'],
-          ['Circuit Sport','team.html#commissions','CSC'],
-          ['National Karting','team.html#commissions','NKC'],
-          ['Medical','team.html#commissions','MED'],
+        { h: 'Member benefits', links: [
+          ['Sanctioned events','membership.html','Host under MAM permit'],
+          ['Insurance coverage','membership.html','Per-event club indemnity'],
+          ['Officials clinic','our-people.html#commissions','Path to stewardship'],
+          ['Federation voice','about.html','AGM voting rights'],
         ]},
       ],
-      feat: { lab:'New term', h:'Council 2025 – 2027', p:'Meet the 15-member governing council and the desks they lead.', href:'team.html' }
+      feat: { lab:'Become a member', h:'Affiliate your club with MAM', p:'80+ clubs across all 13 states already affiliate under MAM. Start the application today.', href:'membership.html' }
+    },
+    license: {
+      cols: [
+        { h: 'How to Apply', links: [
+          ['Step-by-step guide','license.html#how-to-apply','From eligibility to issuance'],
+          ['Required documents','license.html#how-to-apply','ID · medical · forms'],
+          ['Medical examination','license.html#how-to-apply','FIA Annex L · panel doctors'],
+          ['Fees &amp; payment','membership.html#fees','Inscription schedule'],
+        ]},
+        { h: 'Online Application', links: [
+          ['Start application','license.html#apply','Online intake form'],
+          ['Renew an existing licence','license.html#apply','2026 cycle renewal'],
+          ['Replace lost / damaged','license.html#apply','Reissue request'],
+          ['Track your status','license.html#apply','Application tracker'],
+        ]},
+        { h: 'Licence types', links: [
+          ['Driver Competition Licence','license.html','Four-wheel · grades C/B/A'],
+          ['Rider Competition Licence','license.html','Two-wheel · grades C/B/A'],
+          ['Officials Licence','license.html','Steward · scrutineer · marshal'],
+          ['Entrant Licence','license.html','Teams &amp; organisers'],
+        ]},
+      ],
+      feat: { lab:'Quick start', h:'Apply for your competition licence', p:'New drivers and riders can submit the full application online — no need to visit the secretariat for the first pass.', href:'license.html#apply' }
+    },
+    calendar: {
+      cols: [
+        { h: 'Calendar', links: [
+          ['All events','calendar.html','62 sanctioned events · 2026'],
+          ['This month','calendar.html','May – June overview'],
+          ['Map view','calendar.html','By state &amp; venue'],
+          ['Subscribe (.ics)','documents.html#cal','Apple/Google calendar'],
+        ]},
+        { h: 'Championships', links: [
+          ['ARRC — Asia Road Racing','calendar.html','Sepang R3 · 10 May'],
+          ['Petronas Cub Prix','calendar.html','Round 4 · Kuantan'],
+          ['National Karting Series','calendar.html','R5 · Tangkak'],
+          ['Malaysia Drag Cup','calendar.html','Round 2 · Batu Tiga'],
+        ]},
+        { h: 'Venues', links: [
+          ['Sepang International Circuit','calendar.html','Selangor'],
+          ['Pasir Gudang','calendar.html','Johor'],
+          ['Bukit Jalil MX','calendar.html','Kuala Lumpur'],
+          ['All affiliate venues','about.html','Across 11 states'],
+        ]},
+      ],
+      feat: { lab:'This weekend', h:'Race weekend at Sepang', p:'ARRC Round 3 — SS600 / AP250 / UB150. Lights out Saturday 14:00 MYT.', href:'calendar.html' }
     },
     news: {
       cols: [
@@ -83,51 +130,28 @@
       ],
       feat: { lab:'Featured story', h:'Hafizh on pole at Sepang ARRC R3', p:'Closest SS600 grid in three seasons. Read the full report.', href:'news.html' }
     },
-    calendar: {
-      cols: [
-        { h: 'Calendar', links: [
-          ['All events','calendar.html','62 sanctioned events · 2026'],
-          ['This month','calendar.html','May – June overview'],
-          ['Map view','calendar.html','By state &amp; venue'],
-          ['Subscribe (.ics)','downloads.html#cal','Apple/Google calendar'],
-        ]},
-        { h: 'Championships', links: [
-          ['ARRC — Asia Road Racing','calendar.html','Sepang R3 · 10 May'],
-          ['Petronas Cub Prix','calendar.html','Round 4 · Kuantan'],
-          ['National Karting Series','calendar.html','R5 · Tangkak'],
-          ['Malaysia Drag Cup','calendar.html','Round 2 · Batu Tiga'],
-        ]},
-        { h: 'Venues', links: [
-          ['Sepang International Circuit','calendar.html','Selangor'],
-          ['Pasir Gudang','calendar.html','Johor'],
-          ['Bukit Jalil MX','calendar.html','Kuala Lumpur'],
-          ['All affiliate venues','about.html','Across 11 states'],
-        ]},
-      ],
-      feat: { lab:'This weekend', h:'Race weekend at Sepang', p:'ARRC Round 3 — SS600 / AP250 / UB150. Lights out Saturday 14:00 MYT.', href:'calendar.html' }
-    },
-    downloads: {
+    documents: {
       cols: [
         { h: 'Regulations', links: [
-          ['Sporting Code 2026','downloads.html#code','National rulebook · v 2026.1'],
-          ['Technical Regulations','downloads.html#tech','Per-discipline tech regs'],
-          ['Tech Bulletins','downloads.html#tech','Latest amendments'],
-          ['Appendices','downloads.html#code','A · B · L'],
+          ['Sporting Code 2026','documents.html#code','National rulebook · v 2026.1'],
+          ['Technical Regulations','documents.html#tech','Per-discipline tech regs'],
+          ['Tech Bulletins','documents.html#tech','Latest amendments'],
+          ['Appendices','documents.html#code','A · B · L'],
         ]},
         { h: 'Forms', links: [
-          ['Driver licence (4-wheel)','downloads.html#licence','Application form'],
-          ['Rider licence (2-wheel)','downloads.html#licence','Application form'],
-          ['Officials licence','downloads.html#licence','Apply &amp; renew'],
-          ['Event permit pack','downloads.html#event','Complete organiser kit'],
+          ['Driver licence (4-wheel)','documents.html#licence','Application form'],
+          ['Rider licence (2-wheel)','documents.html#licence','Application form'],
+          ['Officials licence','documents.html#licence','Apply &amp; renew'],
+          ['Event permit pack','documents.html#event','Complete organiser kit'],
         ]},
         { h: 'Other resources', links: [
-          ['2026 Calendar PDF','downloads.html#cal','Printable schedule'],
-          ['Subscribe (.ics)','downloads.html#cal','Live calendar feed'],
-          ['Templates &amp; SR','downloads.html#templ','Editable Word/Excel'],
-          ['Brand &amp; logo','downloads.html#brand','Press &amp; partner assets'],
+          ['2026 Calendar PDF','documents.html#cal','Printable schedule'],
+          ['Subscribe (.ics)','documents.html#cal','Live calendar feed'],
+          ['Templates &amp; SR','documents.html#templ','Editable Word/Excel'],
+          ['Brand &amp; logo','documents.html#brand','Press &amp; partner assets'],
         ]},
       ],
-      feat: { lab:'Just published', h:'2026 Sporting Code v 2026.1', p:'Effective 1 June. Updates to Articles 12 (scrutineering) &amp; 17 (penalties).', href:'downloads.html' }
+      feat: { lab:'Just published', h:'2026 Sporting Code v 2026.1', p:'Effective 1 June. Updates to Articles 12 (scrutineering) &amp; 17 (penalties).', href:'documents.html' }
     },
     contact: {
       cols: [
@@ -144,13 +168,13 @@
           ['Partnerships','contact.html','partners@mam.com.my'],
         ]},
         { h: 'Become a member', links: [
-          ['Apply for licence','downloads.html#licence','Driver · Rider · Official'],
-          ['Affiliate your club','contact.html','Club affiliation pathway'],
-          ['Officials clinic','team.html','Path to stewardship'],
+          ['Apply for licence','license.html#apply','Driver · Rider · Official'],
+          ['Affiliate your club','membership.html#process','Club affiliation pathway'],
+          ['Officials clinic','our-people.html#commissions','Path to stewardship'],
           ['Volunteer','contact.html','Marshals &amp; event crew'],
         ]},
       ],
-      feat: { lab:'New here?', h:'Become a MAM member', p:'Apply for your competition licence or affiliate your club today.', href:'downloads.html' }
+      feat: { lab:'New here?', h:'Become a MAM member', p:'Apply for your competition licence or affiliate your club today.', href:'license.html#apply' }
     },
   };
 
@@ -185,17 +209,18 @@
   <nav class="primary">
     ${navItem('Home','index.html',null,'index.html')}
     ${navItem('About MAM','about.html','about','about.html')}
-    ${navItem('Team Members','team.html','team','team.html')}
+    ${navItem('Membership','membership.html','membership','membership.html')}
+    ${navItem('License','license.html','license','license.html')}
+    ${navItem('Calendar','calendar.html','calendar','calendar.html')}
     ${navItem('News','news.html','news','news.html')}
-    ${navItem('Event Calendar','calendar.html','calendar','calendar.html')}
-    ${navItem('Downloads','downloads.html','downloads','downloads.html')}
+    ${navItem('Documents','documents.html','documents','documents.html')}
     ${navItem('Contact Us','contact.html','contact','contact.html')}
   </nav>
   <div class="header-actions">
     <button class="icon-btn" aria-label="Search">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
     </button>
-    <a href="contact.html" class="btn primary">Apply Licence</a>
+    <a href="license.html#apply" class="btn primary">Apply Licence</a>
   </div>
 </header>`;
 
@@ -214,9 +239,9 @@
       <div class="fcol">
         <h5>About</h5>
         <a href="about.html">Our Story</a>
-        <a href="about.html">Vision &amp; Mission</a>
-        <a href="about.html">Governance</a>
-        <a href="team.html">Team</a>
+        <a href="about.html#vm">Vision &amp; Mission</a>
+        <a href="our-people.html">Our People</a>
+        <a href="about.html#disciplines">Disciplines</a>
         <a href="contact.html">Contact</a>
       </div>
       <div class="fcol">
@@ -224,21 +249,21 @@
         <a href="calendar.html">Calendar</a>
         <a href="news.html">Results</a>
         <a href="news.html">Standings</a>
-        <a href="about.html">Disciplines</a>
+        <a href="about.html#disciplines">Disciplines</a>
       </div>
       <div class="fcol">
-        <h5>Services</h5>
-        <a href="downloads.html">Licences</a>
-        <a href="downloads.html">Permits</a>
-        <a href="downloads.html">Regulations</a>
-        <a href="downloads.html">Forms</a>
+        <h5>Membership &amp; Licence</h5>
+        <a href="membership.html#fees">Inscription Fees</a>
+        <a href="membership.html#process">Affiliation Process</a>
+        <a href="license.html#how-to-apply">How to Apply</a>
+        <a href="license.html#apply">Online Application</a>
       </div>
       <div class="fcol">
-        <h5>Community</h5>
-        <a href="about.html">Affiliate Clubs</a>
-        <a href="news.html">News</a>
-        <a href="news.html">Press</a>
-        <a href="contact.html">Careers</a>
+        <h5>Resources</h5>
+        <a href="documents.html#code">Sporting Code</a>
+        <a href="documents.html#licence">Licence Forms</a>
+        <a href="documents.html#event">Event Permits</a>
+        <a href="documents.html">All documents</a>
       </div>
     </div>
     <div class="fbottom">

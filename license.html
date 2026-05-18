@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Competition Licence — MAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="mam.css" />
+<style>
+  /* Licence type cards (mirror disc-grid pattern but lighter) */
+  .lt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-left:1px solid var(--gray-2);border-top:1px solid var(--gray-2)}
+  .lt{padding:32px 28px;border-right:1px solid var(--gray-2);border-bottom:1px solid var(--gray-2);background:#fff;display:flex;flex-direction:column;cursor:pointer;transition:background .25s}
+  .lt:hover{background:var(--gray-1)}
+  .lt .num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--red)}
+  .lt .icon{width:48px;height:48px;display:grid;place-items:center;border:1px solid var(--ink);margin-top:14px;background:#fff;transition:background .2s,border-color .2s}
+  .lt:hover .icon{background:var(--red);border-color:var(--red)}
+  .lt .icon svg{width:24px;height:24px;stroke:var(--ink);fill:none;stroke-width:1.6;transition:stroke .2s}
+  .lt:hover .icon svg{stroke:#fff}
+  .lt h3{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em;margin-top:18px;text-transform:uppercase;line-height:1.1}
+  .lt .grades{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-top:10px}
+  .lt p{color:var(--gray-7);margin-top:14px;font-size:13px;line-height:1.6}
+  .lt .meta{margin-top:auto;padding-top:18px;border-top:1px solid var(--gray-2);display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--gray-9)}
+  .lt .meta .k{color:var(--gray-5);text-transform:uppercase;letter-spacing:.14em;font-size:9.5px}
+
+  /* Steps (similar to membership process) */
+  .steps{position:relative;padding-left:32px;border-left:2px solid var(--gray-2)}
+  .st-row{position:relative;padding-bottom:36px}
+  .st-row::before{content:"";position:absolute;left:-41px;top:6px;width:18px;height:18px;background:#fff;border:3px solid var(--red);border-radius:50%}
+  .st-row .step{font-family:var(--display);font-size:32px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+  .st-row .step .em{color:var(--red)}
+  .st-row h4{font-family:var(--display);font-size:18px;font-weight:700;margin-top:4px}
+  .st-row p{color:var(--gray-7);margin-top:6px;font-size:14px;line-height:1.55;max-width:620px}
+  .st-row .tag{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);padding:4px 10px;border:1px solid var(--red)}
+
+  /* Application form */
+  .form-shell{display:grid;grid-template-columns:1fr 1.6fr;gap:48px;align-items:start}
+  .form-aside{position:sticky;top:120px}
+  .form-aside h4{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em;text-transform:uppercase;line-height:1.1}
+  .form-aside p{color:var(--gray-7);margin-top:14px;font-size:14px;line-height:1.6}
+  .form-aside .checklist{margin-top:24px;padding-top:24px;border-top:1px solid var(--gray-2)}
+  .form-aside .checklist h5{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray-7);margin-bottom:12px}
+  .form-aside .checklist li{display:flex;gap:10px;padding:7px 0;font-size:13px;color:var(--gray-9);align-items:flex-start;line-height:1.4}
+  .form-aside .checklist li::before{content:"☐";color:var(--red);font-weight:700;margin-top:-1px}
+
+  .form-card{background:#fff;border:1px solid var(--gray-2);padding:36px 32px}
+  .form-card h4{font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.005em;text-transform:uppercase;padding-bottom:12px;border-bottom:2px solid var(--ink);margin-bottom:24px;display:flex;justify-content:space-between;align-items:center}
+  .form-card h4 .num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--red);font-weight:600}
+  .form-card + .form-card{margin-top:24px}
+  .fg{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+  .fg.one{grid-template-columns:1fr}
+  .field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-7);margin-bottom:8px;font-weight:600}
+  .field label .req{color:var(--red);margin-left:4px}
+  .field input, .field select, .field textarea{width:100%;padding:12px 14px;border:1px solid var(--gray-2);background:#fff;font-family:var(--body);font-size:14px;color:var(--ink);border-radius:0;outline:none;transition:border-color .15s}
+  .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--ink)}
+  .field textarea{min-height:96px;resize:vertical}
+  .radio-row{display:flex;gap:14px;flex-wrap:wrap}
+  .radio-row label{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--gray-2);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-weight:600;color:var(--ink);background:#fff;letter-spacing:.08em;margin-bottom:0}
+  .radio-row label input{display:none}
+  .radio-row label:has(input:checked){background:var(--ink);color:#fff;border-color:var(--ink)}
+  .form-actions{margin-top:28px;padding-top:24px;border-top:1px solid var(--gray-2);display:flex;gap:12px;justify-content:space-between;align-items:center}
+  .form-actions .note{font-size:12px;color:var(--gray-7);max-width:380px;line-height:1.5}
+
+  /* FAQ */
+  .faq{border-top:1px solid var(--gray-2)}
+  .faq details{border-bottom:1px solid var(--gray-2);padding:18px 0}
+  .faq summary{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.005em;cursor:pointer;display:flex;justify-content:space-between;align-items:center;list-style:none;color:var(--ink)}
+  .faq summary::after{content:"+";font-family:var(--mono);font-weight:700;color:var(--red);font-size:24px;line-height:1;transition:transform .2s}
+  .faq details[open] summary::after{content:"−"}
+  .faq details[open] summary{color:var(--red)}
+  .faq p{color:var(--gray-7);font-size:14px;line-height:1.7;margin-top:14px;max-width:780px}
+
+  .cta-band{background:var(--ink);color:#fff;padding:56px 0;text-align:center}
+  .cta-band h3{font-family:var(--display);font-size:36px;font-weight:800;letter-spacing:-.02em;text-transform:uppercase;line-height:1.05}
+  .cta-band p{color:#bbb;margin-top:14px;font-size:15px;max-width:560px;margin-left:auto;margin-right:auto}
+  .cta-band .row{display:flex;gap:14px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+
+  @media (max-width:980px){
+    .lt-grid{grid-template-columns:repeat(2,1fr)}
+    .form-shell{grid-template-columns:1fr}
+    .fg{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<!-- Page hero -->
+<section class="phero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a><span class="sep">/</span> Competition Licence</div>
+    <h1>Get your<br/><span class="em">competition licence.</span></h1>
+    <p class="sub">Every internationally recognised result from Malaysia — every podium, every record, every championship point — flows through a MAM-issued licence. New drivers and riders can now complete the full application online; renewals and grade upgrades follow the same flow.</p>
+    <div class="meta-row">
+      <div class="item">Current cycle<strong>2026</strong></div>
+      <div class="item">Active licences<strong>1,200+</strong></div>
+      <div class="item">Processing time<strong>10 – 14 days</strong></div>
+      <div class="item">Issuing body<strong>MAM Secretariat</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- Licence types -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">Licence types</div>
+        <h2>Which licence is right for you?</h2>
+      </div>
+      <a href="documents.html#licence" class="more">Forms archive →</a>
+    </div>
+    <div class="lt-grid">
+      <div class="lt">
+        <div class="num">01 / Driver</div>
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+        <h3>Driver Competition<br/>Licence</h3>
+        <div class="grades">Grades C · B · A · Intl.</div>
+        <p>For four-wheel competition — circuit, rally, drag, autocross, time attack. Includes Annex L medical and progression path to FIA International grades.</p>
+        <div class="meta"><span><span class="k">From</span>RM 450 / yr</span><span><span class="k">Form</span>DCL-26</span></div>
+      </div>
+      <div class="lt">
+        <div class="num">02 / Rider</div>
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l3-7h4l3 4M14 6l3 4"/></svg></div>
+        <h3>Rider Competition<br/>Licence</h3>
+        <div class="grades">Grades C · B · A · ARRC</div>
+        <p>For two-wheel competition — road race, motocross, drag, super moto. FIM medical certificate required; ARRC eligibility from Grade B upward.</p>
+        <div class="meta"><span><span class="k">From</span>RM 380 / yr</span><span><span class="k">Form</span>RCL-26</span></div>
+      </div>
+      <div class="lt">
+        <div class="num">03 / Officials</div>
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3l9 4-9 4-9-4 9-4z"/><path d="M3 11l9 4 9-4M3 15l9 4 9-4"/></svg></div>
+        <h3>Officials<br/>Licence</h3>
+        <div class="grades">Steward · Scrutineer · Marshal</div>
+        <p>For trained officials — stewards, scrutineers, marshals, clerks of course. Mandatory annual refresher; international upgrade through FIA / FIM.</p>
+        <div class="meta"><span><span class="k">From</span>RM 180 / yr</span><span><span class="k">Form</span>OFC-26</span></div>
+      </div>
+      <div class="lt">
+        <div class="num">04 / Entrant</div>
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13"/><path d="M3 10h18M8 6V4h8v2"/></svg></div>
+        <h3>Entrant Licence<br/>(Team)</h3>
+        <div class="grades">Team operator licence</div>
+        <p>For teams and event organisers entering competitors. Registered business required; must employ at least one MAM-licensed competitor.</p>
+        <div class="meta"><span><span class="k">From</span>RM 850 / yr</span><span><span class="k">Form</span>ENT-26</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How to Apply -->
+<section id="how-to-apply" class="section gray">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">Step-by-step</div>
+        <h2>How to apply</h2>
+      </div>
+      <span style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase">10 – 14 working days</span>
+    </div>
+    <div class="steps">
+      <div class="st-row">
+        <div class="step">01 <span class="em">/ Eligibility</span></div>
+        <h4>Check eligibility</h4>
+        <p>Driver and rider licences are issued from age 14 (karting) and 16 (full national). Officials must have completed an Officials' Clinic in the prior 24 months. Entrants must be registered with SSM as a Malaysian business entity.</p>
+        <span class="tag">Self-check</span>
+      </div>
+      <div class="st-row">
+        <div class="step">02 <span class="em">/ Medical</span></div>
+        <h4>Complete the medical</h4>
+        <p>All four-wheel applicants complete the FIA Annex L medical examination at an MAM-approved panel clinic. Two-wheel applicants complete the FIM equivalent. The medical certificate is valid for 12 months and must be current at the time of submission.</p>
+        <span class="tag">Panel clinic list in Documents</span>
+      </div>
+      <div class="st-row">
+        <div class="step">03 <span class="em">/ Documents</span></div>
+        <h4>Gather required documents</h4>
+        <p>National ID (MyKad / passport), two passport-size photographs, completed application form (DCL-26 / RCL-26 / OFC-26 / ENT-26), valid medical certificate, and proof of inscription payment. Renewals additionally submit the previous licence card.</p>
+        <span class="tag">Form pack in Documents</span>
+      </div>
+      <div class="st-row">
+        <div class="step">04 <span class="em">/ Submit</span></div>
+        <h4>Submit online or in person</h4>
+        <p>Submit through the online intake below, by email to <strong>licences@mam.com.my</strong>, or in person at the MAM Secretariat in Kuala Lumpur. Online submissions are acknowledged within 24 hours.</p>
+        <span class="tag">Online preferred</span>
+      </div>
+      <div class="st-row">
+        <div class="step">05 <span class="em">/ Review</span></div>
+        <h4>Secretariat review</h4>
+        <p>The MAM Secretariat verifies documentation and medical clearance. Officials licences additionally route through the Officials Commission for grade assignment. Most reviews close within 10 working days; complex cases (international upgrade, appeal) may take longer.</p>
+        <span class="tag">≈ 10 – 14 days</span>
+      </div>
+      <div class="st-row">
+        <div class="step">06 <span class="em">/ Issuance</span></div>
+        <h4>Licence issued</h4>
+        <p>Approved licences are issued as both a physical card and a digital licence record. Holders receive an email with the digital record and a courier-delivered physical card within 5 working days of approval. The licence is valid until 31 December of the cycle year.</p>
+        <span class="tag">Card + digital</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Online License Application -->
+<section id="apply" class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">Online intake</div>
+        <h2>Online licence application</h2>
+      </div>
+      <span style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase">Form ID · LIC-ONLINE-26</span>
+    </div>
+    <div class="form-shell">
+      <aside class="form-aside">
+        <h4>Submit your application in one sitting.</h4>
+        <p>This intake covers new licences, renewals and replacements. Allow about 12 minutes. You can save and return — your form ID is emailed on submission.</p>
+        <div class="checklist">
+          <h5>You'll need</h5>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li>National ID (MyKad / passport)</li>
+            <li>Recent passport-size photo (JPG / PNG)</li>
+            <li>Current FIA Annex L or FIM medical</li>
+            <li>Inscription payment reference</li>
+            <li>Existing licence number (renewal only)</li>
+          </ul>
+        </div>
+      </aside>
+      <div>
+        <div class="form-card">
+          <h4>Application details <span class="num">01 / Type</span></h4>
+          <div class="fg one">
+            <div class="field">
+              <label>Application type <span class="req">*</span></label>
+              <div class="radio-row">
+                <label><input type="radio" name="apptype" checked /> New licence</label>
+                <label><input type="radio" name="apptype" /> Renewal</label>
+                <label><input type="radio" name="apptype" /> Replacement</label>
+                <label><input type="radio" name="apptype" /> Grade upgrade</label>
+              </div>
+            </div>
+          </div>
+          <div class="fg one">
+            <div class="field">
+              <label>Licence category <span class="req">*</span></label>
+              <div class="radio-row">
+                <label><input type="radio" name="cat" checked /> Driver (4-wheel)</label>
+                <label><input type="radio" name="cat" /> Rider (2-wheel)</label>
+                <label><input type="radio" name="cat" /> Officials</label>
+                <label><input type="radio" name="cat" /> Entrant (Team)</label>
+              </div>
+            </div>
+          </div>
+          <div class="fg">
+            <div class="field">
+              <label>Requested grade <span class="req">*</span></label>
+              <select>
+                <option>Grade C — National entry</option>
+                <option>Grade B — National open</option>
+                <option>Grade A — National elite</option>
+                <option>International — FIA / FIM</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Existing licence number (if renewal)</label>
+              <input type="text" placeholder="e.g. MAM-DCL-2025-04821" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h4>Personal details <span class="num">02 / Identity</span></h4>
+          <div class="fg">
+            <div class="field"><label>Full name <span class="req">*</span></label><input type="text" placeholder="As per IC / passport" /></div>
+            <div class="field"><label>Preferred name on licence</label><input type="text" placeholder="Display name" /></div>
+          </div>
+          <div class="fg">
+            <div class="field"><label>National ID / passport <span class="req">*</span></label><input type="text" placeholder="MyKad or passport number" /></div>
+            <div class="field"><label>Date of birth <span class="req">*</span></label><input type="date" /></div>
+          </div>
+          <div class="fg">
+            <div class="field"><label>Email <span class="req">*</span></label><input type="email" placeholder="you@example.com" /></div>
+            <div class="field"><label>Mobile <span class="req">*</span></label><input type="tel" placeholder="+60 12 345 6789" /></div>
+          </div>
+          <div class="fg one">
+            <div class="field"><label>Mailing address <span class="req">*</span></label><textarea placeholder="Street, postcode, state — for licence card delivery"></textarea></div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h4>Medical &amp; payment <span class="num">03 / Compliance</span></h4>
+          <div class="fg">
+            <div class="field"><label>Medical certificate date <span class="req">*</span></label><input type="date" /></div>
+            <div class="field"><label>Issuing panel clinic <span class="req">*</span></label><input type="text" placeholder="Clinic name" /></div>
+          </div>
+          <div class="fg">
+            <div class="field"><label>Inscription payment ref <span class="req">*</span></label><input type="text" placeholder="FPX / bank transfer reference" /></div>
+            <div class="field"><label>Payment date <span class="req">*</span></label><input type="date" /></div>
+          </div>
+          <div class="fg one">
+            <div class="field"><label>Additional notes</label><textarea placeholder="Anything the secretariat should know — appeals, prior licence under different name, sponsor details"></textarea></div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <p class="note">By submitting, you confirm the information provided is accurate and agree to be bound by the MAM National Sporting Code and the terms of the Annex L medical declaration.</p>
+          <button type="button" class="btn primary">Submit application →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section gray">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">FAQ</div>
+        <h2>Common questions</h2>
+      </div>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>How long does it take to receive my licence?</summary>
+        <p>Most applications close within 10 to 14 working days. Officials licences and international grade upgrades can take longer because they involve a secondary review by the Officials Commission or FIA / FIM. Submitting online and including a current medical typically gets you to the fastest end of the range.</p>
+      </details>
+      <details>
+        <summary>Can I use my licence outside Malaysia?</summary>
+        <p>National licences (Grade C / B / A) are valid only inside Malaysia. International FIA / FIM grades — issued on top of a current national licence — are required for ARRC, MotoGP qualifying events, FIA-recognised rally rounds, and most overseas series. Upgrade pathway runs through MAM, then FIA or FIM Asia.</p>
+      </details>
+      <details>
+        <summary>What if I'm under 18?</summary>
+        <p>Minors aged 14 to 17 may apply with parent or guardian consent. Karting licences are available from 14 with the appropriate FIA Karting medical. Two-wheel and full four-wheel competition licences are issued from 16 onwards, with parental indemnity required until the holder reaches 18.</p>
+      </details>
+      <details>
+        <summary>Do I need a road driver's licence too?</summary>
+        <p>A road driver's licence (Malaysian Class D or equivalent) is required for most four-wheel categories at Grade B and above, and for all open-cockpit and high-performance categories. Karting and closed-course racing categories do not require a road licence.</p>
+      </details>
+      <details>
+        <summary>How do I renew before the deadline?</summary>
+        <p>Renewal opens 1 December and closes 31 January with a -20% early-bird discount. Late renewals after 28 February incur a reinstatement fee. Submit through this online intake under "Renewal" with your previous licence number — you don't need to repeat the personal-details section if your record is current.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="wrap">
+    <h3>Need help applying?</h3>
+    <p>The MAM Secretariat can walk you through eligibility, medical clearance and the application portal. Most enquiries are answered within one working day.</p>
+    <div class="row">
+      <a href="contact.html" class="btn primary">Talk to the secretariat →</a>
+      <a href="documents.html#licence" class="btn light">Download forms</a>
+      <a href="membership.html#fees" class="btn ghost" style="color:#fff;border-color:#fff">View fee schedule</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="mam-chrome.js"></script>
+</body>
+</html>
