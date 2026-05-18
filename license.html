@@ -23,10 +23,11 @@
   .lt .meta{margin-top:auto;padding-top:18px;border-top:1px solid var(--gray-2);display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--gray-9)}
   .lt .meta .k{color:var(--gray-5);text-transform:uppercase;letter-spacing:.14em;font-size:9.5px}
 
-  /* Steps (similar to membership process) */
-  .steps{position:relative;padding-left:32px;border-left:2px solid var(--gray-2)}
+  /* Steps timeline — line via pseudo-element so circle/line centers can be precisely aligned (universal `*` rule doesn't apply box-sizing to ::before, so set it explicitly here) */
+  .steps{position:relative;padding-left:44px}
+  .steps::before{content:"";position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--gray-2)}
   .st-row{position:relative;padding-bottom:36px}
-  .st-row::before{content:"";position:absolute;left:-41px;top:6px;width:18px;height:18px;background:#fff;border:3px solid var(--red);border-radius:50%}
+  .st-row::before{content:"";position:absolute;left:-41px;top:6px;width:18px;height:18px;background:#fff;border:3px solid var(--red);border-radius:50%;box-sizing:border-box}
   .st-row .step{font-family:var(--display);font-size:32px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
   .st-row .step .em{color:var(--red)}
   .st-row h4{font-family:var(--display);font-size:18px;font-weight:700;margin-top:4px}
@@ -182,9 +183,9 @@
       </div>
       <div class="st-row">
         <div class="step">04 <span class="em">/ Submit</span></div>
-        <h4>Submit online or in person</h4>
-        <p>Submit through the online intake below, by email to <strong>licences@mam.com.my</strong>, or in person at the MAM Secretariat in Kuala Lumpur. Online submissions are acknowledged within 24 hours.</p>
-        <span class="tag">Online preferred</span>
+        <h4>Submit on the MAM Licence Portal</h4>
+        <p>All licence applications are submitted exclusively through the online portal at <strong><a href="https://license-mam.com/" target="_blank" rel="noopener" style="color:var(--red);border-bottom:1px solid var(--red)">license-mam.com</a></strong>. Manual submissions are not accepted. Submissions are acknowledged within 24 hours.</p>
+        <span class="tag">Online only</span>
       </div>
       <div class="st-row">
         <div class="step">05 <span class="em">/ Review</span></div>
@@ -203,7 +204,6 @@
 </section>
 
 <!-- Online License Application — external portal CTAs -->
-<!-- TODO: replace placeholder '#' hrefs with the actual MAM Licence Portal URLs -->
 <section id="apply" class="section">
   <div class="wrap">
     <div class="sec-head">
@@ -214,9 +214,9 @@
     </div>
     <div class="apply-shell">
       <aside class="apply-aside">
-        <span class="badge">External Portal</span>
-        <h4>Submit on the MAM Licence Portal.</h4>
-        <p>Competition licence applications, renewals and replacements are handled on a dedicated portal. You'll be redirected after selecting the action that matches your case.</p>
+        <span class="badge">Online Only</span>
+        <h4>All licence applications are submitted online.</h4>
+        <p>Competition licence applications, renewals, replacements and status checks are handled exclusively on the dedicated MAM Licence Portal. Manual submissions are not accepted.</p>
         <h5>You'll need</h5>
         <ul>
           <li>National ID (MyKad / passport)</li>
@@ -225,36 +225,31 @@
           <li>Inscription payment reference</li>
           <li>Existing licence number (renewals)</li>
         </ul>
-        <div class="alt">
-          <h5>Other ways to submit</h5>
-          <p>Email: <strong>licences@mam.com.my</strong></p>
-          <p>In person: MAM Secretariat, Sri Penchala, Kuala Lumpur (Mon – Fri, 9am – 5pm)</p>
-        </div>
       </aside>
 
       <div class="apply-actions">
-        <a href="#" class="action-card" target="_blank" rel="noopener">
+        <a href="https://license-mam.com/" class="action-card" target="_blank" rel="noopener">
           <span class="num">01 / New licence</span>
           <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
           <h3>Start a new application</h3>
           <p>First-time applicants — driver, rider, officials or entrant licence. Submit medical clearance and supporting documents through the portal.</p>
           <span class="go">Open portal</span>
         </a>
-        <a href="#" class="action-card" target="_blank" rel="noopener">
+        <a href="https://license-mam.com/" class="action-card" target="_blank" rel="noopener">
           <span class="num">02 / Renewal</span>
           <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.5-6.3M21 12a9 9 0 0 1-15.5 6.3"/><path d="M18 3v6h-6M6 21v-6h6"/></svg></div>
           <h3>Renew existing licence</h3>
           <p>For current licence holders — annual renewal on or before 31 January. Existing records pre-fill on sign-in; just confirm and pay.</p>
           <span class="go">Renew now</span>
         </a>
-        <a href="#" class="action-card" target="_blank" rel="noopener">
+        <a href="https://license-mam.com/" class="action-card" target="_blank" rel="noopener">
           <span class="num">03 / Replacement</span>
           <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="1"/><path d="M3 10h18M8 6V4h8v2M9 14h6"/></svg></div>
           <h3>Replace lost or damaged card</h3>
           <p>Request a reissue of a lost, stolen or damaged physical licence card. Your digital record remains active throughout the process.</p>
           <span class="go">Request reissue</span>
         </a>
-        <a href="#" class="action-card" target="_blank" rel="noopener">
+        <a href="https://license-mam.com/" class="action-card" target="_blank" rel="noopener">
           <span class="num">04 / Track status</span>
           <div class="icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
           <h3>Check application status</h3>

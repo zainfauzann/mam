@@ -22,9 +22,11 @@
   .vm h3{font-family:var(--display);font-size:28px;font-weight:800;letter-spacing:-.02em;margin-top:14px;text-transform:uppercase}
   .vm p{color:var(--gray-7);margin-top:12px;line-height:1.6}
 
-  .timeline{position:relative;padding-left:32px;border-left:2px solid var(--gray-2)}
+  /* Timeline — line via pseudo-element so circle/line centers can be precisely aligned (universal `*` rule doesn't apply box-sizing to ::before, so set it explicitly here) */
+  .timeline{position:relative;padding-left:44px}
+  .timeline::before{content:"";position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--gray-2)}
   .tl-row{position:relative;padding-bottom:36px}
-  .tl-row::before{content:"";position:absolute;left:-41px;top:6px;width:18px;height:18px;background:#fff;border:3px solid var(--red);border-radius:50%}
+  .tl-row::before{content:"";position:absolute;left:-41px;top:6px;width:18px;height:18px;background:#fff;border:3px solid var(--red);border-radius:50%;box-sizing:border-box}
   .tl-row .yr{font-family:var(--display);font-size:32px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
   .tl-row h4{font-family:var(--display);font-size:18px;font-weight:700;margin-top:4px}
   .tl-row p{color:var(--gray-7);margin-top:6px;font-size:14px;line-height:1.55;max-width:600px}
