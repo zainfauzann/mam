@@ -45,24 +45,37 @@
   .rate-notes .ex{font-family:var(--mono);font-size:12px;color:var(--gray-9);background:var(--gray-1);padding:12px 16px;margin:10px 0 0;display:block;letter-spacing:.04em;line-height:1.7;border-left:2px solid var(--red)}
   .rate-disclaimer{margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--gray-7);text-transform:uppercase}
 
-  /* Process timeline (mirrors about timeline) */
-  .proc{position:relative;padding-left:32px;border-left:2px solid var(--gray-2)}
-  .pr-row{position:relative;padding-bottom:36px}
-  .pr-row::before{content:"";position:absolute;left:-41px;top:6px;width:18px;height:18px;background:#fff;border:3px solid var(--red);border-radius:50%}
-  .pr-row .step{font-family:var(--display);font-size:32px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
-  .pr-row .step .em{color:var(--red)}
-  .pr-row h4{font-family:var(--display);font-size:18px;font-weight:700;margin-top:4px}
-  .pr-row p{color:var(--gray-7);margin-top:6px;font-size:14px;line-height:1.55;max-width:620px}
-  .pr-row .tag{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);padding:4px 10px;border:1px solid var(--red)}
-
-  /* Eligibility / docs side panels */
-  .info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-left:1px solid var(--gray-2);border-top:1px solid var(--gray-2);margin-top:48px}
-  .info{padding:32px 28px;border-right:1px solid var(--gray-2);border-bottom:1px solid var(--gray-2);background:#fff}
-  .info .num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--red)}
-  .info h4{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.01em;margin-top:10px;text-transform:uppercase}
-  .info ol, .info ul{margin-top:14px;padding-left:18px}
-  .info li{color:var(--gray-7);font-size:14px;line-height:1.7}
-  .info li strong{color:var(--ink)}
+  /* 3-stage affiliate process */
+  .stages{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+  .stage{background:#fff;border:1px solid var(--gray-2);padding:32px 28px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .stage::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--gray-3)}
+  .stage-1::before{background:var(--red)}
+  .stage-2::before{background:#D97D00}
+  .stage-3::before{background:#1F8A5B}
+  .stage-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:6px 10px;background:var(--gray-1);color:var(--gray-7);align-self:flex-start;margin-bottom:18px}
+  .stage-tag::before{content:"";width:7px;height:7px;background:var(--gray-5);border-radius:50%}
+  .stage-tag.tag-on{background:#E8F5EE;color:#1F8A5B}
+  .stage-tag.tag-on::before{background:#1F8A5B}
+  .stage-no{font-family:var(--display);font-size:64px;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--gray-3)}
+  .stage-1 .stage-no{color:var(--red)}
+  .stage-2 .stage-no{color:#D97D00}
+  .stage-3 .stage-no{color:#1F8A5B}
+  .stage h3{font-family:var(--display);font-size:24px;font-weight:800;letter-spacing:-.015em;text-transform:uppercase;line-height:1.05;margin-top:10px;color:var(--ink)}
+  .stage > ul.bullets{list-style:none;padding:0;margin-top:18px}
+  .stage > ul.bullets li{position:relative;padding:9px 0 9px 18px;color:var(--gray-9);font-size:13.5px;line-height:1.55;border-bottom:1px solid var(--gray-2)}
+  .stage > ul.bullets li:last-child{border-bottom:none}
+  .stage > ul.bullets li::before{content:"";position:absolute;left:0;top:17px;width:10px;height:1px;background:var(--ink)}
+  .stage > ul.bullets li strong{color:var(--ink);font-weight:700}
+  .stage-sub{margin-top:20px;padding:18px 0 4px;border-top:2px solid var(--ink)}
+  .stage-sub h5{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:12px}
+  .stage-2 .stage-sub h5{color:#D97D00}
+  .stage-3 .stage-sub h5{color:#1F8A5B}
+  .stage-sub p{color:var(--gray-7);font-size:13px;line-height:1.6;margin-bottom:10px}
+  .stage-sub ol{padding-left:22px;margin-top:4px}
+  .stage-sub ol li{font-size:13px;color:var(--gray-9);padding:3px 0;line-height:1.55}
+  .stage-sub ol li strong{color:var(--ink)}
+  .stage-note{margin-top:auto;padding-top:18px;font-size:12px;color:var(--gray-7);line-height:1.6;border-top:1px solid var(--gray-2);font-style:italic}
+  @media (max-width:1100px){.stages{grid-template-columns:1fr}}
 
   .bigstats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid #2a2a2a;border-left:1px solid #2a2a2a}
   .bigstat{padding:36px 28px;border-right:1px solid #2a2a2a;border-bottom:1px solid #2a2a2a}
@@ -221,78 +234,76 @@
   </div>
 </section>
 
-<!-- Affiliation Process -->
+<!-- Affiliate Member Application Process -->
 <section id="process" class="section">
   <div class="wrap">
     <div class="sec-head">
       <div>
         <div class="label">Affiliation</div>
-        <h2>MAM affiliation process</h2>
+        <h2>Affiliate Member application process</h2>
       </div>
-      <span style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase">≈ 8 weeks end-to-end</span>
+      <span style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase">Review: 3 – 5 working days · Probation: 1 year</span>
     </div>
-    <div class="proc">
-      <div class="pr-row">
-        <div class="step">01 <span class="em">/ Eligibility</span></div>
-        <h4>Confirm eligibility</h4>
-        <p>Motor clubs must be registered with the Registrar of Societies (ROS), demonstrate at least six months of operation, and have a constitution covering motorsport. Drivers and riders must be 14 and above (kart) or 16 and above (full licence) with valid road licences where applicable.</p>
-        <span class="tag">Self-check</span>
-      </div>
-      <div class="pr-row">
-        <div class="step">02 <span class="em">/ Submission</span></div>
-        <h4>Submit the affiliation pack</h4>
-        <p>Complete the club affiliation form (Form CAF-26) and submit the supporting pack: ROS certificate, constitution and bylaws, current office bearers roster, AGM minutes from the past two years, and audited financials. Individual licences submit the driver / rider application with medical and ID.</p>
-        <span class="tag">Forms in Documents</span>
-      </div>
-      <div class="pr-row">
-        <div class="step">03 <span class="em">/ Review</span></div>
-        <h4>Secretariat review</h4>
-        <p>The MAM Secretariat reviews documentation for completeness. Clarifications are typically requested within 14 working days. Officials licences route additionally through the Officials Commission for grading.</p>
-        <span class="tag">≈ 2 weeks</span>
-      </div>
-      <div class="pr-row">
-        <div class="step">04 <span class="em">/ Approval</span></div>
-        <h4>Executive Committee approval</h4>
-        <p>The Executive Committee ratifies affiliation at the next sitting (usually monthly). Successful applicants receive a confirmation letter, affiliation number, and inscription invoice.</p>
-        <span class="tag">Monthly EXCO</span>
-      </div>
-      <div class="pr-row">
-        <div class="step">05 <span class="em">/ Onboarding</span></div>
-        <h4>Payment &amp; onboarding</h4>
-        <p>On payment of inscription, MAM issues the affiliate ID and adds the club / individual to the federation roster. Affiliates receive the Sporting Code, technical regulations, and Officials' Clinic schedule. Clubs gain access to the event-permit portal.</p>
-        <span class="tag">MAM ID issued</span>
-      </div>
-      <div class="pr-row">
-        <div class="step">06 <span class="em">/ Renewal</span></div>
-        <h4>Annual renewal</h4>
-        <p>Inscription runs on the calendar year. Renewal opens 1 December and closes 31 January with a -20% early-bird discount; late renewals after 28 February incur a reinstatement fee. AGM voting eligibility requires inscription confirmed by 31 March.</p>
-        <span class="tag">Yearly · Jan</span>
-      </div>
-    </div>
-
-    <div class="info-grid">
-      <div class="info">
-        <div class="num">A — Eligibility</div>
-        <h4>Who can apply</h4>
-        <ul>
-          <li><strong>Motor clubs</strong> — ROS-registered, 6+ months active, motorsport in constitution</li>
-          <li><strong>Drivers / Riders</strong> — 14+ (karting), 16+ (full national licence)</li>
-          <li><strong>Officials</strong> — completed Officials Clinic, current medical</li>
-          <li><strong>Entrants &amp; teams</strong> — registered business entity, minimum one licensed driver / rider</li>
+    <div class="stages">
+      <!-- Stage 01 -->
+      <article class="stage stage-1">
+        <span class="stage-tag">No Voting Rights</span>
+        <div class="stage-no">01</div>
+        <h3>New Application</h3>
+        <ul class="bullets">
+          <li>Affiliated membership is <strong>open to clubs, associations or any organisation</strong> that the Executive Committee deems fit and relevant.</li>
+          <li>Each application must be <strong>nominated by an Affiliate and seconded by another Affiliate</strong>.</li>
         </ul>
-      </div>
-      <div class="info">
-        <div class="num">B — Documents</div>
-        <h4>Required documents</h4>
-        <ol>
-          <li>Form CAF-26 (clubs) or DCL-26 / RCL-26 (individuals)</li>
-          <li>ROS certificate &amp; constitution (clubs)</li>
-          <li>Office bearer roster &amp; recent AGM minutes (clubs)</li>
-          <li>FIA Annex L medical (4-wheel) or FIM medical (2-wheel)</li>
-          <li>Two passport photographs &amp; ID copy</li>
-          <li>Inscription fee receipt or proof of payment</li>
-        </ol>
-      </div>
+        <div class="stage-sub">
+          <h5>Procedure for application</h5>
+          <p>New applicants must submit a written application for membership to the Secretary General with the following documents:</p>
+          <ol>
+            <li>Completed Application Form</li>
+            <li>Club Profile with list of members</li>
+            <li>Certificate of Registration with PJS (for Clubs / Associations — <strong>Form 3</strong>)</li>
+            <li>Certificate of Incorporation (for Companies — <strong>Form 9</strong>)</li>
+            <li>Latest <strong>Form 24, 44 &amp; 49</strong> (for Companies &amp; Circuit Owners)</li>
+            <li>Latest Bank Statement</li>
+            <li>3 years Report of Past Events, Programs &amp; Activities (if any)</li>
+          </ol>
+        </div>
+        <p class="stage-note">Application review takes 3 – 5 working days. Results are notified via email. Certificate of Membership is only issued upon receipt of full payment of the Affiliation Fee.</p>
+      </article>
+
+      <!-- Stage 02 -->
+      <article class="stage stage-2">
+        <span class="stage-tag">No Voting Rights</span>
+        <div class="stage-no">02</div>
+        <h3>Probation (1 Year)</h3>
+        <ul class="bullets">
+          <li>New Clubs / Associations undergo a <strong>one (1) year probationary period</strong>, commencing from the date of acceptance of the terms &amp; conditions and payment of the Affiliation Fee.</li>
+          <li>During probation, the club must organise and submit a written report on <strong>at least three (3) Motorsports Activities</strong> — racing and/or activities promoting motorsport through exhibitions, seminars, classes or training.</li>
+          <li>All Motorsports Activities must be in strict compliance with the Constitution and all relevant laws, rules, regulations and guidelines.</li>
+          <li>Clubs / Associations without a track record of organising races are <strong>strictly monitored</strong> by MAM.</li>
+        </ul>
+        <div class="stage-sub">
+          <h5>End of probation</h5>
+          <p>The Executive Committee evaluates the club's performance and has <strong>absolute discretion</strong> to either:</p>
+          <ol type="i">
+            <li>Approve the membership to Full Affiliated status; <em>OR</em></li>
+            <li>Extend the probation period.</li>
+          </ol>
+        </div>
+      </article>
+
+      <!-- Stage 03 -->
+      <article class="stage stage-3">
+        <span class="stage-tag tag-on">Voting Rights</span>
+        <div class="stage-no">03</div>
+        <h3>Affiliate Member</h3>
+        <ul class="bullets">
+          <li>Awarded full affiliate status — deemed a <strong>Voting Member</strong>.</li>
+          <li>Required to organise, conduct and maintain a <strong>minimum of three (3) Motorsports Activities per calendar year</strong>. Failure may trigger Executive Committee review of full affiliate status.</li>
+          <li>All Motorsports Activities must remain in strict compliance with the Constitution, relevant laws, rules, regulations and guidelines.</li>
+          <li>Annual membership renewal and fees due <strong>on or before 31 January each year</strong>. Failure to meet the deadline results in automatic suspension unless MAM determines otherwise.</li>
+          <li>Each member is encouraged to propose new members to MAM.</li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
@@ -318,12 +329,12 @@
 <!-- CTA band -->
 <section class="cta-band">
   <div class="wrap">
-    <h3>Ready to join?</h3>
-    <p>Start your individual licence online, or download the club affiliation pack to begin the federation process.</p>
+    <h3>Ready to affiliate?</h3>
+    <p>Affiliate Membership starts with a written application to the Secretary General. Reach out to the secretariat for the nomination form and applicant pack.</p>
     <div class="row">
-      <a href="license.html#apply" class="btn primary">Apply for licence →</a>
-      <a href="documents.html#licence" class="btn light">Download affiliation pack</a>
-      <a href="contact.html" class="btn ghost" style="color:#fff;border-color:#fff">Talk to the secretariat</a>
+      <a href="contact.html" class="btn primary">Talk to the secretariat →</a>
+      <a href="documents.html" class="btn light">Browse documents</a>
+      <a href="license.html" class="btn ghost" style="color:#fff;border-color:#fff">Individual competition licence</a>
     </div>
   </div>
 </section>
