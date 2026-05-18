@@ -68,7 +68,7 @@
           ['Step-by-step guide','license.html#how-to-apply','From eligibility to issuance'],
           ['Required documents','license.html#how-to-apply','ID · medical · forms'],
           ['Medical examination','license.html#how-to-apply','FIA Annex L · panel doctors'],
-          ['Panel clinics','license.html#how-to-apply','Approved medical examiners'],
+          ['Insurance coverage','license.html#insurance','RM 30K medical · RM 50K disability'],
         ]},
         { h: 'Online Application', links: [
           ['Start application','license.html#apply','Online intake form'],

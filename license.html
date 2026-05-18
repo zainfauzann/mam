@@ -34,6 +34,34 @@
   .st-row p{color:var(--gray-7);margin-top:6px;font-size:14px;line-height:1.55;max-width:620px}
   .st-row .tag{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);padding:4px 10px;border:1px solid var(--red)}
 
+  /* Insurance coverage list */
+  .ins-list{background:#fff;border:1px solid var(--gray-2)}
+  .ins-row{display:flex;justify-content:space-between;align-items:center;padding:22px 28px;border-bottom:1px solid var(--gray-2);gap:24px;transition:background .15s}
+  .ins-row:last-child{border-bottom:none}
+  .ins-row:hover{background:var(--gray-1)}
+  .ins-coverage{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--ink);flex:1;line-height:1.4}
+  .ins-amount{font-family:var(--display);font-size:24px;font-weight:800;letter-spacing:-.015em;color:var(--ink);text-align:right;line-height:1.1;white-space:nowrap}
+  .ins-amount .sub{display:block;font-family:var(--mono);font-size:10px;font-weight:500;color:var(--gray-7);text-transform:uppercase;letter-spacing:.1em;margin-top:6px;white-space:nowrap}
+  .ins-foot{margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--gray-7);text-transform:uppercase}
+
+  /* MAM Offices */
+  .office-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-left:1px solid var(--gray-2);border-top:1px solid var(--gray-2)}
+  .office{padding:32px 28px;border-right:1px solid var(--gray-2);border-bottom:1px solid var(--gray-2);background:#fff;display:flex;flex-direction:column;gap:8px}
+  .office .num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--red);font-weight:700;text-transform:uppercase}
+  .office h4{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em;text-transform:uppercase;line-height:1.1;margin-top:4px}
+  .office address{font-style:normal;color:var(--gray-9);font-size:14px;line-height:1.7;margin-top:8px}
+  .office .meta{margin-top:auto;padding-top:16px;border-top:1px solid var(--gray-2);font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--gray-7);text-transform:uppercase}
+
+  /* Direct contacts */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-left:1px solid var(--gray-2);border-top:1px solid var(--gray-2)}
+  .contact-card{padding:32px 28px;border-right:1px solid var(--gray-2);border-bottom:1px solid var(--gray-2);background:#fff;display:flex;flex-direction:column;gap:8px}
+  .contact-card .num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--red);font-weight:700;text-transform:uppercase}
+  .contact-card h4{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em;text-transform:uppercase;margin-top:4px;line-height:1.1}
+  .contact-card .phone{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.01em;color:var(--ink);margin-top:8px;line-height:1}
+  .contact-card .phone a{color:inherit}
+  .contact-card .phone a:hover{color:var(--red)}
+  .contact-card .disciplines{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--gray-7);line-height:1.7;margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-2);text-transform:uppercase}
+
   /* Online application — portal CTAs */
   .apply-shell{display:grid;grid-template-columns:1fr 1.7fr;gap:48px;align-items:start}
   .apply-aside{position:sticky;top:120px;background:var(--ink);color:#fff;padding:32px 28px}
@@ -99,7 +127,7 @@
     <div class="meta-row">
       <div class="item">Current cycle<strong>2026</strong></div>
       <div class="item">Active licences<strong>1,200+</strong></div>
-      <div class="item">Processing time<strong>10 – 14 days</strong></div>
+      <div class="item">Processing time<strong>2 – 3 working days</strong></div>
       <div class="item">Issuing body<strong>MAM Secretariat</strong></div>
     </div>
   </div>
@@ -122,7 +150,7 @@
         <h3>Driver Competition<br/>Licence</h3>
         <div class="grades">Grades C · B · A · Intl.</div>
         <p>For four-wheel competition — circuit, rally, drag, autocross, time attack. Includes Annex L medical and progression path to FIA International grades.</p>
-        <div class="meta"><span><span class="k">From</span>RM 450 / yr</span><span><span class="k">Form</span>DCL-26</span></div>
+        <div class="meta"><span><span class="k">Validity</span>Annual</span><span><span class="k">Insurance</span>Included</span></div>
       </div>
       <div class="lt">
         <div class="num">02 / Rider</div>
@@ -130,7 +158,7 @@
         <h3>Rider Competition<br/>Licence</h3>
         <div class="grades">Grades C · B · A · ARRC</div>
         <p>For two-wheel competition — road race, motocross, drag, super moto. FIM medical certificate required; ARRC eligibility from Grade B upward.</p>
-        <div class="meta"><span><span class="k">From</span>RM 380 / yr</span><span><span class="k">Form</span>RCL-26</span></div>
+        <div class="meta"><span><span class="k">Validity</span>Annual</span><span><span class="k">Insurance</span>Included</span></div>
       </div>
       <div class="lt">
         <div class="num">03 / Officials</div>
@@ -138,7 +166,7 @@
         <h3>Officials<br/>Licence</h3>
         <div class="grades">Steward · Scrutineer · Marshal</div>
         <p>For trained officials — stewards, scrutineers, marshals, clerks of course. Mandatory annual refresher; international upgrade through FIA / FIM.</p>
-        <div class="meta"><span><span class="k">From</span>RM 180 / yr</span><span><span class="k">Form</span>OFC-26</span></div>
+        <div class="meta"><span><span class="k">Validity</span>Annual</span><span><span class="k">Insurance</span>Included</span></div>
       </div>
       <div class="lt">
         <div class="num">04 / Entrant</div>
@@ -146,9 +174,45 @@
         <h3>Entrant Licence<br/>(Team)</h3>
         <div class="grades">Team operator licence</div>
         <p>For teams and event organisers entering competitors. Registered business required; must employ at least one MAM-licensed competitor.</p>
-        <div class="meta"><span><span class="k">From</span>RM 850 / yr</span><span><span class="k">Form</span>ENT-26</span></div>
+        <div class="meta"><span><span class="k">Validity</span>Annual</span><span><span class="k">Insurance</span>Included</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Insurance Coverage -->
+<section id="insurance" class="section dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">Coverage included</div>
+        <h2>Insurance for every licence holder</h2>
+      </div>
+      <span style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:#bbb;text-transform:uppercase">Annual Competition Licence</span>
+    </div>
+    <div class="ins-list">
+      <div class="ins-row">
+        <div class="ins-coverage">Medical &amp; Surgical Expenses</div>
+        <div class="ins-amount">RM 30,000</div>
+      </div>
+      <div class="ins-row">
+        <div class="ins-coverage">Government Hospital Allowance</div>
+        <div class="ins-amount">RM 50<span style="font-size:18px;color:var(--gray-7)">/week</span><span class="sub">Maximum 60 days</span></div>
+      </div>
+      <div class="ins-row">
+        <div class="ins-coverage">Permanent Disablement</div>
+        <div class="ins-amount">RM 50,000</div>
+      </div>
+      <div class="ins-row">
+        <div class="ins-coverage">On Death</div>
+        <div class="ins-amount">RM 50,000</div>
+      </div>
+      <div class="ins-row">
+        <div class="ins-coverage">Funeral &amp; Registration Benefits</div>
+        <div class="ins-amount">RM 5,000</div>
+      </div>
+    </div>
+    <p class="ins-foot">All sums insured per licence holder, per annum. Coverage active throughout the validity period of the competition licence.</p>
   </div>
 </section>
 
@@ -160,44 +224,44 @@
         <div class="label">Step-by-step</div>
         <h2>How to apply</h2>
       </div>
-      <span style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase">10 – 14 working days</span>
+      <a href="assets/new%20registration%20process.pdf" target="_blank" rel="noopener" class="more" style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase">Download printable guide ↓</a>
     </div>
     <div class="steps">
       <div class="st-row">
-        <div class="step">01 <span class="em">/ Eligibility</span></div>
-        <h4>Check eligibility</h4>
-        <p>Driver and rider licences are issued from age 14 (karting) and 16 (full national). Officials must have completed an Officials' Clinic in the prior 24 months. Entrants must be registered with SSM as a Malaysian business entity.</p>
-        <span class="tag">Self-check</span>
-      </div>
-      <div class="st-row">
-        <div class="step">02 <span class="em">/ Medical</span></div>
-        <h4>Complete the medical</h4>
-        <p>All four-wheel applicants complete the FIA Annex L medical examination at an MAM-approved panel clinic. Two-wheel applicants complete the FIM equivalent. The medical certificate is valid for 12 months and must be current at the time of submission.</p>
-        <span class="tag">Panel clinic list in Documents</span>
-      </div>
-      <div class="st-row">
-        <div class="step">03 <span class="em">/ Documents</span></div>
-        <h4>Gather required documents</h4>
-        <p>National ID (MyKad / passport), two passport-size photographs, completed application form (DCL-26 / RCL-26 / OFC-26 / ENT-26), valid medical certificate, and proof of inscription payment. Renewals additionally submit the previous licence card.</p>
-        <span class="tag">Form pack in Documents</span>
-      </div>
-      <div class="st-row">
-        <div class="step">04 <span class="em">/ Submit</span></div>
-        <h4>Submit on the MAM Licence Portal</h4>
-        <p>All licence applications are submitted exclusively through the online portal at <strong><a href="https://license-mam.com/" target="_blank" rel="noopener" style="color:var(--red);border-bottom:1px solid var(--red)">license-mam.com</a></strong>. Manual submissions are not accepted. Submissions are acknowledged within 24 hours.</p>
+        <div class="step">01 <span class="em">/ Start</span></div>
+        <h4>Open the MAM Licence Portal</h4>
+        <p>Go to <strong><a href="https://license-mam.com/" target="_blank" rel="noopener" style="color:var(--red);border-bottom:1px solid var(--red)">license-mam.com</a></strong> and select the application type that matches your case: <strong>New Application</strong>, <strong>Renew Licence</strong>, or <strong>Parent</strong> (for applicants below 18). Make sure your email address is valid — every confirmation in the process is delivered to that address.</p>
         <span class="tag">Online only</span>
       </div>
       <div class="st-row">
-        <div class="step">05 <span class="em">/ Review</span></div>
-        <h4>Secretariat review</h4>
-        <p>The MAM Secretariat verifies documentation and medical clearance. Officials licences additionally route through the Officials Commission for grade assignment. Most reviews close within 10 working days; complex cases (international upgrade, appeal) may take longer.</p>
-        <span class="tag">≈ 10 – 14 days</span>
+        <div class="step">02 <span class="em">/ Form</span></div>
+        <h4>Fill out the application form</h4>
+        <p>Complete the four-step form: <em>Application → Personal Details → Licence Category → Download Form</em>. Confirm the captcha and submit. On completion, click <strong>"Download My Medical Form"</strong> to get the pre-filled medical PDF — the same form is also sent to your email.</p>
+        <span class="tag">~ 8 minutes</span>
       </div>
       <div class="st-row">
-        <div class="step">06 <span class="em">/ Issuance</span></div>
-        <h4>Licence issued</h4>
-        <p>Approved licences are issued as both a physical card and a digital licence record. Holders receive an email with the digital record and a courier-delivered physical card within 5 working days of approval. The licence is valid until 31 December of the cycle year.</p>
-        <span class="tag">Card + digital</span>
+        <div class="step">03 <span class="em">/ Medical</span></div>
+        <h4>Complete the medical check-up</h4>
+        <p>Take the downloaded medical form to <strong>any clinic or hospital</strong> for examination — there are no panel clinics. The form must be chopped and signed. <strong>Two clinics are excluded:</strong> Poliklinik Permai USJ and Klinik Mesra Johor Bahru. <strong>Applicants aged 45+ </strong>must additionally complete a stress test at any nearby clinic or hospital.</p>
+        <span class="tag">Any clinic (with 2 exclusions)</span>
+      </div>
+      <div class="st-row">
+        <div class="step">04 <span class="em">/ Test</span></div>
+        <h4>Take the Competition Licence Test</h4>
+        <p>Before uploading documents, complete a <strong>20-question</strong> Competition Licence Test on the portal. Pass mark is <strong>80% (16 out of 20)</strong>. The test covers race flags, signals, scrutineering and the National Sporting Code. All questions must be answered.</p>
+        <span class="tag">20 questions · 80% pass</span>
+      </div>
+      <div class="st-row">
+        <div class="step">05 <span class="em">/ Upload</span></div>
+        <h4>Upload your documents</h4>
+        <p>Upload the signed medical form, club affiliation receipt/proof, passport-size photo (white background), IC/Passport copy and JPJ driving licence. Any other supporting paperwork can be attached as <em>"additional supporting documents."</em> Use the delete (×) button to correct any mis-uploaded file.</p>
+        <span class="tag">5 required + extras</span>
+      </div>
+      <div class="st-row">
+        <div class="step">06 <span class="em">/ Pay &amp; collect</span></div>
+        <h4>Approval, payment and collection</h4>
+        <p>A MAM Administrator reviews your application and emails you with your <strong>login details</strong> and an <strong>invoice link</strong>. Complete payment online. Once paid, collect your licence card at a MAM office or have it delivered to your next event. The licence is ready in <strong>2 – 3 working days</strong>.</p>
+        <span class="tag">2 – 3 working days</span>
       </div>
     </div>
   </div>
@@ -219,11 +283,13 @@
         <p>Competition licence applications, renewals, replacements and status checks are handled exclusively on the dedicated MAM Licence Portal. Manual submissions are not accepted.</p>
         <h5>You'll need</h5>
         <ul>
-          <li>National ID (MyKad / passport)</li>
-          <li>Recent passport-size photo (JPG / PNG)</li>
-          <li>Current FIA Annex L or FIM medical</li>
-          <li>Inscription payment reference</li>
-          <li>Existing licence number (renewals)</li>
+          <li>MAM Medical Form</li>
+          <li>Medical Aptitude Form — 4-wheel (from MAM Office)</li>
+          <li>IC or Passport copy</li>
+          <li>Previous Competition Licence (if any)</li>
+          <li>Driving Licence copy — JPJ etc. (if any)</li>
+          <li>Latest passport-size photo</li>
+          <li>Proof of MAM affiliate club membership</li>
         </ul>
       </aside>
 
@@ -261,8 +327,43 @@
   </div>
 </section>
 
+<!-- MAM Offices -->
+<section id="offices" class="section gray">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">Pick-up locations</div>
+        <h2>MAM Offices</h2>
+      </div>
+      <span style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase">Or have your licence delivered to your next event</span>
+    </div>
+    <div class="office-grid">
+      <div class="office">
+        <span class="num">Office 01</span>
+        <h4>Sepang International Circuit</h4>
+        <address>
+          Tingkat 1, Paddock Office<br/>
+          Sepang International Circuit<br/>
+          Selangor
+        </address>
+        <div class="meta">At the home of Malaysian motorsport</div>
+      </div>
+      <div class="office">
+        <span class="num">Office 02</span>
+        <h4>Sri Penchala HQ</h4>
+        <address>
+          Tingkat 2, The Nizra Building<br/>
+          No. 8, Jalan Sri Penchala<br/>
+          Sungai Penchala, Kuala Lumpur
+        </address>
+        <div class="meta">Mon – Fri · 9am – 5pm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
-<section class="section gray">
+<section class="section">
   <div class="wrap">
     <div class="sec-head">
       <div>
@@ -272,25 +373,60 @@
     </div>
     <div class="faq">
       <details open>
-        <summary>How long does it take to receive my licence?</summary>
-        <p>Most applications close within 10 to 14 working days. Officials licences and international grade upgrades can take longer because they involve a secondary review by the Officials Commission or FIA / FIM. Submitting online and including a current medical typically gets you to the fastest end of the range.</p>
+        <summary>How do I apply for a MAM Competition Licence?</summary>
+        <p>Applications are submitted online through the MAM Licence Portal at <strong><a href="https://license-mam.com/" target="_blank" rel="noopener" style="color:var(--red);border-bottom:1px solid var(--red)">license-mam.com</a></strong>. After filling out the form, you'll download a pre-filled medical form, complete it at any clinic, then upload your documents and take the Competition Licence Test through the portal.</p>
       </details>
       <details>
-        <summary>Can I use my licence outside Malaysia?</summary>
-        <p>National licences (Grade C / B / A) are valid only inside Malaysia. International FIA / FIM grades — issued on top of a current national licence — are required for ARRC, MotoGP qualifying events, FIA-recognised rally rounds, and most overseas series. Upgrade pathway runs through MAM, then FIA or FIM Asia.</p>
+        <summary>How long will it take to complete the application process?</summary>
+        <p><strong>2 – 3 working days</strong> from approved payment to a ready licence card. You'll receive an email with login details and the invoice link after a MAM Administrator approves your uploaded documents.</p>
       </details>
       <details>
-        <summary>What if I'm under 18?</summary>
-        <p>Minors aged 14 to 17 may apply with parent or guardian consent. Karting licences are available from 14 with the appropriate FIA Karting medical. Two-wheel and full four-wheel competition licences are issued from 16 onwards, with parental indemnity required until the holder reaches 18.</p>
+        <summary>Does MAM have any panel clinics for the medical?</summary>
+        <p>No. You can have your medical check-up done at <strong>any clinic or hospital</strong> of your choice. There are only two exclusions: <em>Poliklinik Permai USJ</em> and <em>Klinik Mesra Johor Bahru</em>. The medical form must be chopped and signed by the examining doctor.</p>
       </details>
       <details>
-        <summary>Do I need a road driver's licence too?</summary>
-        <p>A road driver's licence (Malaysian Class D or equivalent) is required for most four-wheel categories at Grade B and above, and for all open-cockpit and high-performance categories. Karting and closed-course racing categories do not require a road licence.</p>
+        <summary>I'm over 45 — can I still apply?</summary>
+        <p>Yes. Applicants aged 45 and above must additionally complete a <strong>stress test</strong> at any nearby clinic or hospital. Bring the result together with your standard medical form when you upload to the portal.</p>
       </details>
       <details>
-        <summary>How do I renew before the deadline?</summary>
-        <p>Renewal opens 1 December and closes 31 January with a -20% early-bird discount. Late renewals after 28 February incur a reinstatement fee. Submit through this online intake under "Renewal" with your previous licence number — you don't need to repeat the personal-details section if your record is current.</p>
+        <summary>What documents do I need to upload?</summary>
+        <p>1. Completed Medical Examination Form (downloaded from the portal). 2. Club affiliation receipt or proof of MAM affiliate membership. 3. Passport-size personal photo (white background). 4. Picture / scan of IC or passport. 5. JPJ driving licence copy (if any). Other supporting paperwork can be attached as additional supporting documents.</p>
       </details>
+      <details>
+        <summary>Where can I collect my licence card?</summary>
+        <p>At either MAM office: <strong>Tingkat 1, Paddock Office, Sepang International Circuit, Selangor</strong> or <strong>Tingkat 2, The Nizra Building, No. 8, Jalan Sri Penchala, Sungai Penchala, Kuala Lumpur</strong>. You can also request delivery to your next race event.</p>
+      </details>
+      <details>
+        <summary>What is MAM's bank account for licence payment?</summary>
+        <p>Maybank — <strong>Persatuan Sukan Bermotor Malaysia (MAM)</strong>. Account number: <strong>5623 5753 4201</strong>. Payment is usually completed via the invoice link emailed after admin approval; the bank account is provided for direct transfers if needed.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Direct Contacts -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label">Speak to the team</div>
+        <h2>Direct licensing contacts</h2>
+      </div>
+      <span style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase">By discipline · 4-Wheel &amp; 2-Wheel</span>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <span class="num">4-Wheel</span>
+        <h4>Muhammad Beheshti</h4>
+        <p class="phone"><a href="tel:+60196306240">+60 19-630 6240</a></p>
+        <p class="disciplines">Circuit Racing · Rally / Rallycross · Gymkhana / Drift · Hill Climb · Karting</p>
+      </div>
+      <div class="contact-card">
+        <span class="num">2-Wheel</span>
+        <h4>Mohamed Izzat Amirrul</h4>
+        <p class="phone"><a href="tel:+60194458560">+60 19-445 8560</a></p>
+        <p class="disciplines">Road Racing · Motocross · Trial · Enduro · Supermoto</p>
+      </div>
     </div>
   </div>
 </section>
@@ -298,12 +434,12 @@
 <!-- CTA -->
 <section class="cta-band">
   <div class="wrap">
-    <h3>Need help applying?</h3>
-    <p>The MAM Secretariat can walk you through eligibility, medical clearance and the application portal. Most enquiries are answered within one working day.</p>
+    <h3>Ready to apply?</h3>
+    <p>Open the MAM Licence Portal to start a new application or renew an existing one. The MAM Secretariat is on hand for any questions along the way.</p>
     <div class="row">
-      <a href="contact.html" class="btn primary">Talk to the secretariat →</a>
-      <a href="documents.html#licence" class="btn light">Download forms</a>
-      <a href="membership.html#fees" class="btn ghost" style="color:#fff;border-color:#fff">View fee schedule</a>
+      <a href="https://license-mam.com/" target="_blank" rel="noopener" class="btn primary">Open the Licence Portal →</a>
+      <a href="contact.html" class="btn light">Talk to the secretariat</a>
+      <a href="documents.html" class="btn ghost" style="color:#fff;border-color:#fff">Browse documents</a>
     </div>
   </div>
 </section>
