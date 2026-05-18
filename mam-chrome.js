@@ -42,10 +42,10 @@
     membership: {
       cols: [
         { h: 'Inscription Fees', links: [
-          ['Fee schedule 2026','membership.html#fees','All tiers, printable'],
-          ['Driver / Rider','membership.html#fees','Per-licence inscription'],
-          ['Affiliate clubs','membership.html#fees','Annual federation due'],
-          ['Officials','membership.html#fees','Steward · scrutineer · marshal'],
+          ['Circuit rate card','membership.html#fees','Temporary &amp; Permanent Circuit'],
+          ['Club tier','membership.html#fees','RM 3,350 per event'],
+          ['National tier','membership.html#fees','RM 9,200 per event'],
+          ['International tier','membership.html#fees','RM 22,660 per event'],
         ]},
         { h: 'Affiliation Process', links: [
           ['How affiliation works','membership.html#process','Step-by-step path'],
@@ -68,7 +68,7 @@
           ['Step-by-step guide','license.html#how-to-apply','From eligibility to issuance'],
           ['Required documents','license.html#how-to-apply','ID · medical · forms'],
           ['Medical examination','license.html#how-to-apply','FIA Annex L · panel doctors'],
-          ['Fees &amp; payment','membership.html#fees','Inscription schedule'],
+          ['Panel clinics','license.html#how-to-apply','Approved medical examiners'],
         ]},
         { h: 'Online Application', links: [
           ['Start application','license.html#apply','Online intake form'],

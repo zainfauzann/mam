@@ -16,23 +16,34 @@
   .intro-grid p:first-of-type::first-letter{font-family:var(--display);font-size:64px;font-weight:800;float:left;line-height:.85;margin:6px 12px 0 0;color:var(--red)}
   .pull{border-left:3px solid var(--red);padding:10px 0 10px 22px;font-family:var(--display);font-size:22px;font-weight:600;line-height:1.3;color:var(--ink);margin:24px 0;letter-spacing:-.01em}
 
-  /* Fee schedule grid */
-  .fee-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-left:1px solid var(--gray-2);border-top:1px solid var(--gray-2)}
-  .fee{padding:32px 28px;border-right:1px solid var(--gray-2);border-bottom:1px solid var(--gray-2);background:#fff;display:flex;flex-direction:column}
-  .fee .num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--red)}
-  .fee h3{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em;margin-top:12px;text-transform:uppercase;line-height:1.1}
-  .fee .price{font-family:var(--display);font-weight:800;font-size:44px;letter-spacing:-.025em;line-height:1;margin-top:18px;color:var(--ink)}
-  .fee .price .cur{font-size:18px;font-weight:600;color:var(--gray-7);margin-right:6px;vertical-align:top;letter-spacing:0}
-  .fee .price .per{font-size:13px;font-family:var(--mono);font-weight:500;color:var(--gray-7);letter-spacing:.1em;display:block;margin-top:6px;text-transform:uppercase}
-  .fee ul{list-style:none;padding:0;margin-top:18px;padding-top:18px;border-top:1px solid var(--gray-2)}
-  .fee ul li{padding:7px 0;color:var(--gray-9);font-size:13px;line-height:1.5;display:flex;gap:10px;align-items:flex-start}
-  .fee ul li::before{content:"·";color:var(--red);font-weight:700;line-height:1}
-  .fee.feat{background:var(--ink);color:#fff}
-  .fee.feat h3{color:#fff}
-  .fee.feat .price{color:#fff}
-  .fee.feat .num{color:var(--red)}
-  .fee.feat ul{border-top-color:#2a2a2a}
-  .fee.feat ul li{color:#ddd}
+  /* Rate card table (Inscription Fees) */
+  .rate-wrap{overflow-x:auto;background:#fff;border:1px solid var(--gray-2)}
+  .rate{width:100%;border-collapse:collapse;min-width:960px;font-family:var(--body)}
+  .rate th, .rate td{padding:18px 14px;border-bottom:1px solid var(--gray-2);border-right:1px solid var(--gray-2);text-align:center;vertical-align:middle;font-size:14px;color:var(--ink)}
+  .rate th:last-child, .rate td:last-child{border-right:none}
+  .rate thead th{background:#fff;font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);border-bottom:2px solid var(--ink);padding:22px 12px;line-height:1.25}
+  .rate thead th.alt{background:var(--gray-1)}
+  .rate thead th .tag{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--red);font-weight:600;margin-top:6px;letter-spacing:.16em}
+  .rate thead th:first-child{background:var(--ink);color:#fff;text-align:left;border-bottom-color:var(--red)}
+  .rate tbody th{text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);font-weight:700;background:var(--gray-1);width:230px;padding:18px 20px;line-height:1.45;border-right:1px solid var(--gray-2)}
+  .rate tbody th .sub{display:block;font-size:10px;color:var(--gray-7);font-weight:500;margin-top:4px;letter-spacing:.1em;text-transform:none}
+  .rate tbody td{font-family:var(--display);font-weight:600;color:var(--ink);font-size:14px;letter-spacing:-.005em}
+  .rate tbody tr.alt-row td, .rate tbody tr.alt-row th{background:var(--gray-1)}
+  .rate tbody td.based{font-family:var(--body);font-weight:500;font-size:11px;letter-spacing:.06em;color:var(--gray-7);text-transform:uppercase;line-height:1.5}
+  .rate tr.span-note td{padding:0;background:var(--gray-1)}
+  .rate tr.span-note td.note{background:#0F8C75;color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:14px 18px;font-weight:600;text-align:center;border-right:1px solid #0a7560}
+  .rate tr.span-note td.note:last-child{border-right:none}
+  .rate tfoot th, .rate tfoot td{background:var(--ink);color:#fff;font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.01em;padding:22px 14px;border-bottom:none;border-right-color:#222}
+  .rate tfoot th{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;text-align:left;font-weight:700;border-right:1px solid #222}
+  .rate tfoot td.total-int{color:var(--red)}
+
+  .rate-notes{margin-top:24px;padding:24px 28px;background:#fff;border:1px solid var(--gray-2);border-left:3px solid var(--red)}
+  .rate-notes h5{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+  .rate-notes ol{padding-left:20px;margin:0}
+  .rate-notes li{color:var(--gray-9);font-size:13px;line-height:1.7;padding:4px 0}
+  .rate-notes li strong{color:var(--ink)}
+  .rate-notes .ex{font-family:var(--mono);font-size:12px;color:var(--gray-9);background:var(--gray-1);padding:12px 16px;margin:10px 0 0;display:block;letter-spacing:.04em;line-height:1.7;border-left:2px solid var(--red)}
+  .rate-disclaimer{margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--gray-7);text-transform:uppercase}
 
   /* Process timeline (mirrors about timeline) */
   .proc{position:relative;padding-left:32px;border-left:2px solid var(--gray-2)}
@@ -95,10 +106,10 @@
         <h2>One federation,<br/><span class="em">every benefit.</span></h2>
       </div>
       <div>
-        <p>Affiliation with the Motorsports Association of Malaysia gives clubs, drivers, riders and officials a single home under Malaysia's only FIA- and FIM-recognised sporting authority. Every internationally counted result — every championship podium, every licence, every record — flows through MAM.</p>
-        <p>Affiliated clubs sanction events under MAM permits, access standardised safety and technical regulations, and qualify for federation insurance cover for marshals and competitors. Individual driver and rider inscriptions unlock the national licence ladder — from grade C through to international FIA / FIM grades.</p>
+        <p>Affiliation with the Motorsports Association of Malaysia gives clubs and organisers a single home under Malaysia's only FIA- and FIM-recognised sporting authority. Every internationally counted result — every championship podium, every licence, every record — flows through MAM.</p>
+        <p>Affiliated clubs sanction events under MAM permits, access standardised safety and technical regulations, and qualify for federation insurance cover for marshals and competitors. Once affiliated, each event you host is inscribed onto the MAM calendar under the rate card below.</p>
         <div class="pull">"Affiliation isn't paperwork. It's the difference between an informal track day and a sanctioned race that counts."</div>
-        <p>Inscription runs on an annual cycle aligned to the calendar year. Fees are set by the Executive Committee and ratified at the AGM. The schedule below covers 2026 — printable copies are available from the Documents archive.</p>
+        <p>The rate card below covers inscription, permit, stewards and insurance for <strong>Temporary &amp; Permanent Circuit</strong> events. Other disciplines (rally, karting, motocross, drag) have their own rate cards available from the Documents archive. Individual driver and rider competition licences are a separate process — see <a href="license.html" style="color:var(--red);font-weight:600;border-bottom:1px solid var(--red)">Competition Licence</a>.</p>
       </div>
     </div>
   </div>
@@ -109,58 +120,104 @@
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <div class="label">Inscription</div>
-        <h2>Fee schedule 2026</h2>
+        <div class="label">Inscription Fees · Temporary &amp; Permanent Circuit</div>
+        <h2>Event sanctioning rate card</h2>
       </div>
-      <a href="documents.html" class="more">All documents →</a>
+      <a href="documents.html" class="more">All rate cards →</a>
     </div>
-    <div class="fee-grid">
-      <div class="fee">
-        <div class="num">01 / Individual</div>
-        <h3>Driver Licence<br/>(4-wheel)</h3>
-        <div class="price"><span class="cur">RM</span>450<span class="per">Per year · Grade C entry</span></div>
-        <ul>
-          <li>National competition entry</li>
-          <li>Annex L medical required</li>
-          <li>Upgrade Grade B / A on merit</li>
-          <li>FIA International upgrade path</li>
-        </ul>
-      </div>
-      <div class="fee">
-        <div class="num">02 / Individual</div>
-        <h3>Rider Licence<br/>(2-wheel)</h3>
-        <div class="price"><span class="cur">RM</span>380<span class="per">Per year · Grade C entry</span></div>
-        <ul>
-          <li>National competition entry</li>
-          <li>FIM medical certificate</li>
-          <li>ARRC eligibility from Grade B</li>
-          <li>Cub Prix, MX, Drag included</li>
-        </ul>
-      </div>
-      <div class="fee feat">
-        <div class="num">03 / Club</div>
-        <h3>Affiliate Club<br/>Inscription</h3>
-        <div class="price"><span class="cur">RM</span>1,200<span class="per">Per year · all disciplines</span></div>
-        <ul>
-          <li>Host sanctioned events under permit</li>
-          <li>Federation insurance cover</li>
-          <li>AGM voting member</li>
-          <li>Officials clinic access</li>
-        </ul>
-      </div>
-      <div class="fee">
-        <div class="num">04 / Officials</div>
-        <h3>Officials Licence<br/>Steward · Marshal</h3>
-        <div class="price"><span class="cur">RM</span>180<span class="per">Per year · trained officials</span></div>
-        <ul>
-          <li>Steward, scrutineer, marshal</li>
-          <li>Clerk of Course tracks (B / A)</li>
-          <li>FIA / FIM upgrade pathway</li>
-          <li>Annual refresher mandatory</li>
-        </ul>
-      </div>
+    <div class="rate-wrap">
+      <table class="rate">
+        <thead>
+          <tr>
+            <th>Fee Component</th>
+            <th>Club</th>
+            <th class="alt">National</th>
+            <th>National with Foreign Participation<span class="tag">NMFP · FIM</span></th>
+            <th class="alt">National with Foreign Participation<span class="tag">FIA</span></th>
+            <th>International</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>MAM Calendar Inscription Fee</th>
+            <td>RM 100.00</td>
+            <td>RM 200.00</td>
+            <td>RM 300.00</td>
+            <td>RM 300.00</td>
+            <td>RM 300.00</td>
+          </tr>
+          <tr class="alt-row">
+            <th>Permit Fee</th>
+            <td>RM 250.00</td>
+            <td>RM 600.00</td>
+            <td>RM 2,800.00</td>
+            <td>RM 2,800.00</td>
+            <td>RM 13,000.00</td>
+          </tr>
+          <tr>
+            <th>Stewards Fee <span class="sub">*Club: 1 steward · others: 2 stewards / 2 days</span></th>
+            <td>RM 1,500.00*</td>
+            <td>RM 6,000.00</td>
+            <td>RM 6,000.00</td>
+            <td>RM 6,000.00</td>
+            <td>RM 6,000.00</td>
+          </tr>
+          <tr class="alt-row">
+            <th>Insurance</th>
+            <td>RM 1,500.00</td>
+            <td>RM 2,400.00</td>
+            <td>RM 3,360.00</td>
+            <td>RM 3,360.00</td>
+            <td>RM 3,360.00</td>
+          </tr>
+          <tr class="span-note">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="note" colspan="3">*FIM &amp; FIA Inscription Fee will be invoiced accordingly upon receipt</td>
+          </tr>
+          <tr>
+            <th>Circuit Permit Fee <span class="sub">RM 1,500 / km</span></th>
+            <td class="based">Based on circuit calculation</td>
+            <td class="based">Based on circuit calculation</td>
+            <td class="based">Based on circuit calculation</td>
+            <td class="based">Based on circuit calculation</td>
+            <td class="based">Based on circuit calculation</td>
+          </tr>
+          <tr class="alt-row">
+            <th>Track Inspector Fee <span class="sub">As per actual cost incurred</span></th>
+            <td class="based">Based on external costs incurred</td>
+            <td class="based">Based on external costs incurred</td>
+            <td class="based">Based on external costs incurred</td>
+            <td class="based">Based on external costs incurred</td>
+            <td class="based">Based on external costs incurred</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Total</th>
+            <td>RM 3,350.00</td>
+            <td>RM 9,200.00</td>
+            <td>RM 12,460.00</td>
+            <td>RM 12,460.00</td>
+            <td class="total-int">RM 22,660.00</td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
-    <p style="margin-top:24px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--gray-7);text-transform:uppercase">All fees in MYR. Renewal at -20% if submitted before 31 January. Payment via FPX, online banking or at the MAM Secretariat.</p>
+
+    <div class="rate-notes">
+      <h5>Notes</h5>
+      <ol>
+        <li><strong>Club events</strong> require at least 1 (one) steward at the fee of RM 1,500 / steward / day.</li>
+        <li><strong>National and International</strong> events require 2 (two) stewards. The figures above cover 2 stewards over 2 days.</li>
+        <li><strong>Additional stewards</strong> are charged at RM 1,500 per additional day per steward.
+          <span class="ex">Example — additional 2× stewards for <strong>3 days</strong>: RM 6,000 + RM 3,000 = <strong>RM 9,000.00</strong><br/>Example — additional 2× stewards for <strong>4 days</strong>: RM 6,000 + RM 6,000 = <strong>RM 12,000.00</strong></span>
+        </li>
+        <li>The fees above may be subject to change with reasons provided by MAM.</li>
+      </ol>
+    </div>
+    <p class="rate-disclaimer">All fees in MYR. FIM and FIA inscription components for foreign-participation and International tiers are invoiced separately on receipt from the respective federation.</p>
   </div>
 </section>
 
