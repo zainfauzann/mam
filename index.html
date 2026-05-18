@@ -54,16 +54,7 @@
   }
   .logo{display:flex;align-items:center;gap:14px}
   .logo img{height:48px;width:auto}
-  nav.primary{display:flex;align-items:center;gap:4px}
-  nav.primary a{
-    padding:10px 16px;font-weight:600;font-size:13px;letter-spacing:.02em;
-    color:var(--ink);position:relative;
-  }
-  nav.primary a:hover{color:var(--red)}
-  nav.primary a.on{color:var(--ink)}
-  nav.primary a.on::after{
-    content:"";position:absolute;left:16px;right:16px;bottom:-30px;height:3px;background:var(--red);
-  }
+  /* Nav rules live in mam.css with proper > .nav-item > a scoping so they don't leak into mega-feat / mega-col links */
   .header-actions{display:flex;align-items:center;gap:10px}
   .icon-btn{width:40px;height:40px;border:1px solid var(--gray-2);background:#fff;display:grid;place-items:center;cursor:pointer;border-radius:0}
   .icon-btn:hover{border-color:var(--ink)}
