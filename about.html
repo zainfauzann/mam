@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>About MAM — Motorsports Association of Malaysia</title>
+<title>About MAM - Motorsports Association of Malaysia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Mona+Sans:wght@400..800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="mam.css" />
 <style>
   /* About-specific */
@@ -22,11 +22,9 @@
   .vm h3{font-family:var(--display);font-size:28px;font-weight:800;letter-spacing:-.02em;margin-top:14px;text-transform:uppercase}
   .vm p{color:var(--gray-7);margin-top:12px;line-height:1.6}
 
-  /* Timeline — line via pseudo-element so circle/line centers can be precisely aligned (universal `*` rule doesn't apply box-sizing to ::before, so set it explicitly here) */
-  .timeline{position:relative;padding-left:44px}
-  .timeline::before{content:"";position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--gray-2)}
+  .timeline{position:relative;padding-left:32px;border-left:2px solid var(--gray-2)}
   .tl-row{position:relative;padding-bottom:36px}
-  .tl-row::before{content:"";position:absolute;left:-41px;top:6px;width:18px;height:18px;background:#fff;border:3px solid var(--red);border-radius:50%;box-sizing:border-box}
+  .tl-row::before{content:"";position:absolute;left:-41px;top:6px;width:18px;height:18px;background:#fff;border:3px solid var(--red);border-radius:50%}
   .tl-row .yr{font-family:var(--display);font-size:32px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
   .tl-row h4{font-family:var(--display);font-size:18px;font-weight:700;margin-top:4px}
   .tl-row p{color:var(--gray-7);margin-top:6px;font-size:14px;line-height:1.55;max-width:600px}
@@ -49,6 +47,9 @@
   .bigstat .v{font-family:var(--display);font-size:72px;font-weight:800;letter-spacing:-.03em;line-height:1;color:#fff}
   .bigstat .v .em{color:var(--red)}
   .bigstat .l{font-size:13px;color:#bbb;margin-top:10px;line-height:1.4}
+.disc-grid.six{grid-template-columns:repeat(3,minmax(0,1fr))}.disc-grid.six .disc{aspect-ratio:auto;min-height:260px}@media (max-width:900px){.disc-grid.six{grid-template-columns:1fr 1fr}}
+section[id]{scroll-margin-top:110px}
+@media (min-width:700px){.phero h1 .em{white-space:nowrap}}
 </style>
 </head>
 <body>
@@ -59,8 +60,8 @@
 <section class="phero">
   <div class="wrap">
     <div class="crumb"><a href="index.html">Home</a><span class="sep">/</span> About MAM</div>
-    <h1>The national governing<br/>body for<br/><span class="em">Malaysian motorsport.</span></h1>
-    <p class="sub">The Motorsports Association of Malaysia was incorporated on 28 February 2007. Recognised by the Ministry of Youth and Sports and officially sanctioned by the FIA and FIM to oversee all four-wheel and two-wheel motorsport activities in Malaysia.</p>
+    <h1>The national governing body for<br/><span class="em">Malaysian motorsport.</span></h1>
+    <p class="sub">The Motorsports Association of Malaysia was incorporated on 28 February 2007. It is recognised by the Ministry of Youth and Sports and sanctioned by the FIA and FIM to oversee four-wheel and two-wheel motorsport in Malaysia.</p>
     <div class="meta-row">
       <div class="item">Incorporated<strong>28 Feb 2007</strong></div>
       <div class="item">Headquarters<strong>Kuala Lumpur</strong></div>
@@ -71,7 +72,7 @@
 </section>
 
 <!-- Story -->
-<section class="section">
+<section id="story" class="section">
   <div class="wrap">
     <div class="about-grid">
       <div>
@@ -81,113 +82,90 @@
         <h2>One association,<br/><span class="em">every discipline.</span></h2>
       </div>
       <div>
-        <p>MAM is the official sanctioning body for motorsports in Malaysia, recognised by both the FIA and FIM. As the governing body of Malaysian motorsports, it is MAM's duty and obligation to ensure motorsports develop in Malaysia and continue to excel at all levels.</p>
-        <div class="pull">"To ensure all motorsports events in Malaysia are sanctioned for the benefit and safety of every driver and rider."</div>
-        <p>Incorporated on 28 February 2007 as Persatuan Sukan Permotoran Malaysia, MAM works with the FIA, FIM Asia, the Ministry of Youth and Sports (KBS) and a network of 80+ affiliate clubs across all 13 states — covering every discipline from grassroots karting to continental championships at Sepang.</p>
+        <p>The Motorsports Association of Malaysia (Persatuan Sukan Bermotor Malaysia) was incorporated on 28 February 2007 and is the national governing body for motorsport. We are recognised by the Ministry of Youth and Sports (KBS), and we are the only Malaysian body recognised by the FIA for four-wheel motorsport and by the FIM for two-wheel motorsport.</p>
+        <p>From club hill climbs to international championships at Sepang, MAM sanctions and regulates circuit racing, rally, karting, drag, motocross, time attack, drift, hill climb, autocross, autoslalom, vintage and 4×4 events.</p>
+        <div class="pull">"We exist so that every Malaysian who wants to race, at any level, can do it safely and fairly, with results recognised worldwide."</div>
+        <p>MAM issues competition licences to more than 1,200 drivers and riders, sanctions over 60 events a year and works with more than 80 affiliate clubs across all 13 states and the federal territories.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Objective of MAM -->
+<!-- Vision / Mission / Mandate -->
 <section id="vm" class="section gray" style="padding-top:64px">
   <div class="wrap">
     <div class="sec-head">
       <div>
         <div class="label">Mandate</div>
-        <h2>Objective of MAM</h2>
+        <h2>Why we exist</h2>
       </div>
     </div>
     <div class="vm-grid">
       <div class="vm">
-        <div class="num">01 / Sanction</div>
-        <h3>Every event,<br/>sanctioned for safety.</h3>
-        <p>MAM's main objective is to ensure that all motorsports events in Malaysia are sanctioned for the benefit and safety of the drivers and riders.</p>
+        <div class="num">01 / Vision</div>
+        <h3>Malaysia, a regional<br/>motorsport leader.</h3>
+        <p>We want Malaysia to be the leading country in Southeast Asia for safe, top-level motorsport and for developing drivers and riders.</p>
       </div>
       <div class="vm">
-        <div class="num">02 / Grow</div>
-        <h3>More licence holders,<br/>more competitors.</h3>
-        <p>MAM aims to increase the number of motorsports licence holders across every discipline and grade — from grassroots entry to international competition.</p>
+        <div class="num">02 / Mission</div>
+        <h3>Our mission</h3>
+        <p>To sanction every motorsport event in Malaysia under the same safety and sporting rules, develop riders, drivers and officials at every level, and represent Malaysia at the FIA and FIM Asia.</p>
       </div>
       <div class="vm">
-        <div class="num">03 / Platform</div>
-        <h3>From zone to<br/>international.</h3>
-        <p>MAM creates a platform for Malaysian drivers and riders to participate at zone and international levels — under the global codes of the FIA and FIM.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Development -->
-<section class="section">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <div class="label">Development priorities</div>
-        <h2>Developing Malaysian motorsport</h2>
-      </div>
-    </div>
-    <div class="vm-grid" style="grid-template-columns:repeat(2,1fr)">
-      <div class="vm">
-        <div class="num">A · Officials</div>
-        <h3>A higher standard<br/>of officials.</h3>
-        <p>MAM, as the governing body of Malaysian motorsports, expects fair competition. That is only possible through a higher standard of officials — achieved through structured training programmes supported by the FIA and the FIM.</p>
-      </div>
-      <div class="vm">
-        <div class="num">B · Motorsports</div>
-        <h3>Champion grassroots.<br/>Grow the sport.</h3>
-        <p>MAM has always championed grassroots programmes and will continue to do so. Working through its affiliate clubs, MAM is committed to driving motorsport development across every discipline.</p>
+        <div class="num">03 / Mandate</div>
+        <h3>Authority by<br/>recognition.</h3>
+        <p>MAM is the only ASN/FMN in Malaysia. Every internationally recognised licence, result and record from Malaysia goes through MAM.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Timeline -->
-<section class="section">
+<section id="timeline" class="section">
   <div class="wrap">
     <div class="sec-head">
       <div>
         <div class="label">Heritage</div>
-        <h2>Seven decades, one mission</h2>
+        <h2>Our history</h2>
       </div>
     </div>
     <div class="timeline">
       <div class="tl-row">
         <div class="yr">1963</div>
         <h4>The National Expansion</h4>
-        <p>Following the formation of the Federation of Malaysia, the primary automotive body (originally the Automobile Association of Malaya) is rechartered to cover the newly joined states of Sabah and Sarawak — establishing the first unified national framework for road rules and competitive racing across the country.</p>
+        <p>Following the formation of the Federation of Malaysia, the primary automotive body (originally the Automobile Association of Malaya) is rechartered to cover Sabah and Sarawak, giving the country one national framework for road rules and racing.</p>
       </div>
       <div class="tl-row">
         <div class="yr">1985</div>
         <h4>International recognition &amp; Shah Alam</h4>
-        <p>The opening of the Shah Alam Circuit (Batu Tiga) marks Malaysia's entry into international-grade racing. The governing bodies of this era oversee the transition from local club racing to hosting the World Sportscar Championship and later the Malaysian Motorcycle Grand Prix.</p>
+        <p>Shah Alam Circuit (Batu Tiga) opens and brings international racing to Malaysia. Over the next years the country moves from local club racing to hosting the World Sportscar Championship and later the Malaysian Motorcycle Grand Prix.</p>
       </div>
       <div class="tl-row">
         <div class="yr">1999</div>
         <h4>The Sepang revolution</h4>
-        <p>The inauguration of Sepang International Circuit (SIC) fundamentally changes the landscape. With the arrival of Formula 1, the need for a highly specialised sporting authority becomes paramount — and technical and sporting management aligns strictly with FIA and FIM standards.</p>
+        <p>Sepang International Circuit (SIC) opens and Formula 1 arrives. Events at this level need a specialist sporting authority, and technical and sporting management moves to FIA and FIM standards.</p>
       </div>
       <div class="tl-row">
         <div class="yr">2007</div>
         <h4>Formal incorporation of MAM</h4>
-        <p>The Motorsports Association of Malaysia is officially incorporated on 28 February 2007 — a modern, streamlined governing body dedicated specifically to the sporting side of motorsports, separate from general automobile associations.</p>
+        <p>The Motorsports Association of Malaysia is incorporated on 28 February 2007 to run the sporting side of motorsport, separate from the general automobile associations.</p>
       </div>
       <div class="tl-row">
         <div class="yr">2019</div>
         <h4>Transition of authority</h4>
-        <p>The FIA and FIM officially recognise MAM as Malaysia's sole motorsports governing body, transferring sanctioning authority from the Automobile Association of Malaysia (AAM) to MAM — solidifying MAM as the only body authorised to sanction races and issue competition licences in Malaysia.</p>
+        <p>The FIA and FIM transfer National Sporting Authority (ASN) and National Federation (FMN) status from the Automobile Association of Malaysia (AAM) to MAM. MAM becomes the only body that sanctions races and issues licences in Malaysia.</p>
       </div>
       <div class="tl-row">
         <div class="yr">2026</div>
         <h4>Today's roadmap</h4>
-        <p>MAM operates as a robust ecosystem focused on long-term sustainability — the National Karting framework feeding talent into global ladders, 1,200+ licence holders and 80+ affiliated clubs under one code, and the renewed 2026–2030 FIM cycle anchoring Malaysia as an Asia-Pacific racing hub.</p>
+        <p>MAM has more than 1,200 licence holders and 80 affiliated clubs under one code. The National Karting framework moves young drivers towards international racing, and the renewed FIM cycle runs from 2026 to 2030.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Disciplines -->
-<section class="section gray">
+<section id="disciplines" class="section gray">
   <div class="wrap">
     <div class="sec-head">
       <div>
@@ -195,104 +173,32 @@
         <h2>Disciplines under MAM</h2>
       </div>
     </div>
-    <div class="disc-grid">
-      <div class="disc" style="background-image:url('assets/disc-circuit.jpg')">
-        <div>
-          <span class="num">01</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Circuit</h4>
-          <p>ARRC · Time Attack · GT</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-rally.jpg')">
-        <div>
-          <span class="num">02</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><path d="M3 17l6-9 4 5 3-3 5 7"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Rally</h4>
-          <p>Borneo Safari · Sarawak Sprint</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-karting.jpg')">
-        <div>
-          <span class="num">03</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><path d="M5 17l4-4 3 3 7-7"/><path d="M14 9h6v6"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Karting</h4>
-          <p>National Series · CIK-FIA</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-drag.jpg')">
-        <div>
-          <span class="num">04</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><path d="M3 12h18M5 8l-2 4 2 4M19 8l2 4-2 4"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Drag</h4>
-          <p>Malaysia Drag Cup</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-motocross.jpg')">
-        <div>
-          <span class="num">05</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><path d="M4 17l4-7 4 4 4-6 4 9"/><circle cx="8" cy="18" r="1.5"/><circle cx="16" cy="18" r="1.5"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Motocross</h4>
-          <p>MX Nationals · Pit Bike</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-offroad.jpg')">
-        <div>
-          <span class="num">06</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><path d="M3 13c2-2 5-2 7 0s5 2 7 0 3-2 4-2"/><path d="M3 17c2-2 5-2 7 0s5 2 7 0 3-2 4-2"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Off-Road</h4>
-          <p>4×4 · Trial</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-eracing.jpg')">
-        <div>
-          <span class="num">07</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>E-Racing</h4>
-          <p>Sim · Esports · EV series</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-endurance.jpg')">
-        <div>
-          <span class="num">08</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Endurance</h4>
-          <p>Sepang 1000km · GT</p>
-        </div>
-      </div>
-    </div>
+    <div class="disc-grid six">
+<div class="disc" style="background-image:url('assets/disc-circuit.jpg')">
+<div><span class="num">01</span><div class="icon" style="margin-top:14px"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div></div>
+<div><h4>4 Wheels Racing</h4><p>MSF SuperTurismo · TGR Festival · Sepang 1000KM</p></div>
+</div>
+<div class="disc" style="background-image:url('assets/disc-endurance.jpg')">
+<div><span class="num">02</span><div class="icon" style="margin-top:14px"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div></div>
+<div><h4>2 Wheels Racing</h4><p>Cub Prix · Superbike · MSF SuperBikes</p></div>
+</div>
+<div class="disc" style="background-image:url('assets/disc-motocross.jpg')">
+<div><span class="num">03</span><div class="icon" style="margin-top:14px"><svg viewBox="0 0 24 24"><path d="M4 17l4-7 4 4 4-6 4 9"/><circle cx="8" cy="18" r="1.5"/><circle cx="16" cy="18" r="1.5"/></svg></div></div>
+<div><h4>2 Wheels Off Road</h4><p>Motocross · Cub Cross · Muda MX</p></div>
+</div>
+<div class="disc" style="background-image:url('assets/disc-rally.jpg')">
+<div><span class="num">04</span><div class="icon" style="margin-top:14px"><svg viewBox="0 0 24 24"><path d="M3 17l6-9 4 5 3-3 5 7"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></div></div>
+<div><h4>Rally</h4><p>KBS Rally Sprint · APRC</p></div>
+</div>
+<div class="disc" style="background-image:url('assets/disc-karting.jpg')">
+<div><span class="num">05</span><div class="icon" style="margin-top:14px"><svg viewBox="0 0 24 24"><path d="M5 17l4-4 3 3 7-7"/><path d="M14 9h6v6"/></svg></div></div>
+<div><h4>Karting</h4><p>MAM Karting Championship · Rotax · IAME</p></div>
+</div>
+<div class="disc" style="background-image:url('assets/disc-eracing.jpg')">
+<div><span class="num">06</span><div class="icon" style="margin-top:14px"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div></div>
+<div><h4>E-Sports</h4><p>Malaysia eRacing GP · Sim racing</p></div>
+</div>
+</div>
   </div>
 </section>
 
@@ -315,29 +221,29 @@
 </section>
 
 <!-- Recognition -->
-<section class="section">
+<section id="recognition" class="section">
   <div class="wrap">
     <div class="sec-head">
       <div>
         <div class="label">International standing</div>
-        <h2>Recognised. Aligned. Affiliated.</h2>
+        <h2>Recognition and affiliations</h2>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
       <div style="border:1px solid var(--gray-2);padding:32px 24px">
         <div style="font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.02em">FIA</div>
-        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase;margin-top:6px">Recognised member</div>
-        <p style="color:var(--gray-7);margin-top:14px;font-size:13px;line-height:1.6">Malaysia's recognised member federation of the Fédération Internationale de l'Automobile for four-wheel motorsport.</p>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase;margin-top:6px">Member · ASN</div>
+        <p style="color:var(--gray-7);margin-top:14px;font-size:13px;line-height:1.6">National Sporting Authority for the Fédération Internationale de l'Automobile.</p>
       </div>
       <div style="border:1px solid var(--gray-2);padding:32px 24px">
         <div style="font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.02em">FIM</div>
-        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase;margin-top:6px">Recognised member</div>
-        <p style="color:var(--gray-7);margin-top:14px;font-size:13px;line-height:1.6">Recognised member federation of the Fédération Internationale de Motocyclisme for two-wheel motorsport.</p>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase;margin-top:6px">Federation member</div>
+        <p style="color:var(--gray-7);margin-top:14px;font-size:13px;line-height:1.6">Affiliated FMN for two-wheel motorsport, sanctioned by the Fédération Internationale de Motocyclisme.</p>
       </div>
       <div style="border:1px solid var(--gray-2);padding:32px 24px">
         <div style="font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.02em">OCM</div>
         <div style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase;margin-top:6px">National council</div>
-        <p style="color:var(--gray-7);margin-top:14px;font-size:13px;line-height:1.6">Olympic Council of Malaysia — affiliated national sport association.</p>
+        <p style="color:var(--gray-7);margin-top:14px;font-size:13px;line-height:1.6">Olympic Council of Malaysia - affiliated national sport association.</p>
       </div>
       <div style="border:1px solid var(--gray-2);padding:32px 24px">
         <div style="font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.02em">KBS</div>

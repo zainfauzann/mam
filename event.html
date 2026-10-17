@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Event | MAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Mona+Sans:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mam.css">
+<style>
+a{color:inherit}a:hover{color:var(--red)}
+.ev-hero{position:relative;min-height:440px;background:#111 center/cover no-repeat;color:#fff;display:flex;align-items:flex-end}
+.ev-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.85) 100%)}
+.ev-hero .wrap{position:relative;padding-top:120px;padding-bottom:48px;width:100%}
+.ev-hero .crumb{color:rgba(255,255,255,.7)}.ev-hero .crumb a{color:#fff}
+.ev-tags{display:flex;gap:8px;margin:20px 0 14px;flex-wrap:wrap}
+.ev-status{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:6px 10px;background:#fff;color:var(--ink)}
+.ev-status.live{background:var(--red);color:#fff}.ev-status.past{background:#555;color:#fff}
+.ev-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,5vw,68px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;max-width:1000px;text-wrap:balance}
+.ev-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.25);margin-top:32px}
+.ev-facts>div{padding:18px 20px 0 0;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.ev-facts strong{display:block;font-family:var(--display);font-size:18px;letter-spacing:-.005em;text-transform:none;color:#fff;margin-top:6px;font-weight:700}
+.ev-body{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:start}
+.ev-block{border-top:1px solid var(--gray-2);padding:28px 0}
+.ev-block:first-child{border-top:none;padding-top:0}
+.ev-block h2{font-family:var(--display);font-size:24px;font-weight:800;text-transform:uppercase;letter-spacing:-.015em;margin-bottom:16px}
+.ev-block p{color:var(--gray-7);line-height:1.65;font-size:15px;max-width:640px}
+.kv{display:grid;grid-template-columns:160px 1fr;border-top:1px solid var(--gray-2)}
+.kv>div{padding:14px 0;border-bottom:1px solid var(--gray-2);font-size:14px}
+.kv .k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-7);padding-top:17px}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--gray-2);border:1px solid var(--gray-2)}
+.steps a{background:#fff;padding:20px;display:flex;flex-direction:column;gap:6px;text-decoration:none}
+.steps a:hover{background:var(--gray-1)}
+.steps .n{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--red);font-weight:700}
+.steps strong{font-family:var(--display);font-size:16px;color:var(--ink)}
+.steps span:last-child{font-size:13px;color:var(--gray-7);line-height:1.5}
+.ev-side{position:sticky;top:120px;display:flex;flex-direction:column;gap:16px}
+.side-card{background:var(--ink);color:#fff;padding:28px}
+.side-card .lab{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.side-card .big{font-family:var(--display);font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.side-card .sm{font-size:13px;color:#bbb;margin-top:8px}
+.side-btn{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;border:1px solid var(--gray-2);background:#fff;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;font-family:var(--body);width:100%}
+.side-btn.primary{background:var(--red);border-color:var(--red);color:#fff}
+.side-btn.primary:hover{background:var(--red-deep);color:#fff}
+.side-btn:not(.primary):hover{border-color:var(--ink);color:var(--ink)}
+.more-list{border-top:1px solid var(--gray-2)}
+.more-list a{display:grid;grid-template-columns:90px minmax(0,1fr) auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--gray-2);text-decoration:none}
+.more-list .d{font-family:var(--mono);font-size:12px}
+.more-list .t{font-family:var(--display);font-weight:700;font-size:15px}
+.pn{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--gray-2);margin-top:8px}
+.pn a{padding:22px 24px;text-decoration:none;display:flex;flex-direction:column;gap:6px}
+.pn a+a{border-left:1px solid var(--gray-2);text-align:right}
+.pn a:hover{background:var(--gray-1)}
+.pn .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-7)}
+.pn .t{font-family:var(--display);font-weight:700;font-size:16px}
+.pn .x{visibility:hidden}
+@media (max-width:1000px){.ev-body{grid-template-columns:1fr}.ev-side{position:static}.ev-facts{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.kv{grid-template-columns:120px 1fr}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<section class="ev-hero" id="evHero">
+<div class="wrap">
+<div class="crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="calendar.html">Event Calendar</a><span class="sep">/</span><span id="crumbT"></span></div>
+<div class="ev-tags"><span class="chip red" id="evCat"></span><span class="ev-status" id="evStatus"></span></div>
+<h1 id="evTitle"></h1>
+<div class="ev-facts">
+<div>Date<strong id="fDate"></strong></div>
+<div>Venue<strong id="fVenue"></strong></div>
+<div>Organiser<strong id="fOrg"></strong></div>
+<div>Event no.<strong id="fNo"></strong></div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="wrap">
+<div class="ev-body">
+<div>
+<div class="ev-block">
+<h2>Event information</h2>
+<div class="kv" id="kv"></div>
+</div>
+<div class="ev-block">
+<h2>Competing</h2>
+<p>Competitors need a valid MAM competition licence of the grade set in the event's supplementary regulations. Contact the organising club for entry forms, fees and timetable.</p>
+<div class="steps" style="margin-top:20px">
+<a href="licence.html"><span class="n">01</span><strong>Get licensed</strong><span>Competition licence application, medical form and online application.</span></a>
+<a href="downloads.html#rules"><span class="n">02</span><strong>Know the rules</strong><span>National Competition Rules for all MAM-sanctioned events.</span></a>
+<a href="contact.html"><span class="n">03</span><strong>Ask MAM</strong><span>Licensing and sanctioning questions go to the Secretariat.</span></a>
+</div>
+</div>
+<div class="ev-block">
+<h2 id="moreH">More events</h2>
+<div class="more-list" id="more"></div>
+</div>
+<div class="pn" id="pn"></div>
+</div>
+<aside class="ev-side">
+<div class="side-card"><div class="lab" id="cdLab">Countdown</div><div class="big" id="cdBig"></div><div class="sm" id="cdSm"></div></div>
+<button class="side-btn primary" id="icsBtn">Add to calendar <span>↓</span></button>
+<a class="side-btn" id="mapBtn" target="_blank" rel="noopener">Open in Google Maps <span>↗</span></a>
+<a class="side-btn" href="calendar.html">Back to full calendar <span>→</span></a>
+</aside>
+</div>
+</div>
+</section>
+<div id="site-footer"></div>
+<script src="mam-chrome.js"></script>
+<script src="events-data.js"></script>
+<script>
+(function(){
+const E=window.MAM_EVENTS, TODAY='2026-10-17';
+const id=+(new URLSearchParams(location.search).get('id'))||(E.find(e=>e.end>=TODAY)||E[0]).id;
+const ev=E.find(e=>e.id===id)||E[0];
+const IMG={Car:'disc-circuit','Formula Car':'disc-circuit',Drift:'disc-circuit',Enduro:'disc-motocross',Bike:'disc-endurance',Kart:'disc-karting',Motocross:'disc-motocross',Rally:'disc-rally',Esports:'disc-eracing'};
+const st=ev.end<TODAY?'past':(ev.start<=TODAY?'live':'up');
+const ST={past:'Completed',live:'This weekend',up:'Upcoming'};
+const $=i=>document.getElementById(i);
+const where=ev.venue+(ev.state?', '+ev.state:'');
+document.title=ev.title+' | MAM';
+$('evHero').style.backgroundImage=`url('assets/${IMG[ev.category]||'disc-circuit'}.jpg')`;
+$('crumbT').textContent=ev.title;$('evTitle').textContent=ev.title;$('evCat').textContent=ev.category;
+$('evStatus').textContent=ST[st];$('evStatus').classList.add(st);
+$('fDate').textContent=ev.date+' 2026';$('fVenue').textContent=where;$('fOrg').textContent=ev.organiser;$('fNo').textContent=String(ev.id).padStart(2,'0')+' / '+E.length;
+const rows=[['Event',ev.title],['Date',ev.date+' 2026'],['Category',ev.category],['Organiser',ev.organiser],['Venue',ev.venue],['State',ev.state||(ev.venue==='Online'?'Online':'To be confirmed')],['Status',ST[st]]];
+$('kv').innerHTML=rows.map(r=>`<div class="k">${r[0]}</div><div>${r[1]}</div>`).join('');
+// countdown
+const d0=new Date(TODAY),ds=new Date(ev.start);const days=Math.round((ds-d0)/864e5);
+if(st==='up'){$('cdLab').textContent='Starts in';$('cdBig').textContent=days+(days===1?' day':' days');$('cdSm').textContent=ev.date+' 2026 · '+where;}
+else if(st==='live'){$('cdLab').textContent='Happening now';$('cdBig').textContent='Live';$('cdSm').textContent='Runs '+ev.date+' 2026';}
+else{$('cdLab').textContent='Completed';$('cdBig').textContent=ev.date;$('cdSm').textContent='Results will be published by the organiser.';}
+// map
+const mappable=!['Online','TBA','APD Crew Circuit'].includes(ev.venue);
+if(mappable)$('mapBtn').href='https://www.google.com/maps/search/'+encodeURIComponent(where+', Malaysia');else $('mapBtn').style.display='none';
+// ics
+$('icsBtn').onclick=()=>{const f=s=>s.replace(/-/g,'');const end=new Date(ev.end);end.setDate(end.getDate()+1);const e2=end.toISOString().slice(0,10);
+const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//MAM//Calendar//EN','BEGIN:VEVENT','UID:mam-2026-'+ev.id+'@mam.org.my','DTSTART;VALUE=DATE:'+f(ev.start),'DTEND;VALUE=DATE:'+f(e2),'SUMMARY:'+ev.title,'LOCATION:'+where,'DESCRIPTION:Organiser: '+ev.organiser,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));a.download='mam-event-'+ev.id+'.ics';a.click();};
+// more in same category
+const more=E.filter(e=>e.id!==ev.id&&e.category===ev.category&&e.end>=TODAY).slice(0,4);
+const list=more.length?more:E.filter(e=>e.id!==ev.id&&e.end>=TODAY).slice(0,4);
+$('moreH').textContent=more.length?'More '+ev.category+' events':'Coming up next';
+$('more').innerHTML=list.map(e=>`<a href="event.html?id=${e.id}"><span class="d">${e.date}</span><span class="t">${e.title}</span><span class="chip red">${e.category}</span></a>`).join('');
+const i=E.indexOf(ev),p=E[i-1],n=E[i+1];
+$('pn').innerHTML=(p?`<a href="event.html?id=${p.id}"><span class="l">← Previous event</span><span class="t">${p.title}</span></a>`:'<a class="x"></a>')+(n?`<a href="event.html?id=${n.id}"><span class="l">Next event →</span><span class="t">${n.title}</span></a>`:'<a class="x"></a>');
+})();
+</script>
+</body>
+</html>

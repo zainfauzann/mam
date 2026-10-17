@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Affiliation Process | MAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Mona+Sans:wght@400..800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="mam.css" />
+<style>
+a{color:inherit}a:hover{color:var(--red)}
+[id]{scroll-margin-top:110px}
+.subnav{display:flex;gap:8px;flex-wrap:wrap;padding:24px 0;border-bottom:1px solid var(--gray-2);margin-bottom:48px}
+.subnav a{padding:9px 18px;border:1px solid var(--gray-2);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;background:#fff;text-decoration:none}
+.subnav a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.subnav a:hover:not(.on){border-color:var(--ink);color:var(--ink)}
+.lc-body{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:56px;align-items:start}
+.blk{padding:0 0 48px;margin-bottom:48px;border-bottom:1px solid var(--gray-2)}
+.blk:last-child{border-bottom:none;margin-bottom:0}
+.blk h2{font-family:var(--display);font-size:30px;font-weight:800;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:12px}
+.blk>p{color:var(--gray-7);font-size:15px;line-height:1.65;max-width:680px}
+.blk .num{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--red);margin-bottom:8px}
+.fee{width:100%;border-collapse:collapse;margin-top:20px;font-size:14px}
+.fee th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-7);text-align:left;padding:12px 14px;border-bottom:2px solid var(--ink);font-weight:700}
+.fee td{padding:14px;border-bottom:1px solid var(--gray-2);vertical-align:top}
+.fee td.p{font-family:var(--display);font-weight:700;white-space:nowrap}
+.fee td small{display:block;color:var(--gray-7);font-size:12px;margin-top:3px}
+.note{margin-top:14px;font-size:13px;color:var(--gray-7);line-height:1.6}
+.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--gray-2);border:1px solid var(--gray-2);margin-top:20px}
+.steps>div{background:#fff;padding:22px}
+.steps .n{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--red);font-weight:700}
+.steps h3{font-family:var(--display);font-size:17px;font-weight:700;margin-top:6px}
+.steps p{font-size:13px;color:var(--gray-7);line-height:1.55;margin-top:6px}
+.list{list-style:none;padding:0;margin-top:16px;border-top:1px solid var(--gray-2)}
+.list li{padding:14px 0;border-bottom:1px solid var(--gray-2);font-size:14px;line-height:1.55;display:grid;grid-template-columns:24px 1fr;gap:10px}
+.list li::before{content:"";width:8px;height:8px;background:var(--red);margin-top:7px}
+.side-box{background:var(--ink);color:#fff;padding:28px;position:sticky;top:108px}
+.side-box .lab{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+.side-box h4{font-family:var(--display);font-size:22px;font-weight:800;text-transform:uppercase;margin-top:10px;line-height:1.1}
+.side-box p{font-size:13px;color:#bbb;line-height:1.6;margin-top:10px}
+.side-box .btn{margin-top:18px;width:100%;justify-content:center}
+.side-box .alt{display:block;margin-top:12px;font-size:12px;color:#bbb;text-align:center}
+.side-box .alt:hover{color:#fff}
+@media (max-width:1000px){.lc-body{grid-template-columns:1fr}.side-box{position:static}.steps{grid-template-columns:1fr}.fee{font-size:13px}}
+.ap-title{font-family:var(--display);font-size:clamp(28px,3.4vw,44px);font-weight:800;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:28px}
+.ap-rights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-bottom:0}
+.ap-rights span{font-family:var(--mono);font-size:11px;letter-spacing:.2em;font-weight:700;text-align:center;padding:10px;background:var(--ink);color:#fff}
+.ap-rights span+span{background:var(--red)}
+.ap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--gray-2);border-top:none}
+.ap-col{padding:28px;border-right:1px solid var(--gray-2);font-size:14px;line-height:1.6}
+.ap-col:last-child{border-right:none}
+.ap-h{display:flex;align-items:baseline;gap:14px;padding-bottom:18px;margin-bottom:18px;border-bottom:3px solid var(--red)}
+.ap-h .n{font-family:var(--display);font-size:48px;font-weight:800;line-height:.9;color:var(--red)}
+.ap-h .t{font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.005em}
+.ap-col ul{padding-left:18px;display:grid;gap:14px}
+.ap-col ol{padding-left:22px;margin-top:10px;display:grid;gap:4px}
+.ap-col ol.roman{list-style:lower-roman}
+.vr{display:none;font-family:var(--mono);font-size:10px;letter-spacing:.18em;font-weight:700;color:var(--red);margin:-8px 0 16px}@media (max-width:1000px){.vr{display:block}}.ap-proc{font-family:var(--display);font-weight:700;color:var(--red);margin:18px 0 12px}
+@media (max-width:1000px){.ap-grid,.ap-rights{grid-template-columns:1fr}.ap-rights span{grid-column:auto!important}.ap-rights{display:none}.ap-col{border-right:none;border-bottom:1px solid var(--gray-2)}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<section class="phero"><div class="wrap"><div class="crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="licence.html">Licence</a><span class="sep">/</span> Affiliation process</div><h1>Affiliate<br><span class="em">with MAM.</span></h1><p class="sub">MAM Affiliate Member Application Process</p></div></section>
+<section class="section"><div class="wrap">
+<h2 class="ap-title">MAM Affiliate Member Application Process</h2>
+<div class="ap-rights"><span style="grid-column:1/3">NO VOTING RIGHTS</span><span>VOTING RIGHTS</span></div>
+<div class="ap-grid">
+<div class="ap-col s1" id="new"><div class="ap-h"><span class="n">01</span><span class="t">NEW APPLICATION</span></div><div class="vr">NO VOTING RIGHTS</div>
+<ul>
+<li>Affiliated membership is <b>open to clubs, associations or any organisation</b> that the Executive Committee deems fit and relevant.</li>
+<li>Each application shall be <b>nominated by an Affiliate and seconded by another Affiliate</b>.</li>
+</ul>
+<p class="ap-proc">Procedure for application</p>
+<ul>
+<li>New applicants must submit a <b>written application</b> for membership to the Secretary General and furnish the following documents:-
+<ol>
+<li>Completed Application Form</li>
+<li>Club Profile with list of members</li>
+<li>Certificate of Registration with PJS (for Clubs/Associations - Form 3)</li>
+<li>Certificate of Incorporation (for Companies - Form 9)</li>
+<li>Latest Form 24, 44 &amp; 49 (for Companies &amp; Circuit Owners)</li>
+<li>Latest Bank Statement</li>
+<li>3 years Report of Past Events, Programs &amp; Activities (if any)</li>
+</ol></li>
+<li>Application review process takes 3 - 5 working days &amp; the results will be notified via email.</li>
+<li>Certificate of Membership will only be issued upon receipt of <b>full payment</b> of the Affiliation Fee.</li>
+</ul></div>
+<div class="ap-col s2" id="probation"><div class="ap-h"><span class="n">02</span><span class="t">PROBATION (1 YEAR)</span></div><div class="vr">NO VOTING RIGHTS</div>
+<ul>
+<li>New Clubs/Associations shall undergo a <b>one (1) year probationary period</b> commencing from the date of acceptance of the terms &amp; conditions and payment of the Affiliation Fee (“Probationary Period”).</li>
+<li>During the Probationary Period, new Clubs/Associations must organise and submit a written report to MAM on <b>at least three (3) motorsports activities</b> such as racing and/or activities promoting motorsports through exhibitions, seminars, classes or training (“Motorsports Activities”).</li>
+<li>All Motorsports Activities organised must be in strict compliance with the Constitution, relevant laws, rules, regulations and guidelines set by the authorities and MAM.</li>
+<li>New Clubs/Associations that do not have any track record of organizing races shall be strictly monitored by MAM.</li>
+<li>Upon the expiry of the Probationary Period, the Executive Committee shall evaluate the new Clubs/Association’s performance and has the <b>absolute discretion</b> to either:-
+<ol class="roman"><li>Approve the membership to Full Affiliated status; <i>OR</i></li><li>Extend the probation period.</li></ol></li>
+</ul></div>
+<div class="ap-col s3" id="member"><div class="ap-h"><span class="n">03</span><span class="t">AFFILIATE MEMBER</span></div><div class="vr">VOTING RIGHTS</div>
+<ul>
+<li>New Clubs/Associations awarded full affiliate status is deemed a Voting Member and is required to organize, conduct and maintain <b>a minimum of three (3) Motorsports Activities per calendar year</b>, failing which its <u>status as a full affiliated member may be reviewed by the Executive Committee</u>.</li>
+<li>All Motorsports Activities organised must be in strict compliance with the Constitution, relevant laws, rules, regulations and guidelines set by the authorities and MAM.</li>
+<li>Each member must renew their annual membership and pay requisite fee <b>on/before 31<sup>st</sup> January each year</b>. Failure to meet the deadline shall result to an <u>automatic suspension</u> of its membership <u>unless MAM determines and decides otherwise</u>.</li>
+<li>Each member is encouraged to propose new members to MAM.</li>
+</ul></div>
+</div>
+</div>
+</section>
+<div id="site-footer"></div>
+<script src="mam-chrome.js"></script>
+</body>
+</html>

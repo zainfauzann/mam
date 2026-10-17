@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Competition Licence | MAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Mona+Sans:wght@400..800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="mam.css" />
+<style>
+a{color:inherit}a:hover{color:var(--red)}
+[id]{scroll-margin-top:110px}
+.subnav{display:flex;gap:8px;flex-wrap:wrap;padding:24px 0;border-bottom:1px solid var(--gray-2);margin-bottom:48px}
+.subnav a{padding:9px 18px;border:1px solid var(--gray-2);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;background:#fff;text-decoration:none}
+.subnav a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.subnav a:hover:not(.on){border-color:var(--ink);color:var(--ink)}
+.lc-body{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:56px;align-items:start}
+.blk{padding:0 0 48px;margin-bottom:48px;border-bottom:1px solid var(--gray-2)}
+.blk:last-child{border-bottom:none;margin-bottom:0}
+.blk h2{font-family:var(--display);font-size:30px;font-weight:800;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:12px}
+.blk>p{color:var(--gray-7);font-size:15px;line-height:1.65;max-width:680px}
+.blk .num{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--red);margin-bottom:8px}
+.fee{width:100%;border-collapse:collapse;margin-top:20px;font-size:14px}
+.fee th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-7);text-align:left;padding:12px 14px;border-bottom:2px solid var(--ink);font-weight:700}
+.fee td{padding:14px;border-bottom:1px solid var(--gray-2);vertical-align:top}
+.fee td.p{font-family:var(--display);font-weight:700;white-space:nowrap}
+.fee td small{display:block;color:var(--gray-7);font-size:12px;margin-top:3px}
+.fee-scroll{overflow-x:auto;margin-top:20px}.fee-scroll .fee{margin-top:0;min-width:760px}.fee.ev th{vertical-align:bottom;line-height:1.4}.fee.ev td{text-align:right}.fee.ev td.k,.fee.ev th:first-child{text-align:left;font-weight:600}.fee.ev td[colspan]{text-align:center;color:var(--gray-7);font-size:13px}.fee.ev tr.tot td{border-top:2px solid var(--ink);border-bottom:none;font-family:var(--display);font-weight:800;font-size:16px}.fee.ev tr.tot td.p{color:var(--red)}.lc-body>div{min-width:0}.fee th,.fee td{text-align:center!important}.fee tr>*:first-child{text-align:left!important}.fee tr>*:nth-child(even){background:var(--gray-1)}.fee thead th{background:var(--ink)!important;color:#fff;border-bottom:none;vertical-align:middle!important;padding:16px 14px}.fee thead th:nth-child(even){background:#2a2a2a!important}.fee.ev tr.tot td{background:#fff5f4}.fee.ev tr.tot td:nth-child(even){background:#fbe9e7}.fee td:first-child{font-weight:600;white-space:normal}.list a{color:var(--red)}em.ms{display:block;font-style:italic;font-weight:inherit;opacity:.75;font-size:.92em;margin-top:2px}.blk h2 em.ms{font-size:.6em;opacity:.6;text-transform:none;letter-spacing:0}.lead2{font-family:var(--display);font-weight:700;font-size:17px;margin-top:8px}.fee td{vertical-align:middle;line-height:1.5}.fee td.ap{font-size:12px;line-height:1.5;text-align:left!important;color:var(--gray-9)}.fee thead em.ms{font-size:11px;letter-spacing:.04em;text-transform:none}.find{margin:12px 0 0 20px;font-size:14px;line-height:1.5;display:grid;gap:10px}.sub2{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:8px}.ct{padding:16px 0;border-bottom:1px solid var(--gray-2);font-size:14px;line-height:1.6}.ct .n{font-family:var(--display);font-weight:700;font-size:15px;margin-bottom:4px}.ct a{color:var(--red)}@media (max-width:800px){.sub2{grid-template-columns:1fr}}.fee{table-layout:fixed;width:100%}.fee thead th:first-child{width:220px}.fee-scroll .fee{min-width:640px}.fee tbody td:not(:first-child){background:none}.fee tbody td:not(:first-child):nth-child(even){background:var(--gray-1)}.fee thead th,.fee thead th:nth-child(even){background:var(--ink)!important}#insurance .fee thead th:first-child{width:300px}.tsub{font-family:var(--display);font-size:18px;font-weight:700;margin:28px 0 0;display:flex;flex-direction:column;gap:2px}.tsub small{font-family:var(--body);font-size:13px;font-weight:400;color:var(--gray-7)}.tsub+.fee-scroll{margin-top:12px}.fee small{font-size:11px;color:inherit;opacity:.8}.docs{list-style:none;padding:0;margin-top:20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--gray-2);border:1px solid var(--gray-2)}.docs li{background:#fff;display:grid;grid-template-columns:44px 1fr;align-items:center;font-size:14px;line-height:1.45;min-height:64px}.docs .n{align-self:stretch;display:grid;place-items:center;background:var(--ink);color:#fff;font-family:var(--display);font-weight:800}.docs li span:last-child{padding:12px 16px}.steps a{color:var(--red)}@media (max-width:700px){.docs{grid-template-columns:1fr}}.lc-body.solo{grid-template-columns:minmax(0,1fr)}.note{margin-top:14px;font-size:13px;color:var(--gray-7);line-height:1.6}
+.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--gray-2);border:1px solid var(--gray-2);margin-top:20px}
+.steps>div{background:#fff;padding:22px}
+.steps .n{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--red);font-weight:700}
+.steps h3{font-family:var(--display);font-size:17px;font-weight:700;margin-top:6px}
+.steps p{font-size:13px;color:var(--gray-7);line-height:1.55;margin-top:6px}
+.list{list-style:none;padding:0;margin-top:16px;border-top:1px solid var(--gray-2)}
+.list li{padding:14px 0;border-bottom:1px solid var(--gray-2);font-size:14px;line-height:1.55;display:grid;grid-template-columns:24px 1fr;gap:10px}
+.list li::before{content:"";width:8px;height:8px;background:var(--red);margin-top:7px}
+.side-box{background:var(--ink);color:#fff;padding:28px;position:sticky;top:108px}
+.side-box .lab{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+.side-box h4{font-family:var(--display);font-size:22px;font-weight:800;text-transform:uppercase;margin-top:10px;line-height:1.1}
+.side-box p{font-size:13px;color:#bbb;line-height:1.6;margin-top:10px}
+.side-box .btn{margin-top:18px;width:100%;justify-content:center}
+.side-box .alt{display:block;margin-top:12px;font-size:12px;color:#bbb;text-align:center}
+.side-box .alt:hover{color:#fff}
+@media (max-width:1000px){.lc-body{grid-template-columns:1fr}.side-box{position:static}.steps{grid-template-columns:1fr}.fee{font-size:13px}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<section class="phero"><div class="wrap"><div class="crumb"><a href="index.html">Home</a><span class="sep">/</span> Licence</div><h1>Competition<br><span class="em">licence.</span></h1><p class="sub">Apply For Your MAM Competition Licence Here · Mohon Lesen Perlumbaan MAM Anda Di Sini</p>
+</div></section>
+<section class="section"><div class="wrap"><div class="lc-body solo"><div>
+<div class="blk" id="types"><div class="num">01</div><h2>Licence Categories and Application Fees<em class="ms">Kategori Lesen dan Yuran Permohonan</em></h2>
+<p class="lead2">Racing disciplines and licence categories:<em class="ms">Disiplin perlumbaan dan kategori lesen:</em></p>
+<h3 class="tsub" id="car">CAR</h3><div class="fee-scroll"><table class="fee"><thead><tr><th rowspan="1">CATEGORY</th><th colspan="3">NATIONAL</th><th colspan="3">INTERNATIONAL</th></tr></thead><tbody><tr><td>CIRCUIT RACING<br>RALLY<br>DRIFTING<br>AUTO GYMKHANA<br>DRAG</td><td>C<br>RM 50*</td><td>B<br>RM 70*</td><td>A<br>RM 90*</td><td>C<br>RM 170*</td><td>B<br>RM 220*</td><td>A<br>RM 270*</td></tr></tbody></table></div>
+<h3 class="tsub" id="motorcycle">MOTORCYCLE</h3><div class="fee-scroll"><table class="fee"><thead><tr><th>CATEGORY</th><th colspan="2">NATIONAL</th><th>INTERNATIONAL</th></tr></thead><tbody><tr><td>ROAD RACING<br>MOTOCROSS<br>ENDURO<br>SUPERMOTO<br>MOTO GYMKHANA<br>DRAG</td><td>B<br>RM 70*</td><td>A<br>RM 90*</td><td>SUBJECT TO FIM</td></tr></tbody></table></div>
+<h3 class="tsub" id="karting">KARTING</h3><div class="fee-scroll"><table class="fee"><thead><tr><th rowspan="1">CATEGORY</th><th colspan="3">NATIONAL</th><th colspan="3">INTERNATIONAL</th></tr></thead><tbody><tr><td>KARTING</td><td>G<br>RM 50*</td><td>F<br>RM 70*</td><td>E<br>RM 90*</td><td>G<br>RM 170*</td><td>F<br>RM 220*</td><td>E<br>RM 270*</td></tr></tbody></table></div>
+<h3 class="tsub" id="esports">ESPORTS</h3><div class="fee-scroll"><table class="fee"><thead><tr><th>CATEGORY</th><th>NATIONAL AND INTERNATIONAL</th></tr></thead><tbody><tr><td>E-SPORTS</td><td>C, B, A<br>RM 50</td></tr></tbody></table></div>
+<p class="note">*Fees <b>excluding</b> insurance coverage - <b>Final fee cost includes added insurance plan</b><em class="ms">*Yuran <b>tidak termasuk</b> perlindungan insurans - <b>Kos yuran akhir termasuk pelan insurans tambahan</b></em></p>
+<p class="note">RM 50 will be charged for <b>each additional</b> national licence applied for <b>different categories within the same discipline</b><em class="ms">RM 50 akan dikenakan untuk <b>setiap lesen</b> nasional tambahan yang dimohon untuk <b>kategori berbeza dalam disiplin yang sama</b></em></p></div><div class="blk" id="insurance"><div class="num">02</div><h2>Insurance Coverage | Annual Competition Licence<em class="ms">Perlindungan Insurans | Lesen Perlumbaan Tahunan</em></h2>
+<p class="lead2">Coverages and Insured Sums*:<em class="ms">Perlindungan dan Jumlah Perlindungan*:</em></p>
+<div class="fee-scroll"><table class="fee"><thead><tr><th></th><th>Plan 1 - RM210<em class="ms">High Risk / Risiko Tinggi</em></th><th>Plan 2 - RM100<em class="ms">Low Risk / Risiko Rendah</em></th></tr></thead><tbody><tr><td>Medical and Surgical Expenses<em class="ms">Perbelanjaan Perubatan dan Pembedahan</em></td><td class="p">RM 30,000</td><td class="p">RM 10,000</td></tr><tr><td>Permanent Disablement<em class="ms">Hilang Upaya Kekal</em></td><td class="p">RM 50,000</td><td class="p">RM 25,000</td></tr><tr><td>On Death<em class="ms">Kematian</em></td><td class="p">RM 50,000</td><td class="p">RM 25,000</td></tr><tr><td>Funeral and Repatriation Benefits<em class="ms">Faedah Pengebumian dan Repatriasi</em></td><td class="p">RM 5,000</td><td class="p">RM 2,500</td></tr><tr><td>Government Hospital Allowance<em class="ms">Elaun Hospital Kerajaan</em></td><td class="p">RM 50 / week (max 60 days)</td><td class="p">RM 50 / week (max 60 days)</td></tr><tr><td></td><td class="ap"><b>ONLY applicable for National Events (and above):</b><br>Enduro, Motocross, Road Racing, Supermoto, Circuit Racing, Drag, Karting, and Rally</td><td class="ap"><b>ONLY applicable for Club Events or low-risk National Events:</b><br>Mini Bike Categories, Motocross (Cadet), Moto-Gymkhana, Auto-Gymkhana, Drifting, and Karting Slalom</td></tr></tbody></table></div>
+<p class="note">(*Insurance coverage <b>only within Malaysia</b>)<em class="ms">(*Perlindungan insurans <b>hanya di Malaysia</b>)</em></p></div><div class="blk" id="apply"><div class="num">03</div><h2>Apply For Your MAM Competition Licence Here<em class="ms">Mohon Lesen Perlumbaan MAM Anda Di Sini</em></h2>
+<p class="lead2">Documents Required:<em class="ms">Dokumen yang diperlukan:</em></p>
+<ol class="docs"><li><span class="n">1</span><span>MAM Licence Application Form<em class="ms">Borang Permohonan Lesen Perlumbaan MAM</em></span></li><li><span class="n">2</span><span>MAM Medical Examination Form<em class="ms">Borang Pemeriksaan Perubatan MAM</em></span></li><li><span class="n">3</span><span>Medical Aptitude Form For International Licence (Obtainable at MAM Office – 4 wheels)<em class="ms">Borang Perubatan Aptitud untuk Lesen Antarabangsa (Boleh diambil dia pejabat MAM – 4 roda)</em></span></li><li><span class="n">4</span><span>Copy Of Identification Card Or Passport<em class="ms">Salinan Kad Pengenalan Atau Pasport</em></span></li><li><span class="n">5</span><span>Previous Competition Licence (if any)<em class="ms">Lesen Perlumbaan Yang Terdahulu (jika ada)</em></span></li><li><span class="n">6</span><span>Copy Of Driving Licence (if any)<em class="ms">Salinan Lesen Memandu (jika ada)</em></span></li><li><span class="n">7</span><span>Latest Passport Size Photo<em class="ms">Gambar Terkini Saiz Pasport</em></span></li><li><span class="n">8</span><span>Proof Of Membership From MAM Affiliated Club<em class="ms">Bukti Keahlian Dari Ahli Kelab Gabungan MAM</em></span></li><li><span class="n">9</span><span>Proof Of Licence Fee Payment<em class="ms">Bukti Pembayaran Yuran Permohonan Lesen</em></span></li></ol>
+<p class="lead2" style="margin-top:32px">What you’ll find:<em class="ms">Apa yang akan anda temui:</em></p>
+<ol class="find"><li>Competition Licence Application Form<em class="ms">Borang Permohonan Lesen Perlumbaan</em></li><li>Medical Examination Form<em class="ms">Borang Pemeriksaan Perubatan</em></li><li>Team Entrant Application Form (for team applicants only)<em class="ms">Borang Permohonan Penyertaan Pasukan (untuk pemohon pasukan sahaja)</em></li></ol>
+<p><a class="btn primary" href="https://license-mam.com/pubLicenseForm" target="_blank" rel="noopener" style="margin-top:20px">Apply online ↗</a></p></div><div class="blk" id="submit"><div class="num">04</div><h2>Please download and complete the necessary forms, and submit them via:<em class="ms">Sila muat turun dan lengkapkan borang yang diperlukan, dan serahkan melalui:</em></h2>
+<div class="sub2"><div><h3 class="tsub">Email &amp; Contact Number:</h3>
+<div class="ct"><div class="n">4 Wheels<em class="ms">4 Roda</em></div><p><b>Muhammad Beheshti</b> – <a href="mailto:beheshti@mam.org.my">beheshti@mam.org.my</a><br><a href="tel:+60196306240">019 630 6240</a><br>Circuit Racing | Rally | Drag | Auto - Gymkhana | Drifting | Karting</p></div>
+<div class="ct"><div class="n">2 Wheels<em class="ms">2 Roda</em></div><p><b>Izzat Amirrul</b> – <a href="mailto:izzat@mam.org.my">izzat@mam.org.my</a><br><a href="tel:+60164458560">016 445 8560</a><br>Road Racing | Motocross | Drag | Enduro | Supermoto | Moto - Gymkhana</p></div></div>
+<div><h3 class="tsub">Hardcopy:</h3>
+<div class="ct"><p><b>MAM Penchala Office</b><br>Level 2, The Nizra Building,<br>8, Jalan Seri Penchala,<br>60000 Kuala Lumpur, Selangor.</p></div>
+<div class="ct"><p><b>MAM Sepang Office</b><br>First Floor, Paddock Office,<br>Sepang International Circuit,<br>Jalan Pekeliling,<br>64000 KLIA, Selangor.</p></div></div></div></div>
+</div></div></div></section>
+<div id="site-footer"></div>
+<script src="mam-chrome.js"></script>
+</body>
+</html>

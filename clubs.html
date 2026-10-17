@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Affiliate Clubs | MAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Mona+Sans:wght@400..800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="mam.css" />
+<style>
+a{color:inherit}a:hover{color:var(--red)}
+[id]{scroll-margin-top:110px}
+.cl-tools{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:24px 0;border-bottom:1px solid var(--gray-2);margin-bottom:32px}
+.cl-search{flex:1;max-width:420px;display:flex;align-items:center;gap:10px;border:1px solid var(--gray-2);padding:12px 16px;background:#fff}
+.cl-search input{border:none;outline:none;font:inherit;font-size:14px;width:100%;background:transparent}
+.cl-count{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-7)}
+.cl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-left:1px solid var(--gray-2);border-top:1px solid var(--gray-2)}
+.cl{border-right:1px solid var(--gray-2);border-bottom:1px solid var(--gray-2);background:#fff;padding:28px 24px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+.cl:target{box-shadow:inset 0 0 0 2px var(--red)}
+.cl .logo{width:112px;height:112px;position:relative}
+.cl .logo .slot-img{display:block;width:100%;height:100%;object-fit:contain}
+.cl .ab{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--red);font-weight:700}
+.cl h3{font-family:var(--display);font-size:16px;font-weight:700;line-height:1.3;text-wrap:pretty}
+.cl.hide{display:none}
+.cl-empty{display:none;padding:48px 0;color:var(--gray-7)}
+.join{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;background:var(--ink);color:#fff;padding:40px;margin-top:64px}
+.join h2{font-family:var(--display);font-size:32px;font-weight:800;text-transform:uppercase;letter-spacing:-.02em}
+.join p{color:#bbb;margin-top:8px;max-width:560px;line-height:1.6}
+@media (max-width:1000px){.cl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.join{grid-template-columns:1fr}}
+@media (max-width:520px){.cl-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<section class="phero">
+<div class="wrap">
+<div class="crumb"><a href="index.html">Home</a><span class="sep">/</span> Affiliate Clubs</div>
+<h1>Affiliate<br><span class="em">clubs.</span></h1>
+<p class="sub">Motorsport clubs and state associations affiliated with MAM. Contact a club directly to join, race or volunteer at its events.</p>
+<div class="meta-row">
+<div class="item">Affiliated clubs<strong>28</strong></div>
+<div class="item">Covers<strong>Car, bike, kart, motocross, e-sports</strong></div>
+</div>
+</div>
+</section>
+<section class="section" style="padding-top:24px">
+<div class="wrap">
+<div class="cl-tools">
+<label class="cl-search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><input id="q" type="search" placeholder="Search clubs"></label>
+<span class="cl-count" id="cnt">28 clubs</span>
+</div>
+<div class="cl-grid" id="grid">
+<div class="cl" id="kelab-sukan-bermotor-msf" data-n="kelab sukan bermotor msf msf"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-msf.png" alt="MSF logo" loading="lazy" /></div><div><div class="ab">MSF</div><h3>Kelab Sukan Bermotor MSF</h3></div></div>
+<div class="cl" id="kelab-sukan-bermotor-maju-amc" data-n="kelab sukan bermotor maju (amc) amc"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-maju-amc.webp" alt="AMC logo" loading="lazy" /></div><div><div class="ab">AMC</div><h3>Kelab Sukan Bermotor Maju (AMC)</h3></div></div>
+<div class="cl" id="pocket-bike-association-of-malaysia" data-n="pocket bike association of malaysia pba"><div class="logo"><img class="slot-img" src="assets/clubs/pocket-bike-association-of-malaysia.png" alt="PBA logo" loading="lazy" /></div><div><div class="ab">PBA</div><h3>Pocket Bike Association of Malaysia</h3></div></div>
+<div class="cl" id="persatuan-sukan-bermotor-wilayah-persekutuan-kuala-lumpur" data-n="persatuan sukan bermotor wilayah persekutuan kuala lumpur kl"><div class="logo"><img class="slot-img" src="assets/clubs/persatuan-sukan-bermotor-wilayah-persekutuan-kuala-lumpur.png" alt="KL logo" loading="lazy" /></div><div><div class="ab">KL</div><h3>Persatuan Sukan Bermotor Wilayah Persekutuan Kuala Lumpur</h3></div></div>
+<div class="cl" id="penang-motor-sports-club" data-n="penang motor sports club pmsc"><div class="logo"><img class="slot-img" src="assets/clubs/penang-motor-sports-club.png" alt="PMSC logo" loading="lazy" /></div><div><div class="ab">PMSC</div><h3>Penang Motor Sports Club</h3></div></div>
+<div class="cl" id="sarawak-motorsports-association" data-n="sarawak motorsports association sma"><div class="logo"><img class="slot-img" src="assets/clubs/sarawak-motorsports-association.webp" alt="SMA logo" loading="lazy" /></div><div><div class="ab">SMA</div><h3>Sarawak Motorsports Association</h3></div></div>
+<div class="cl" id="millennium-motorsport-adventures-club" data-n="millennium motorsport adventures club mmac"><div class="logo"><img class="slot-img" src="assets/clubs/millennium-motorsport-adventures-club.png" alt="MMAC logo" loading="lazy" /></div><div><div class="ab">MMAC</div><h3>Millennium Motorsport Adventures Club</h3></div></div>
+<div class="cl" id="my-karting-club" data-n="my-karting club myk"><div class="logo"><img class="slot-img" src="assets/clubs/my-karting-club.png" alt="MYK logo" loading="lazy" /></div><div><div class="ab">MYK</div><h3>My-Karting Club</h3></div></div>
+<div class="cl" id="kelab-sukan-bermotor-zk" data-n="kelab sukan bermotor zk zk"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-zk.webp" alt="ZK logo" loading="lazy" /></div><div><div class="ab">ZK</div><h3>Kelab Sukan Bermotor ZK</h3></div></div>
+<div class="cl" id="kelab-sukan-bermotor-dinamik" data-n="kelab sukan bermotor dinamik dnk"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-dinamik.png" alt="DNK logo" loading="lazy" /></div><div><div class="ab">DNK</div><h3>Kelab Sukan Bermotor Dinamik</h3></div></div>
+<div class="cl" id="langkawi-motorsport-club" data-n="langkawi motorsport club lmc"><div class="logo"><img class="slot-img" src="assets/clubs/langkawi-motorsport-club.png" alt="LMC logo" loading="lazy" /></div><div><div class="ab">LMC</div><h3>Langkawi Motorsport Club</h3></div></div>
+<div class="cl" id="kelab-sukan-bermotor-exquisite" data-n="kelab sukan bermotor exquisite exq"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-exquisite.png" alt="EXQ logo" loading="lazy" /></div><div><div class="ab">EXQ</div><h3>Kelab Sukan Bermotor Exquisite</h3></div></div>
+<div class="cl" id="kelab-motocross-tqmx" data-n="kelab motocross tqmx tqmx"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-motocross-tqmx.png" alt="TQMX logo" loading="lazy" /></div><div><div class="ab">TQMX</div><h3>Kelab Motocross TQMX</h3></div></div>
+<div class="cl" id="x-one-motorsports-club" data-n="x-one motorsports club x1"><div class="logo"><img class="slot-img" src="assets/clubs/x-one-motorsports-club.webp" alt="X1 logo" loading="lazy" /></div><div><div class="ab">X1</div><h3>X-One Motorsports Club</h3></div></div>
+<div class="cl" id="kelab-sukan-bermotor-estrada" data-n="kelab sukan bermotor estrada est"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-estrada.png" alt="EST logo" loading="lazy" /></div><div><div class="ab">EST</div><h3>Kelab Sukan Bermotor Estrada</h3></div></div>
+<div class="cl" id="kelab-sukan-bermotor-integrasi" data-n="kelab sukan bermotor integrasi int"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-integrasi.png" alt="INT logo" loading="lazy" /></div><div><div class="ab">INT</div><h3>Kelab Sukan Bermotor Integrasi</h3></div></div>
+<div class="cl" id="kelab-sukan-rekreasi-trolak" data-n="kelab sukan rekreasi trolak trsc"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-sukan-rekreasi-trolak.png" alt="TRSC logo" loading="lazy" /></div><div><div class="ab">TRSC</div><h3>Kelab Sukan Rekreasi Trolak</h3></div></div>
+<div class="cl" id="sabah-motorsports-association" data-n="sabah motorsports association sbh"><div class="logo"><img class="slot-img" src="assets/clubs/sabah-motorsports-association.png" alt="SBH logo" loading="lazy" /></div><div><div class="ab">SBH</div><h3>Sabah Motorsports Association</h3></div></div>
+<div class="cl" id="kks-club" data-n="kks club kks"><div class="logo"><img class="slot-img" src="assets/clubs/kks-club.png" alt="KKS logo" loading="lazy" /></div><div><div class="ab">KKS</div><h3>KKS Club</h3></div></div>
+<div class="cl" id="kelab-motorsikal-lasak-perdana" data-n="kelab motorsikal lasak perdana kmlp"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-motorsikal-lasak-perdana.png" alt="KMLP logo" loading="lazy" /></div><div><div class="ab">KMLP</div><h3>Kelab Motorsikal Lasak Perdana</h3></div></div>
+<div class="cl" id="kelab-sukan-bermotor-drm" data-n="kelab sukan bermotor drm drm"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-drm.png" alt="DRM logo" loading="lazy" /></div><div><div class="ab">DRM</div><h3>Kelab Sukan Bermotor DRM</h3></div></div>
+<div class="cl" id="kelab-sukan-bermotor-yuza" data-n="kelab sukan bermotor yuza yuza"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-yuza.webp" alt="YUZA logo" loading="lazy" /></div><div><div class="ab">YUZA</div><h3>Kelab Sukan Bermotor YUZA</h3></div></div>
+<div class="cl" id="kelab-sukan-elektronik-axle" data-n="kelab sukan elektronik axle axle"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-sukan-elektronik-axle.webp" alt="AXLE logo" loading="lazy" /></div><div><div class="ab">AXLE</div><h3>Kelab Sukan Elektronik Axle</h3></div></div>
+<div class="cl" id="kelab-sukan-bermotor-braaap" data-n="kelab sukan bermotor braaap brp"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-braaap.png" alt="BRP logo" loading="lazy" /></div><div><div class="ab">BRP</div><h3>Kelab Sukan Bermotor BRAAAP</h3></div></div>
+<div class="cl" id="kelab-sukan-bermotor-kegani" data-n="kelab sukan bermotor kegani kgn"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-kegani.png" alt="KGN logo" loading="lazy" /></div><div><div class="ab">KGN</div><h3>Kelab Sukan Bermotor Kegani</h3></div></div>
+<div class="cl" id="kelab-triton-tuners-malaysia" data-n="kelab triton tuners malaysia ttm"><div class="logo"><img class="slot-img" src="assets/clubs/kelab-triton-tuners-malaysia.webp" alt="TTM logo" loading="lazy" /></div><div><div class="ab">TTM</div><h3>Kelab Triton Tuners Malaysia</h3></div></div>
+<div class="cl" id="matrac-motorsports-club" data-n="matrac motorsports club mtr"><div class="logo"><img class="slot-img" src="assets/clubs/matrac-motorsports-club.png" alt="MTR logo" loading="lazy" /></div><div><div class="ab">MTR</div><h3>Matrac Motorsports Club</h3></div></div>
+<div class="cl" id="vector-motorsports-club" data-n="vector motorsports club vec"><div class="logo"><img class="slot-img" src="assets/clubs/vector-motorsports-club.webp" alt="VEC logo" loading="lazy" /></div><div><div class="ab">VEC</div><h3>Vector Motorsports Club</h3></div></div>
+</div>
+<p class="cl-empty" id="empty">No club matches that search.</p>
+<div class="join">
+<div><h2>Affiliate your club</h2><p>Clubs that organise events or develop drivers and riders can apply to affiliate with MAM. Contact the Secretariat for the application process and current fees.</p></div>
+<a href="contact.html#message" class="btn primary">Contact the Secretariat →</a>
+</div>
+</div>
+</section>
+<div id="site-footer"></div>
+<script src="mam-chrome.js"></script>
+
+<script>
+const q=document.getElementById('q'),cards=[...document.querySelectorAll('.cl')];
+q.addEventListener('input',()=>{const v=q.value.trim().toLowerCase();let n=0;cards.forEach(c=>{const on=!v||c.dataset.n.includes(v);c.classList.toggle('hide',!on);if(on)n++});document.getElementById('cnt').textContent=n+(n===1?' club':' clubs');document.getElementById('empty').style.display=n?'none':'block';});
+</script>
+</body>
+</html>

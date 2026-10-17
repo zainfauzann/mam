@@ -2,38 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Event Calendar — MAM</title>
+<title>Event Calendar | MAM</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Mona+Sans:wght@400..800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="mam.css" />
 <style>
-  /* Controls bar */
   .ctrl{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;border-bottom:1px solid var(--gray-2);margin-bottom:36px;flex-wrap:wrap}
   .month-nav{display:flex;align-items:center;gap:8px}
-  .month-nav button{width:40px;height:40px;border:1px solid var(--gray-2);background:#fff;cursor:pointer;font-family:var(--mono);font-size:18px;line-height:1;transition:border-color .15s}
-  .month-nav button:hover:not([disabled]){border-color:var(--ink)}
-  .month-nav button[disabled]{opacity:.3;cursor:not-allowed}
-  .month-nav .m{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.01em;text-transform:uppercase;padding:0 16px;min-width:280px;text-align:center}
+  .month-nav button{width:40px;height:40px;border:1px solid var(--gray-2);background:#fff;cursor:pointer;font-family:var(--mono)}
+  .month-nav button:hover{border-color:var(--ink)}
+  .month-nav .m{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.01em;text-transform:uppercase;padding:0 16px;min-width:240px;text-align:center}
   .views{display:flex;border:1px solid var(--gray-2)}
   .views button{padding:10px 18px;background:#fff;border:none;cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border-right:1px solid var(--gray-2)}
   .views button:last-child{border-right:none}
   .views button.on{background:var(--ink);color:#fff}
   .fbar{display:flex;gap:8px;flex-wrap:wrap}
-  .fbar .pill{padding:8px 14px;border:1px solid var(--gray-2);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;font-weight:600;background:#fff;transition:border-color .15s,background .15s,color .15s}
+  .fbar .pill{padding:8px 14px;border:1px solid var(--gray-2);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;font-weight:600;background:#fff}
   .fbar .pill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .fbar .pill:hover:not(.on){border-color:var(--ink)}
 
-  /* View visibility */
-  .view{display:none}
-  body.view-list #viewList{display:block}
-  body.view-month #viewMonth{display:block}
-  body.view-map #viewMap{display:grid}
-
-  /* List view */
-  .layout{display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:start}
+  /* Calendar list */
   .cal-list{display:flex;flex-direction:column;border-top:1px solid var(--gray-2)}
-  .cal-row{display:grid;grid-template-columns:90px 1.4fr 1fr 0.9fr 110px;gap:18px;padding:24px 0;border-bottom:1px solid var(--gray-2);align-items:center;transition:padding .2s,background .2s;cursor:pointer;min-width:0}
+  .cal-row{display:grid;grid-template-columns:90px 1.4fr 1fr 0.9fr 110px;gap:18px;padding:24px 0;border-bottom:1px solid var(--gray-2);align-items:center;transition:padding .2s;cursor:pointer;min-width:0}
   .cal-row:hover{padding-left:12px;background:var(--gray-1)}
   .cal-date{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
   .cal-date .d{font-family:var(--display);font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:.9}
@@ -46,10 +36,13 @@
   .cal-tags{display:flex;flex-wrap:wrap;gap:6px}
   .cal-row .go{justify-self:end;display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
   .cal-row:hover .go{color:var(--red)}
+
   .month-hdr{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);padding:32px 0 12px;display:flex;align-items:center;gap:10px}
   .month-hdr::before{content:"";width:24px;height:1px;background:var(--red)}
   .month-hdr:first-child{padding-top:0}
-  .empty-state{padding:96px 0;text-align:center;color:var(--gray-7);font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+
+  /* Map sidebar */
+  .layout{display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:start}
   .map-card{background:var(--ink);color:#fff;padding:28px;position:sticky;top:120px}
   .map-card h4{font-family:var(--display);font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:18px;text-transform:uppercase}
   .legend{display:flex;flex-direction:column;gap:10px;font-size:13px}
@@ -58,65 +51,75 @@
   .legend .l{display:flex;align-items:center;gap:10px;color:#bbb}
   .legend .dot{width:10px;height:10px;background:var(--red)}
   .legend .ct{font-family:var(--mono);color:#fff;font-weight:600}
+
   @media (max-width:1100px){.layout{grid-template-columns:1fr}.map-card{position:static}.cal-row{grid-template-columns:80px 1fr 1fr;grid-template-rows:auto auto}.cal-venue{grid-column:2/3}.cal-tags{grid-column:3/4}.cal-row .go{grid-column:1/-1}}
 
-  /* Month view */
-  .mv-wrap{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-  .mv-month{border:1px solid var(--gray-2);background:#fff}
-  .mv-month-hdr{padding:18px 22px;border-bottom:1px solid var(--gray-2);font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.01em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
-  .mv-month-hdr .ct{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gray-7);font-weight:600;text-transform:uppercase}
-  .mv-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:0}
-  .mv-dow{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray-7);padding:10px 6px;text-align:center;border-right:1px solid var(--gray-2);border-bottom:1px solid var(--gray-2);background:var(--gray-1);font-weight:600}
-  .mv-dow:nth-child(7n){border-right:none}
-  .mv-day{min-height:92px;border-right:1px solid var(--gray-2);border-bottom:1px solid var(--gray-2);padding:6px 6px 8px;font-family:var(--mono);font-size:11px;position:relative;overflow:hidden}
-  .mv-day:nth-child(7n){border-right:none}
-  .mv-day.out{background:var(--gray-1)}
-  .mv-day .dn{font-weight:800;color:var(--ink);font-size:13px;font-family:var(--display);letter-spacing:-.01em}
-  .mv-day.out .dn{color:var(--gray-3)}
-  .mv-evt{margin-top:4px;padding:3px 5px;background:var(--red);color:#fff;font-family:var(--mono);font-size:8.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:700;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;line-height:1.3;transition:background .15s}
-  .mv-evt:hover{background:var(--ink)}
-  @media (max-width:1100px){.mv-wrap{grid-template-columns:1fr}}
-
-  /* Map view */
-  #viewMap{grid-template-columns:1fr 360px;gap:0;border:1px solid var(--gray-2);background:var(--gray-1)}
-  .map-stage{position:relative;overflow:hidden;background:#f6f4ef;cursor:grab;min-height:480px}
+  /* ──────── Map view ──────── */
+  .map-view{display:none;grid-template-columns:1fr 360px;gap:0;border:1px solid var(--gray-2);min-height:680px;background:var(--gray-1)}
+  body.view-map .layout{display:none}
+  body.view-map .map-view{display:grid}
+  .map-stage{position:relative;overflow:hidden;background:#f6f4ef;cursor:grab}
   .map-stage:active{cursor:grabbing}
-  .map-stage .canvas{position:absolute;left:0;top:0;width:1000px;height:332px;transform-origin:0 0;transition:transform .25s ease;will-change:transform}
-  .map-stage .canvas .map-bg{position:absolute;left:0;top:0;width:1000px;height:332px;pointer-events:none;user-select:none;-webkit-user-drag:none}
-  .pin{position:absolute;transform:translate(-50%,-100%) scale(var(--mscale,1));transform-origin:50% 100%;cursor:pointer;z-index:2;transition:transform .2s ease}
-  .pin .stem{width:2px;height:12px;background:var(--ink);position:absolute;left:50%;top:14px;transform:translateX(-50%)}
-  .pin .head{width:16px;height:16px;background:var(--red);border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid var(--ink);position:relative;transition:transform .18s, background .18s}
+  .map-stage svg.bg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .map-stage .canvas{position:absolute;left:50%;top:50%;width:1000px;height:560px;transform-origin:0 0;transition:transform .25s ease}
+  .map-stage .canvas svg.land{width:1000px;height:560px;display:block}
+  .map-stage .canvas svg.land .state{fill:#fff;stroke:#bcb6ab;stroke-width:1;stroke-linejoin:round;transition:fill .15s}
+  .map-stage .canvas svg.land .state:hover{fill:#fbe9c5}
+  .map-stage .canvas svg.land .state.active{fill:#ffe0b0;stroke:var(--ink);stroke-width:1.5}
+  .map-stage .canvas svg.land .water{fill:#f6f4ef}
+  .map-stage .canvas svg.land .city{fill:#1a1a1a}
+  .map-stage .canvas svg.land .sname{font-family:'Bricolage Grotesque',sans-serif;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;fill:#222;pointer-events:none}
+  .map-stage .canvas svg.land .sname.small{font-size:7px}
+  .map-stage .canvas svg.land .wname{font-family:'Mona Sans',sans-serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;fill:#a8a39a;pointer-events:none}
+  .map-stage .canvas svg.land .cap{font-family:'Bricolage Grotesque',sans-serif;font-size:9px;font-weight:700;fill:#000;pointer-events:none}
+  .pin{position:absolute;transform:translate(-50%,-100%);cursor:pointer;z-index:2}
+  .pin .stem{width:2px;height:14px;background:var(--ink);position:absolute;left:50%;top:14px;transform:translateX(-50%)}
+  .pin .head{width:18px;height:18px;background:var(--red);border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid var(--ink);position:relative;transition:transform .18s, background .18s}
   .pin .head::after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;background:#fff;border-radius:50%;transform:translate(-50%,-50%)}
-  .pin .ring{position:absolute;left:50%;top:8px;transform:translateX(-50%);width:10px;height:5px;border-radius:50%;background:rgba(0,0,0,.22);filter:blur(1px)}
-  .pin:hover .head,.pin.on .head{background:var(--ink);transform:rotate(-45deg) scale(1.18)}
-  .pin .label{position:absolute;left:14px;top:-10px;background:var(--ink);color:#fff;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:5px 9px;white-space:nowrap;font-weight:600;opacity:0;transform:translateX(-6px);transition:opacity .15s,transform .15s;pointer-events:none;z-index:5;max-width:240px;overflow:hidden;text-overflow:ellipsis}
-  .pin:hover .label,.pin.on .label{opacity:1;transform:translateX(0)}
+  .pin .ring{position:absolute;left:50%;top:8px;transform:translateX(-50%);width:10px;height:6px;border-radius:50%;background:rgba(0,0,0,.18);filter:blur(1px)}
+  .pin:hover .head, .pin.on .head{background:var(--ink);transform:rotate(-45deg) scale(1.18)}
+  .pin .label{position:absolute;left:14px;top:-8px;background:var(--ink);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:4px 8px;white-space:nowrap;font-weight:600;opacity:0;transform:translateX(-6px);transition:opacity .15s,transform .15s;pointer-events:none}
+  .pin:hover .label{opacity:1;transform:translateX(0)}
+  .pin .cluster{width:32px;height:32px;border-radius:50%;background:var(--red);color:#fff;border:3px solid #fff;box-shadow:0 0 0 1px var(--ink);display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:13px;transform:translate(-50%,-50%);position:absolute;left:50%;top:50%}
 
-  .cluster{position:absolute;transform:translate(-50%,-50%) scale(var(--mscale,1));cursor:pointer;z-index:3;border-radius:50%;background:var(--red);color:#fff;border:3px solid #fff;box-shadow:0 0 0 2px var(--ink),0 4px 12px rgba(0,0,0,.25);display:grid;place-items:center;font-family:var(--mono);font-weight:800;letter-spacing:-.02em;line-height:1;transition:transform .2s,box-shadow .18s}
-  .cluster:hover{transform:translate(-50%,-50%) scale(calc(var(--mscale,1) * 1.12));box-shadow:0 0 0 2px var(--ink),0 6px 16px rgba(0,0,0,.32)}
-  .cluster.s{width:30px;height:30px;font-size:13px}
-  .cluster.m{width:38px;height:38px;font-size:14px}
-  .cluster.l{width:46px;height:46px;font-size:15px}
-
+  /* Map controls overlay */
   .map-tools{position:absolute;right:18px;top:18px;display:flex;flex-direction:column;gap:6px;z-index:5}
-  .map-tools button{width:36px;height:36px;background:#fff;border:1px solid var(--gray-2);font-family:var(--mono);font-size:16px;font-weight:700;cursor:pointer;color:var(--ink);display:grid;place-items:center}
+  .map-tools button{width:38px;height:38px;background:#fff;border:1px solid var(--gray-2);font-family:var(--mono);font-size:18px;font-weight:700;cursor:pointer;color:var(--ink);display:grid;place-items:center}
   .map-tools button:hover{border-color:var(--ink);background:var(--gray-1)}
+  .map-scale{position:absolute;left:18px;bottom:18px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-7);background:#fff;padding:6px 10px;border:1px solid var(--gray-2);z-index:5}
+  .map-scale .bar{display:inline-block;width:60px;height:4px;background:var(--ink);margin-right:8px;vertical-align:middle}
   .map-hint{position:absolute;left:18px;top:18px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-7);background:#fff;padding:6px 10px;border:1px solid var(--gray-2);z-index:5}
 
+  /* Side panel */
   .map-side{border-left:1px solid var(--gray-2);background:#fff;display:flex;flex-direction:column;min-height:0}
-  .map-side .ms-hdr{padding:18px 22px;border-bottom:1px solid var(--gray-2);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+  .map-side .ms-hdr{padding:18px 22px;border-bottom:1px solid var(--gray-2);display:flex;justify-content:space-between;align-items:center}
   .map-side .ms-hdr .t{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:700}
-  .map-side .ms-hdr .ct{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.01em}
-  .map-side .ms-list{flex:1;overflow-y:auto;max-height:480px}
-  .ms-evt{padding:16px 22px;border-bottom:1px solid var(--gray-2);cursor:pointer;display:grid;grid-template-columns:44px 1fr;gap:12px;transition:background .15s,border-left-color .15s;border-left:3px solid transparent}
-  .ms-evt:hover,.ms-evt.on{background:var(--gray-1)}
-  .ms-evt.on{border-left-color:var(--red)}
-  .ms-evt .dt{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:.9;color:var(--ink)}
+  .map-side .ms-hdr .ct{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.01em}
+  .map-side .ms-list{flex:1;overflow-y:auto;max-height:600px}
+  .ms-evt{padding:18px 22px;border-bottom:1px solid var(--gray-2);cursor:pointer;display:grid;grid-template-columns:48px 1fr;gap:14px;transition:background .15s}
+  .ms-evt:hover, .ms-evt.on{background:var(--gray-1)}
+  .ms-evt.on{border-left:3px solid var(--red);padding-left:19px}
+  .ms-evt .dt{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;line-height:.9;color:var(--ink)}
   .ms-evt .dt small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-7);font-weight:500;margin-top:4px}
-  .ms-evt h5{font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:-.005em;line-height:1.25}
+  .ms-evt h5{font-family:var(--display);font-size:14px;font-weight:700;letter-spacing:-.005em;line-height:1.25}
   .ms-evt .v{font-size:11px;color:var(--gray-7);margin-top:4px;font-family:var(--mono);letter-spacing:.06em}
   .ms-evt .state{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);font-weight:700;margin-top:6px}
-  @media (max-width:1100px){#viewMap{grid-template-columns:1fr}.map-side{border-left:none;border-top:1px solid var(--gray-2)}}
+.cal-row.past{opacity:.55}.cal-row.past:hover{opacity:1}.chip.live{background:var(--red);color:#fff;border-color:var(--red)}.month-hdr .mcount{margin-left:auto;color:var(--gray-7);letter-spacing:.14em}.pin.past .head{background:#9a9a9a}.ms-evt.past{opacity:.55}.cal-row.hide,.ms-evt.hide,.pin.hide,.month-grp.hide{display:none}.fbar .pill{user-select:none}.cal-note{margin-top:28px;font-size:13px;color:var(--gray-7)}
+.cal-head,#calRows .cal-row{display:grid;grid-template-columns:minmax(0,2.2fr) 130px minmax(0,1.3fr) 120px minmax(0,1.8fr) 120px;gap:16px;align-items:center}
+.cal-head{padding:12px 12px;border-bottom:2px solid var(--ink);font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-7);font-weight:700;position:sticky;top:0;background:#fff;z-index:3}
+#calRows .cal-row{padding:14px 12px;cursor:pointer}
+#calRows .cal-row,#calRows .cal-row:hover{transition:none;padding-left:12px;background:transparent}#calRows .cal-row.past:hover{opacity:.55}
+#calRows .cal-row.live,#calRows .cal-row.live:hover{box-shadow:inset 3px 0 0 var(--red);background:#fff5f4}
+#calRows .month-hdr{padding:28px 0 10px;font-size:13px;font-weight:700}
+#calRows .cal-row.hide{display:none}#calRows a.cal-row{color:inherit;text-decoration:none}.c-go{justify-self:end;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--red);white-space:nowrap;transition:transform .2s ease,color .2s ease}#calRows a.cal-row:hover .c-go{transform:translateX(4px);color:var(--red-deep)}@media (max-width:1100px){.c-go{justify-self:start}}.past-sep{margin:48px 0 0;padding:14px 0;border-top:2px solid var(--ink);font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-7);font-weight:700}.c-no{font-family:var(--mono);font-size:12px;color:var(--gray-7);text-align:center}
+.c-ev{font-family:var(--display);font-size:15px;font-weight:700;line-height:1.25}
+.c-dt{font-family:var(--mono);font-size:12px;letter-spacing:.04em}
+.c-org,.c-ven{font-size:13px;color:var(--gray-9);line-height:1.4}
+@media (max-width:1100px){.cal-head{display:none}#calRows .cal-row{grid-template-columns:1fr;row-gap:4px}}
+[id]{scroll-margin-top:110px}
+#calRows .month-hdr{background:var(--ink);color:#fff;padding:14px 16px!important;margin-top:32px;position:sticky;top:126px;z-index:4}#calRows .month-hdr::before{display:none!important}#calRows .month-hdr .mcount{color:#bbb}#calRows .month-grp:first-of-type .month-hdr{margin-top:8px}
+.cal-head{top:84px!important;height:42px;box-sizing:border-box;padding-top:0!important;padding-bottom:0!important}.cal-head>div:nth-child(n+2):not(:last-child),.c-dt,.c-org,.c-cat,.c-ven{text-align:center;justify-self:stretch}.c-cat{display:flex;justify-content:center}
+@media (max-width:1100px){#calRows .month-hdr{top:84px}.c-dt,.c-org,.c-ven{text-align:left}.c-cat{justify-content:flex-start}}
 </style>
 </head>
 <body>
@@ -124,436 +127,123 @@
 <div id="site-header"></div>
 
 <section class="phero">
-  <div class="wrap">
-    <div class="crumb"><a href="index.html">Home</a><span class="sep">/</span> Event Calendar</div>
-    <h1>The 2026 <span class="em">racing season.</span></h1>
-    <p class="sub">Every sanctioned event in Malaysia, in one calendar — circuit, road race, karting, rally, drag, motocross, drift and more.</p>
-    <div class="meta-row">
-      <div class="item">Sanctioned events<strong>62</strong></div>
-      <div class="item">Disciplines<strong>11</strong></div>
-      <div class="item">States covered<strong>11 / 13</strong></div>
-      <div class="item">Season<strong>Mar – Nov 2026</strong></div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="crumb"><a href="index.html">Home</a><span class="sep">/</span> Event Calendar</div>
+<h1>The 2026 <span class="em">racing season.</span></h1>
+<p class="sub">MAM-sanctioned events across Malaysia this season, from club gymkhanas to the Formula 1 round at Sepang.</p>
+<div class="meta-row">
+<div class="item">Listed events<strong>37</strong></div>
+<div class="item">Upcoming<strong>18</strong></div>
+<div class="item">This weekend<strong>4 events · 16–18 Oct</strong></div>
+<div class="item">Season<strong>May – Dec 2026</strong></div>
+</div>
+</div>
 </section>
-
 <section class="section" style="padding-top:32px">
   <div class="wrap">
     <div class="ctrl">
       <div class="month-nav">
-        <button id="prev" aria-label="Previous months">‹</button>
-        <span class="m" id="navLabel">May – June 2026</span>
-        <button id="next" aria-label="Next months">›</button>
+        <button>‹</button>
+        <span class="m">2026 Season</span>
+        <button>›</button>
       </div>
-      <div class="fbar" id="fbar">
-        <span class="pill on" data-d="all">All</span>
-        <span class="pill" data-d="Circuit">Circuit</span>
-        <span class="pill" data-d="Road Racing">Road race</span>
-        <span class="pill" data-d="Karting">Karting</span>
-        <span class="pill" data-d="Rally">Rally</span>
-        <span class="pill" data-d="Drag">Drag</span>
-        <span class="pill" data-d="Motocross">MX</span>
-        <span class="pill" data-d="Drift">Drift</span>
-        <span class="pill" data-d="Time Attack">TA</span>
-        <span class="pill" data-d="Endurance">Endurance</span>
-      </div>
-      <div class="views" id="viewToggle">
-        <button data-v="month">Month</button>
-        <button class="on" data-v="list">List</button>
-        <button data-v="map">Map</button>
-      </div>
+      <div class="fbar" id="catFilter"><span class="pill on" data-cat="All">All</span><span class="pill" data-cat="Bike">Bike</span><span class="pill" data-cat="Car">Car</span><span class="pill" data-cat="Drift">Drift</span><span class="pill" data-cat="Enduro">Enduro</span><span class="pill" data-cat="Esports">Esports</span><span class="pill" data-cat="Formula Car">Formula Car</span><span class="pill" data-cat="Kart">Kart</span><span class="pill" data-cat="Motocross">Motocross</span><span class="pill" data-cat="Rally">Rally</span></div>
+      
     </div>
 
-    <div class="view list" id="viewList"></div>
-    <div class="view month" id="viewMonth"></div>
-
-    <div class="view map" id="viewMap">
-      <div class="map-stage" id="mapStage">
-        <div class="map-hint">Drag to pan · Scroll / +– to zoom</div>
-        <div class="map-tools">
-          <button id="zIn" aria-label="Zoom in">+</button>
-          <button id="zOut" aria-label="Zoom out">−</button>
-          <button id="zReset" aria-label="Reset view" style="font-size:11px;letter-spacing:.1em">⟲</button>
-        </div>
-        <div class="canvas" id="mapCanvas">
-          <img class="map-bg" src="assets/my.svg" alt="Map of Malaysia" />
-        </div>
-      </div>
-      <aside class="map-side">
-        <div class="ms-hdr">
-          <div><div class="t">Pinned events</div><div class="ct" id="msCount">0 events</div></div>
-          <span style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--gray-7);text-transform:uppercase" id="msRange">May – Jun</span>
-        </div>
-        <div class="ms-list" id="msList"></div>
-      </aside>
-    </div>
+    <!-- ───────────── Map view ───────────── -->
+    <div class="layout">
+<div id="calRows"><span id="list"></span>
+<div class="cal-head"><div>Event</div><div>Date</div><div>Organiser</div><div>Categories</div><div>Venue</div><div></div></div>
+<div class="month-grp" id="m12" data-month="12"><div class="month-hdr">December 2026<span class="mcount">4 events</span></div>
+<div class="cal-list">
+<a class="cal-row up" data-cat="Bike" href="event.html?id=39"><div class="c-ev">Mini Cub Prix Championship - Round 4</div><div class="c-dt">19–20 Dec</div><div class="c-org">KSB PP</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">Parkir Litar Antarabangsa Sepang, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row up" data-cat="Bike" href="event.html?id=38"><div class="c-ev">MSF SuperBike 2026 - Round 5</div><div class="c-dt">6 Dec</div><div class="c-org">KSB MSF</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row up" data-cat="Car" href="event.html?id=37"><div class="c-ev">MSF SuperTurismo - Round 5</div><div class="c-dt">6 Dec</div><div class="c-org">KSB MSF</div><div class="c-cat"><span class="chip red">Car</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row up" data-cat="Kart" href="event.html?id=36"><div class="c-ev">KRD Karting - Round 8</div><div class="c-dt">5 Dec</div><div class="c-org">MY Karting Club</div><div class="c-cat"><span class="chip red">Kart</span></div><div class="c-ven">LYL International Karting Circuit</div><div class="c-go">View event →</div></a>
+</div></div>
+<div class="month-grp" id="m11" data-month="11"><div class="month-hdr">November 2026<span class="mcount">5 events</span></div>
+<div class="cal-list">
+<a class="cal-row up" data-cat="Bike" href="event.html?id=35"><div class="c-ev">MAM Malaysian Cub Prix Championship 2026 - Round 8</div><div class="c-dt">20–22 Nov</div><div class="c-org">KSB PP</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">Bandar Medini Iskandar, Johor</div><div class="c-go">View event →</div></a>
+<a class="cal-row up" data-cat="Car" href="event.html?id=34"><div class="c-ev">Sepang 1000KM</div><div class="c-dt">19–22 Nov</div><div class="c-org">SICSB</div><div class="c-cat"><span class="chip red">Car</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row up" data-cat="Car" href="event.html?id=33"><div class="c-ev">Vios Cup Enduro</div><div class="c-dt">19–21 Nov</div><div class="c-org">SICSB</div><div class="c-cat"><span class="chip red">Car</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row up" data-cat="Bike" href="event.html?id=32"><div class="c-ev">Mini Cub Prix Championship - Round 3</div><div class="c-dt">14 Nov</div><div class="c-org">KSB PP</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">Parkir Litar Antarabangsa Sepang, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row up" data-cat="Bike" href="event.html?id=31"><div class="c-ev">MAM Malaysian Superbike Championship 2026 - Round 4</div><div class="c-dt">13–15 Nov</div><div class="c-org">KSB PP</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+</div></div>
+<div class="month-grp" id="m10" data-month="10"><div class="month-hdr">October 2026<span class="mcount">13 events</span></div>
+<div class="cal-list">
+<a class="cal-row up" data-cat="Kart" href="event.html?id=30"><div class="c-ev">KRD Karting - Round 7</div><div class="c-dt">31 Oct</div><div class="c-org">MY Karting Club</div><div class="c-cat"><span class="chip red">Kart</span></div><div class="c-ven">LYL International Karting Circuit</div><div class="c-go">View event →</div></a>
+<a class="cal-row up" data-cat="Bike" href="event.html?id=29"><div class="c-ev">Idemitsu Asia Talent Cup 2026 - Round 5</div><div class="c-dt">29 Oct – 1 Nov</div><div class="c-org">SICSB</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row up" data-cat="Bike" href="event.html?id=28"><div class="c-ev">PETRONAS Malaysian Grand Prix of MotoGP 2026</div><div class="c-dt">29 Oct – 1 Nov</div><div class="c-org">SICSB</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row up" data-cat="Bike" href="event.html?id=27"><div class="c-ev">Mini Cub Prix Championship - Round 2</div><div class="c-dt">24 Oct</div><div class="c-org">KSB PP</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">Bandar Seri Jempol, Negeri Sembilan</div><div class="c-go">View event →</div></a>
+<a class="cal-row up" data-cat="Kart" href="event.html?id=26"><div class="c-ev">MAM Malaysia Karting Championship - Round 6</div><div class="c-dt">18 Oct</div><div class="c-org">KSB Dinamik</div><div class="c-cat"><span class="chip red">Kart</span></div><div class="c-ven">TBA</div><div class="c-go">View event →</div></a>
+<a class="cal-row live" data-cat="Rally" href="event.html?id=25"><div class="c-ev">KBS Rally Sprint - Round 2</div><div class="c-dt">17–18 Oct</div><div class="c-org">X-One Motorsports Club</div><div class="c-cat"><span class="chip red">Rally</span></div><div class="c-ven">Tanamera Rally Park, Sg Buloh, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row live" data-cat="Bike" href="event.html?id=24"><div class="c-ev">MSF SuperBikes - Round 4</div><div class="c-dt">17–18 Oct</div><div class="c-org">KSB MSF</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row live" data-cat="Car" href="event.html?id=23"><div class="c-ev">MSF SuperTurismo - Round 4</div><div class="c-dt">17–18 Oct</div><div class="c-org">KSB MSF</div><div class="c-cat"><span class="chip red">Car</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row live" data-cat="Bike" href="event.html?id=22"><div class="c-ev">MAM Malaysian Cub Prix Championship 2026 - Round 7</div><div class="c-dt">16–18 Oct</div><div class="c-org">KSB PP</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">PETRONAS Sepang International Circuit (South), Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Kart" href="event.html?id=21"><div class="c-ev">KRD Karting - Round 6</div><div class="c-dt">11 Oct</div><div class="c-org">MY Karting Club</div><div class="c-cat"><span class="chip red">Kart</span></div><div class="c-ven">Sepang Go Kart Circuit, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Bike" href="event.html?id=20"><div class="c-ev">MAM Malaysian Cub Prix Championship 2026 - Round 6</div><div class="c-dt">9–11 Oct</div><div class="c-org">KSB PP</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">LYL International Karting Circuit</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Car" href="event.html?id=19"><div class="c-ev">Toyota Gazoo Racing Festival - Round 4</div><div class="c-dt">9–11 Oct</div><div class="c-org">SICSB</div><div class="c-cat"><span class="chip red">Car</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Formula Car" href="event.html?id=18"><div class="c-ev">Formula 1 Gulf Air Bahrain Grand Prix of Malaysia</div><div class="c-dt">2–4 Oct</div><div class="c-org">Bahrain</div><div class="c-cat"><span class="chip red">Formula Car</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+</div></div>
+<div class="month-grp" id="m9" data-month="9"><div class="month-hdr">September 2026<span class="mcount">11 events</span></div>
+<div class="cal-list">
+<a class="cal-row past" data-cat="Motocross" href="event.html?id=17"><div class="c-ev">Muda MX</div><div class="c-dt">27 Sep</div><div class="c-org">Kelab Sukan Rekreasi Trolak</div><div class="c-cat"><span class="chip red">Motocross</span></div><div class="c-ven">Litar Motocross Seriwangsa, Kedah</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Bike" href="event.html?id=16"><div class="c-ev">Mini Cub Prix Championship - Round 1</div><div class="c-dt">26–27 Sep</div><div class="c-org">KSB PP</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">Parkir Litar Permotoran Tangkak, Johor</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Kart" href="event.html?id=15"><div class="c-ev">Rotax Max Challenge Asia Trophy - Round 5</div><div class="c-dt">26–27 Sep</div><div class="c-org">KSB MSF</div><div class="c-cat"><span class="chip red">Kart</span></div><div class="c-ven">Sepang Go Kart Circuit, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Esports" href="event.html?id=14"><div class="c-ev">Malaysia eRacing GP - Rounds 3 &amp; 4</div><div class="c-dt">26 Sep</div><div class="c-org">Axle Sports eRacing Club</div><div class="c-cat"><span class="chip red">Esports</span></div><div class="c-ven">Online</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Bike" href="event.html?id=13"><div class="c-ev">FIM MotoMini Malaysia Series 2026 - Rounds 4 &amp; 5</div><div class="c-dt">19–20 Sep</div><div class="c-org">KSB ZK</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">Sepang Go Kart Circuit, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Motocross" href="event.html?id=12"><div class="c-ev">Cub Cross Trophy 2026</div><div class="c-dt">19–20 Sep</div><div class="c-org">KSB Ayuza Zack</div><div class="c-cat"><span class="chip red">Motocross</span></div><div class="c-ven">Litar Motocross Bandar Tenggara, Johor</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Kart" href="event.html?id=11"><div class="c-ev">IAME Asia Series - Round 6</div><div class="c-dt">19–20 Sep</div><div class="c-org">KSB Dinamik</div><div class="c-cat"><span class="chip red">Kart</span></div><div class="c-ven">LYL International Karting Circuit</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Esports" href="event.html?id=10"><div class="c-ev">Malaysia eRacing GP - Rounds 1 &amp; 2</div><div class="c-dt">19 Sep</div><div class="c-org">Axle Sports eRacing Club</div><div class="c-cat"><span class="chip red">Esports</span></div><div class="c-ven">Online</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Bike" href="event.html?id=9"><div class="c-ev">KBS Moto Gymkhana Master</div><div class="c-dt">19 Sep</div><div class="c-org">KSB Wheelspin</div><div class="c-cat"><span class="chip red">Bike</span></div><div class="c-ven">APD Crew Circuit</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Car" href="event.html?id=8"><div class="c-ev">KBS Auto Gymkhana Master</div><div class="c-dt">19 Sep</div><div class="c-org">KSB Wheelspin</div><div class="c-cat"><span class="chip red">Car</span></div><div class="c-ven">APD Crew Circuit</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Kart" href="event.html?id=7"><div class="c-ev">MAM Malaysia Festival of Speed 2026</div><div class="c-dt">4–6 Sep</div><div class="c-org">MAM · with KBS &amp; Rakan Muda</div><div class="c-cat"><span class="chip red">Kart</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+</div></div>
+<div class="month-grp" id="m8" data-month="8"><div class="month-hdr">August 2026<span class="mcount">2 events</span></div>
+<div class="cal-list">
+<a class="cal-row past" data-cat="Car" href="event.html?id=6"><div class="c-ev">MSF Merdeka Race - Round 3</div><div class="c-dt">29–30 Aug</div><div class="c-org">KSB MSF</div><div class="c-cat"><span class="chip red">Car</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+<a class="cal-row past" data-cat="Car" href="event.html?id=5"><div class="c-ev">Thailand Super Series - Round 3</div><div class="c-dt">21–23 Aug</div><div class="c-org">TSS</div><div class="c-cat"><span class="chip red">Car</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+</div></div>
+<div class="month-grp" id="m7" data-month="7"><div class="month-hdr">July 2026<span class="mcount">1 event</span></div>
+<div class="cal-list">
+<a class="cal-row past" data-cat="Car" href="event.html?id=4"><div class="c-ev">MSF Racing - Round 2</div><div class="c-dt">4–5 Jul</div><div class="c-org">KSB MSF</div><div class="c-cat"><span class="chip red">Car</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+</div></div>
+<div class="month-grp" id="m5" data-month="5"><div class="month-hdr">May 2026<span class="mcount">1 event</span></div>
+<div class="cal-list">
+<a class="cal-row past" data-cat="Car" href="event.html?id=2"><div class="c-ev">MSF Racing - Round 1</div><div class="c-dt">16–17 May</div><div class="c-org">KSB MSF</div><div class="c-cat"><span class="chip red">Car</span></div><div class="c-ven">PETRONAS Sepang International Circuit, Selangor</div><div class="c-go">View event →</div></a>
+</div></div>
+<p class="cal-note">Source: MAM 2026 sanctioned events calendar. Dates and venues may change; check with the organising club before travelling.</p>
+</div>
+<aside class="map-card">
+<h4>Season at a glance</h4>
+<div class="legend">
+<div class="lg"><div class="l"><span class="dot"></span>Bike</div><span class="ct">14</span></div>
+<div class="lg"><div class="l"><span class="dot"></span>Car</div><span class="ct">10</span></div>
+<div class="lg"><div class="l"><span class="dot"></span>Esports</div><span class="ct">2</span></div>
+<div class="lg"><div class="l"><span class="dot"></span>Formula Car</div><span class="ct">1</span></div>
+<div class="lg"><div class="l"><span class="dot"></span>Kart</div><span class="ct">7</span></div>
+<div class="lg"><div class="l"><span class="dot"></span>Motocross</div><span class="ct">2</span></div>
+<div class="lg"><div class="l"><span class="dot"></span>Rally</div><span class="ct">1</span></div>
+</div>
+<a href="downloads.html" class="btn primary" style="margin-top:24px;width:100%;justify-content:center">Licence &amp; forms →</a>
+</aside>
+</div>
   </div>
 </section>
 
 <div id="site-footer"></div>
 <script src="mam-chrome.js"></script>
 <script>
-  // ─── Event data (dummy 2026 season) ───
-  const EVENTS = [
-    // March
-    {id:1,  date:'2026-03-07', title:'National Time Attack R1',       venue:'Pasir Gudang Circuit',          state:'Johor',     discipline:'Time Attack', x:215, y:268},
-    {id:2,  date:'2026-03-14', title:'Cub Prix Round 1',              venue:'Batu Pahat Street Circuit',     state:'Johor',     discipline:'Road Racing', x:222, y:262},
-    {id:3,  date:'2026-03-15', title:'National Karting R1',           venue:'City Karting Kuala Selangor',   state:'Selangor',  discipline:'Karting',     x:128, y:200},
-    {id:4,  date:'2026-03-21', title:'Malaysia Speed Festival Test',  venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Circuit',     x:134, y:204},
-    {id:5,  date:'2026-03-22', title:'MX Open Round 1',               venue:'Sungai Petani',                 state:'Kedah',     discipline:'Motocross',   x:95,  y:90},
-    {id:6,  date:'2026-03-28', title:'Malaysia Rally Championship R1',venue:'Genting Highlands',             state:'Pahang',    discipline:'Rally',       x:165, y:185},
-    {id:7,  date:'2026-03-29', title:'Drift Allstars MY R1',          venue:'Sepang South Track',            state:'Selangor',  discipline:'Drift',       x:130, y:206},
-    // April
-    {id:8,  date:'2026-04-05', title:'National Karting R2',           venue:'Sepang Karting Circuit',        state:'Selangor',  discipline:'Karting',     x:132, y:200},
-    {id:9,  date:'2026-04-11', title:'Bukit Jalil MX Pro R1',         venue:'Bukit Jalil MX Track',          state:'Kuala Lumpur', discipline:'Motocross',x:141, y:212},
-    {id:10, date:'2026-04-12', title:'Borneo Drag Cup R1',            venue:'Kuching Drag Strip',            state:'Sarawak',   discipline:'Drag',        x:605, y:265},
-    {id:11, date:'2026-04-18', title:'Sepang 4-Hour Endurance',       venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Endurance',   x:133, y:202},
-    {id:12, date:'2026-04-19', title:'E-Racing Series R1',            venue:'KL eSports Studio',             state:'Kuala Lumpur', discipline:'E-Sports', x:140, y:211},
-    {id:13, date:'2026-04-25', title:'Cub Prix Round 2',              venue:'Kota Bharu Street Circuit',     state:'Kelantan',  discipline:'Road Racing', x:160, y:115},
-    {id:14, date:'2026-04-26', title:'Time Attack MY R1',             venue:'Pasir Gudang Circuit',          state:'Johor',     discipline:'Time Attack', x:215, y:268},
-    // May
-    {id:15, date:'2026-05-03', title:'National Karting R3',           venue:'Sepang Karting Circuit',        state:'Selangor',  discipline:'Karting',     x:135, y:199},
-    {id:16, date:'2026-05-10', title:'Sepang ARRC Round 3',           venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Road Racing', x:131, y:202},
-    {id:17, date:'2026-05-17', title:'MY Motocross Championship R2',  venue:'Bukit Jalil MX Track',          state:'Kuala Lumpur', discipline:'Motocross',x:139, y:213},
-    {id:18, date:'2026-05-24', title:'National Karting R4',           venue:'City Karting Tangkak',          state:'Johor',     discipline:'Karting',     x:200, y:250},
-    {id:19, date:'2026-05-25', title:'Drift Allstars MY R2',          venue:'Pasir Gudang Circuit',          state:'Johor',     discipline:'Drift',       x:218, y:266},
-    {id:20, date:'2026-05-30', title:'Penang Hill Climb',             venue:'Bukit Jambul',                  state:'Pulau Pinang', discipline:'Rally',    x:85,  y:108},
-    {id:21, date:'2026-05-31', title:'Time Attack MY R2',             venue:'Pasir Gudang Circuit',          state:'Johor',     discipline:'Time Attack', x:213, y:264},
-    // June
-    {id:22, date:'2026-06-06', title:'Cub Prix Round 3',              venue:'Melaka Street Circuit',         state:'Melaka',    discipline:'Road Racing', x:170, y:249},
-    {id:23, date:'2026-06-07', title:'Malaysia Drag Cup R2',          venue:'Batu Tiga Drag Strip',          state:'Selangor',  discipline:'Drag',        x:128, y:204},
-    {id:24, date:'2026-06-14', title:'Borneo Safari — Recce Stage',   venue:'Kota Kinabalu → Tambunan',      state:'Sabah',     discipline:'Rally',       x:835, y:115},
-    {id:25, date:'2026-06-15', title:'National Karting R5',           venue:'Sepang Karting Circuit',        state:'Selangor',  discipline:'Karting',     x:136, y:198},
-    {id:26, date:'2026-06-21', title:'Cub Prix Round 4 — Kuantan',    venue:'Kuantan Street Circuit',        state:'Pahang',    discipline:'Road Racing', x:200, y:175},
-    {id:27, date:'2026-06-22', title:'MX Open Round 2',               venue:'Kota Tinggi',                   state:'Johor',     discipline:'Motocross',   x:225, y:268},
-    {id:28, date:'2026-06-28', title:'Sepang 1000km Endurance',       venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Endurance',   x:132, y:203},
-    // July
-    {id:29, date:'2026-07-05', title:'E-Racing Series R2',            venue:'KL eSports Studio',             state:'Kuala Lumpur', discipline:'E-Sports', x:138, y:212},
-    {id:30, date:'2026-07-06', title:'National Karting R6',           venue:'City Karting Tangkak',          state:'Johor',     discipline:'Karting',     x:203, y:252},
-    {id:31, date:'2026-07-12', title:'Sepang ARRC Round 4',           venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Road Racing', x:131, y:201},
-    {id:32, date:'2026-07-13', title:'Drift Allstars MY R3',          venue:'Sepang South Track',            state:'Selangor',  discipline:'Drift',       x:128, y:205},
-    {id:33, date:'2026-07-19', title:'Bukit Jalil MX Pro R2',         venue:'Bukit Jalil MX Track',          state:'Kuala Lumpur', discipline:'Motocross',x:142, y:210},
-    {id:34, date:'2026-07-20', title:'Malaysia Rally Championship R2',venue:'Cameron Highlands',             state:'Pahang',    discipline:'Rally',       x:155, y:160},
-    {id:35, date:'2026-07-26', title:'Time Attack MY R3',             venue:'Pasir Gudang Circuit',          state:'Johor',     discipline:'Time Attack', x:214, y:265},
-    // August
-    {id:36, date:'2026-08-02', title:'National Karting R7',           venue:'City Karting Kuala Selangor',   state:'Selangor',  discipline:'Karting',     x:127, y:196},
-    {id:37, date:'2026-08-09', title:'Cub Prix Round 5',              venue:'Terengganu Street Circuit',     state:'Terengganu',discipline:'Road Racing', x:198, y:125},
-    {id:38, date:'2026-08-15', title:'Merdeka Time Attack',           venue:'Sepang North Track',            state:'Selangor',  discipline:'Time Attack', x:130, y:200},
-    {id:39, date:'2026-08-16', title:'Drag Cup R3',                   venue:'Batu Tiga Drag Strip',          state:'Selangor',  discipline:'Drag',        x:126, y:206},
-    {id:40, date:'2026-08-22', title:'MX Open Round 3',               venue:'Alor Setar',                    state:'Kedah',     discipline:'Motocross',   x:92,  y:78},
-    {id:41, date:'2026-08-23', title:'E-Racing Series R3',            venue:'KL eSports Studio',             state:'Kuala Lumpur', discipline:'E-Sports', x:143, y:213},
-    {id:42, date:'2026-08-29', title:'Malaysia Speed Festival D1',    venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Circuit',     x:134, y:202},
-    {id:43, date:'2026-08-30', title:'Malaysia Speed Festival D2',    venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Circuit',     x:134, y:203},
-    // September
-    {id:44, date:'2026-09-06', title:'Sepang ARRC Round 5',           venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Road Racing', x:131, y:200},
-    {id:45, date:'2026-09-13', title:'National Karting R8',           venue:'Sepang Karting Circuit',        state:'Selangor',  discipline:'Karting',     x:136, y:201},
-    {id:46, date:'2026-09-14', title:'Drift Allstars MY R4',          venue:'Pasir Gudang Circuit',          state:'Johor',     discipline:'Drift',       x:216, y:267},
-    {id:47, date:'2026-09-20', title:'Borneo Safari Prologue',        venue:'Kota Kinabalu',                 state:'Sabah',     discipline:'Rally',       x:830, y:108},
-    {id:48, date:'2026-09-21', title:'Cub Prix Round 6',              venue:'Penang Street Circuit',         state:'Pulau Pinang', discipline:'Road Racing', x:83, y:106},
-    {id:49, date:'2026-09-27', title:'Time Attack MY R4',             venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Time Attack', x:132, y:204},
-    // October
-    {id:50, date:'2026-10-04', title:'Sepang 8-Hour Endurance',       venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Endurance',   x:134, y:201},
-    {id:51, date:'2026-10-11', title:'MX National Final',             venue:'Bukit Jalil MX Track',          state:'Kuala Lumpur', discipline:'Motocross',x:140, y:214},
-    {id:52, date:'2026-10-12', title:'Drag Cup Final',                venue:'Batu Tiga Drag Strip',          state:'Selangor',  discipline:'Drag',        x:129, y:205},
-    {id:53, date:'2026-10-18', title:'Sarawak Rally',                 venue:'Kuching → Miri',                state:'Sarawak',   discipline:'Rally',       x:700, y:240},
-    {id:54, date:'2026-10-19', title:'E-Racing Series Final',         venue:'KL eSports Studio',             state:'Kuala Lumpur', discipline:'E-Sports', x:139, y:211},
-    {id:55, date:'2026-10-25', title:'Cub Prix Round 7 — Final',      venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Road Racing', x:133, y:200},
-    {id:56, date:'2026-10-26', title:'National Karting Final',        venue:'Sepang Karting Circuit',        state:'Selangor',  discipline:'Karting',     x:137, y:202},
-    // November
-    {id:57, date:'2026-11-01', title:'Drift Allstars MY Final',       venue:'Pasir Gudang Circuit',          state:'Johor',     discipline:'Drift',       x:217, y:265},
-    {id:58, date:'2026-11-07', title:'Time Attack MY Final',          venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Time Attack', x:131, y:203},
-    {id:59, date:'2026-11-08', title:'Borneo Safari Main Stage',      venue:'Sabah East Coast',              state:'Sabah',     discipline:'Rally',       x:845, y:118},
-    {id:60, date:'2026-11-14', title:'Sepang ARRC Final',             venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Road Racing', x:132, y:202},
-    {id:61, date:'2026-11-21', title:'MAM Awards Night 2026',         venue:'KLCC Convention Centre',        state:'Kuala Lumpur', discipline:'Awards',   x:140, y:212},
-    {id:62, date:'2026-11-28', title:'Season Closer Open Track',      venue:'Sepang International Circuit',  state:'Selangor',  discipline:'Circuit',     x:133, y:201}
-  ];
-
-  // ─── State ───
-  let windowStart = new Date(2026, 4, 1);          // May 2026
-  const FIRST_START = new Date(2026, 2, 1);        // Mar 2026
-  const LAST_START  = new Date(2026, 9, 1);        // Oct 2026 (window will be Oct–Nov)
-  let filterDiscipline = 'all';
-  let mapInited = false;
-
-  function inWindow(e){
-    const d = new Date(e.date);
-    const end = new Date(windowStart); end.setMonth(end.getMonth() + 2);
-    return d >= windowStart && d < end;
-  }
-  function passesFilter(e){ return filterDiscipline === 'all' || e.discipline === filterDiscipline; }
-  function visibleEvents(){ return EVENTS.filter(e => inWindow(e) && passesFilter(e)).sort((a,b) => a.date.localeCompare(b.date)); }
-
-  function fmtRangeLong(start){
-    const m2 = new Date(start); m2.setMonth(m2.getMonth() + 1);
-    return start.toLocaleDateString('en-US',{month:'long'}) + ' – ' + m2.toLocaleDateString('en-US',{month:'long'}) + ' ' + m2.getFullYear();
-  }
-  function fmtRangeShort(start){
-    const m2 = new Date(start); m2.setMonth(m2.getMonth() + 1);
-    return start.toLocaleDateString('en-US',{month:'short'}) + ' – ' + m2.toLocaleDateString('en-US',{month:'short'});
-  }
-
-  // ─── List view ───
-  function renderList(){
-    const v = document.getElementById('viewList');
-    const evts = visibleEvents();
-    let body = '';
-    if(evts.length === 0){
-      body = '<div class="empty-state">No events match the current filter & window.</div>';
-    } else {
-      const groups = {};
-      evts.forEach(e => { const k = e.date.substring(0,7); (groups[k] = groups[k] || []).push(e); });
-      Object.keys(groups).sort().forEach(k => {
-        const monthName = new Date(k + '-01').toLocaleDateString('en-US',{month:'long',year:'numeric'});
-        body += `<div class="month-hdr">${monthName}</div><div class="cal-list">`;
-        groups[k].forEach(e => {
-          const d = new Date(e.date);
-          const dnum = String(d.getDate()).padStart(2,'0');
-          const mname = d.toLocaleDateString('en-US',{month:'short'}) + ' ' + d.getFullYear();
-          body += `
-            <a class="cal-row" href="https://mam.org.my/events/${e.id}" target="_blank" rel="noopener">
-              <div class="cal-date"><span class="d">${dnum}</span><span class="m">${mname}</span></div>
-              <div><h3>${e.title}</h3><div class="org">${e.venue}</div></div>
-              <div class="cal-venue">${e.venue}<span class="state">📍 ${e.state}</span></div>
-              <div class="cal-tags"><span class="chip red">${e.discipline}</span></div>
-              <span class="go" aria-label="Visit event website">↗</span>
-            </a>`;
-        });
-        body += '</div>';
-      });
-    }
-    v.innerHTML = `<div class="layout"><div>${body}</div>${sidebarHTML()}</div>`;
-  }
-  function sidebarHTML(){
-    const counts = {};
-    EVENTS.forEach(e => counts[e.discipline] = (counts[e.discipline] || 0) + 1);
-    const order = ['Circuit','Road Racing','Karting','Rally','Drag','Motocross','Drift','Time Attack','Endurance','E-Sports','Awards'];
-    let legend = '';
-    order.forEach(d => { if(counts[d]) legend += `<div class="lg"><div class="l"><span class="dot"></span>${d}</div><span class="ct">${counts[d]}</span></div>`; });
-    return `<aside class="map-card">
-      <h4>Season at a glance</h4>
-      <div class="legend">${legend}</div>
-      <a href="documents.html#cal" class="btn primary" style="margin-top:24px;width:100%;justify-content:center">Download .ics calendar →</a>
-    </aside>`;
-  }
-
-  // ─── Month view ───
-  function renderMonth(){
-    let html = '<div class="mv-wrap">';
-    for(let i=0; i<2; i++){
-      const m = new Date(windowStart); m.setMonth(m.getMonth() + i);
-      html += renderMonthCard(m);
-    }
-    html += '</div>';
-    document.getElementById('viewMonth').innerHTML = html;
-  }
-  function renderMonthCard(d){
-    const year = d.getFullYear(), month = d.getMonth();
-    const first = new Date(year, month, 1);
-    const dowStart = first.getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const monthName = d.toLocaleDateString('en-US',{month:'long',year:'numeric'}).toUpperCase();
-    const monthEvts = EVENTS.filter(e => e.date.startsWith(`${year}-${String(month+1).padStart(2,'0')}`) && passesFilter(e));
-
-    let html = `<div class="mv-month"><div class="mv-month-hdr"><span>${monthName}</span><span class="ct">${monthEvts.length} events</span></div><div class="mv-grid">`;
-    ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(dow => { html += `<div class="mv-dow">${dow}</div>`; });
-    for(let i=0; i<dowStart; i++) html += `<div class="mv-day out"></div>`;
-    for(let day=1; day<=daysInMonth; day++){
-      const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-      const dayEvts = monthEvts.filter(e => e.date === dateStr);
-      html += `<div class="mv-day"><div class="dn">${day}</div>`;
-      dayEvts.forEach(e => { html += `<div class="mv-evt" title="${e.title} · ${e.venue}">${e.title}</div>`; });
-      html += `</div>`;
-    }
-    const totalCells = dowStart + daysInMonth;
-    const remaining = (7 - (totalCells % 7)) % 7;
-    for(let i=0; i<remaining; i++) html += `<div class="mv-day out"></div>`;
-    html += `</div></div>`;
-    return html;
-  }
-
-  // ─── Map view: side panel + markers (markers via recluster) ───
-  function renderMap(){
-    const evts = visibleEvents();
-    const side = document.getElementById('msList');
-    if(evts.length === 0){
-      side.innerHTML = '<div class="empty-state">No events in this window.</div>';
-    } else {
-      side.innerHTML = evts.map(e => {
-        const d = new Date(e.date);
-        const dnum = String(d.getDate()).padStart(2,'0');
-        const mname = d.toLocaleDateString('en-US',{month:'short'});
-        return `<div class="ms-evt" data-evt="${e.id}">
-          <div class="dt">${dnum}<small>${mname}</small></div>
-          <div><h5>${e.title}</h5><div class="v">${e.venue}</div><div class="state">📍 ${e.state}</div></div>
-        </div>`;
-      }).join('');
-      side.querySelectorAll('.ms-evt').forEach(el => el.addEventListener('click', () => selectEvt(+el.dataset.evt)));
-    }
-    document.getElementById('msCount').textContent = evts.length + ' events';
-    document.getElementById('msRange').textContent = fmtRangeShort(windowStart);
-    recluster();
-  }
-
-  // ─── Clustering ───
-  // Merge pins that overlap on screen into a count badge. Threshold scales
-  // with zoom: at higher scale, the same screen-px distance maps to a smaller
-  // canvas-space distance, so clusters break apart as you zoom in.
-  function recluster(){
-    const canvas = document.getElementById('mapCanvas');
-    canvas.querySelectorAll('.pin, .cluster').forEach(el => el.remove());
-    const evts = visibleEvents();
-    if(evts.length === 0) return;
-    const threshold = 22 / Math.max(scale, 0.001);
-    const groups = [];
-    evts.forEach(e => {
-      let merged = false;
-      for(const g of groups){
-        if(Math.hypot(g.x - e.x, g.y - e.y) < threshold){
-          g.events.push(e);
-          const n = g.events.length;
-          g.x += (e.x - g.x) / n;
-          g.y += (e.y - g.y) / n;
-          merged = true; break;
-        }
-      }
-      if(!merged) groups.push({ x: e.x, y: e.y, events: [e] });
-    });
-    groups.forEach(g => g.events.length === 1 ? addPinMarker(g.events[0], canvas) : addClusterMarker(g, canvas));
-  }
-  function addPinMarker(e, canvas){
-    const pin = document.createElement('div');
-    pin.className = 'pin';
-    pin.dataset.evt = e.id;
-    pin.style.left = e.x + 'px';
-    pin.style.top = e.y + 'px';
-    pin.innerHTML = `<div class="ring"></div><div class="head"></div><div class="stem"></div><div class="label">${e.title} · ${e.state}</div>`;
-    pin.addEventListener('click', ev => { ev.stopPropagation(); selectEvt(e.id); });
-    canvas.appendChild(pin);
-  }
-  function addClusterMarker(g, canvas){
-    const n = g.events.length;
-    const size = n >= 8 ? 'l' : n >= 4 ? 'm' : 's';
-    const cl = document.createElement('div');
-    cl.className = 'cluster ' + size;
-    cl.style.left = g.x + 'px';
-    cl.style.top = g.y + 'px';
-    cl.textContent = n;
-    cl.title = n + ' events here · click to zoom in';
-    cl.addEventListener('click', ev => {
-      ev.stopPropagation();
-      // Zoom in toward the cluster centroid. If we're already maxed, just
-      // surface the first event in the side panel.
-      if(scale >= 4.9){
-        selectEvt(g.events[0].id);
-        return;
-      }
-      scale = Math.min(5, scale * 1.8);
-      tx = (CANVAS_W/2 - g.x) * scale;
-      ty = (CANVAS_H/2 - g.y) * scale;
-      canvas.style.transition = 'transform .45s ease';
-      clamp(); apply();
-      setTimeout(recluster, 460);
-    });
-    canvas.appendChild(cl);
-  }
-
-  // ─── Navigation, filters, view toggle ───
-  function updateAll(){
-    document.getElementById('navLabel').textContent = fmtRangeLong(windowStart);
-    document.getElementById('prev').disabled = windowStart.getTime() <= FIRST_START.getTime();
-    document.getElementById('next').disabled = windowStart.getTime() >= LAST_START.getTime();
-    renderList(); renderMonth(); renderMap();
-  }
-  function nav(dir){
-    const next = new Date(windowStart); next.setMonth(next.getMonth() + dir);
-    if(next < FIRST_START || next > LAST_START) return;
-    windowStart = next; updateAll();
-  }
-  document.getElementById('prev').addEventListener('click', () => nav(-1));
-  document.getElementById('next').addEventListener('click', () => nav(+1));
-  document.getElementById('viewToggle').addEventListener('click', e => {
-    const b = e.target.closest('button'); if(!b) return;
-    document.querySelectorAll('#viewToggle button').forEach(x => x.classList.toggle('on', x === b));
-    document.body.classList.remove('view-month','view-list','view-map');
-    document.body.classList.add('view-' + b.dataset.v);
-    if(b.dataset.v === 'map'){
-      requestAnimationFrame(() => { if(!mapInited){ mapInited = true; scale = fitScale(); } apply(); recluster(); });
-    }
+  // Category filter
+  document.getElementById('catFilter').addEventListener('click', e => {
+    const p = e.target.closest('.pill'); if(!p) return;
+    document.querySelectorAll('#catFilter .pill').forEach(x=>x.classList.toggle('on', x===p));
+    const k = p.dataset.cat;
+    document.querySelectorAll('.cal-row,.ms-evt,.pin').forEach(el=>el.classList.toggle('hide', k!=='All' && el.dataset.cat!==k));
+    document.querySelectorAll('.month-grp').forEach(g=>g.classList.toggle('hide', !g.querySelector('.cal-row:not(.hide)')));
+    const ps=document.querySelector('.past-sep');if(ps)ps.style.display=[...document.querySelectorAll('.month-grp')].some(g=>+g.dataset.month<10&&!g.classList.contains('hide'))?'':'none';
   });
-  document.querySelectorAll('#fbar .pill').forEach(p => p.addEventListener('click', () => {
-    document.querySelectorAll('#fbar .pill').forEach(x => x.classList.toggle('on', x === p));
-    filterDiscipline = p.dataset.d;
-    renderList(); renderMonth(); renderMap();
-  }));
-
-  // ─── Map pan + zoom ───
-  const stage = document.getElementById('mapStage');
-  const canvas = document.getElementById('mapCanvas');
-  const CANVAS_W = 1000, CANVAS_H = 332;
-  let scale = 1, tx = 0, ty = 0;
-  function fitScale(){
-    const sw = stage.clientWidth || 800, sh = stage.clientHeight || 480;
-    return Math.min(sw / CANVAS_W, sh / CANVAS_H) * 0.95;
-  }
-  function apply(){
-    const sw = stage.clientWidth, sh = stage.clientHeight;
-    const baseX = sw/2 - (CANVAS_W * scale)/2;
-    const baseY = sh/2 - (CANVAS_H * scale)/2;
-    canvas.style.transform = `translate(${baseX + tx}px, ${baseY + ty}px) scale(${scale})`;
-    canvas.style.setProperty('--mscale', String(1/scale));
-  }
-  function clamp(){
-    const limX = (CANVAS_W * scale) / 2;
-    const limY = (CANVAS_H * scale) / 2;
-    if(tx >  limX) tx =  limX;
-    if(tx < -limX) tx = -limX;
-    if(ty >  limY) ty =  limY;
-    if(ty < -limY) ty = -limY;
-  }
-  window.addEventListener('resize', () => { if(mapInited){ scale = fitScale(); tx = 0; ty = 0; apply(); recluster(); } });
-
-  let dragging = false, sx = 0, sy = 0, ox = 0, oy = 0;
-  stage.addEventListener('mousedown', e => {
-    if(e.target.closest('.pin') || e.target.closest('.map-tools')) return;
-    dragging = true; sx = e.clientX; sy = e.clientY; ox = tx; oy = ty;
-    canvas.style.transition = 'none';
-  });
-  window.addEventListener('mousemove', e => {
-    if(!dragging) return;
-    tx = ox + (e.clientX - sx); ty = oy + (e.clientY - sy);
-    clamp(); apply();
-  });
-  window.addEventListener('mouseup', () => { dragging = false; canvas.style.transition = 'transform .25s ease'; });
-  stage.addEventListener('wheel', e => {
-    e.preventDefault();
-    const d = e.deltaY > 0 ? -0.15 : 0.15;
-    scale = Math.max(0.4, Math.min(5, scale + d));
-    canvas.style.transition = 'transform .15s ease';
-    clamp(); apply(); recluster();
-  }, {passive:false});
-  document.getElementById('zIn').onclick    = () => { scale = Math.min(5, scale + 0.3);  clamp(); apply(); recluster(); };
-  document.getElementById('zOut').onclick   = () => { scale = Math.max(0.4, scale - 0.3); clamp(); apply(); recluster(); };
-  document.getElementById('zReset').onclick = () => { scale = fitScale(); tx = 0; ty = 0; apply(); recluster(); };
-
-  function selectEvt(id){
-    document.querySelectorAll('.pin').forEach(p => p.classList.toggle('on', +p.dataset.evt === +id));
-    document.querySelectorAll('.ms-evt').forEach(e => e.classList.toggle('on', +e.dataset.evt === +id));
-    const row = document.querySelector(`.ms-evt[data-evt="${id}"]`);
-    if(row) row.scrollIntoView({block:'nearest', behavior:'smooth'});
-    const evt = EVENTS.find(e => e.id === +id);
-    if(evt){
-      scale = Math.max(scale, 2);
-      tx = (CANVAS_W/2 - evt.x) * scale;
-      ty = (CANVAS_H/2 - evt.y) * scale;
-      canvas.style.transition = 'transform .45s ease';
-      clamp(); apply();
-      setTimeout(recluster, 460);
-    }
-  }
-
-  // ─── Init ───
-  document.body.classList.add('view-list');
-  updateAll();
 </script>
 </body>
 </html>

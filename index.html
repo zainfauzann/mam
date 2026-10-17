@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>MAM — Motorsports Association of Malaysia</title>
+<title>MAM - Motorsports Association of Malaysia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Mona+Sans:wght@400..800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="mam.css" />
 <style>
   :root{
@@ -20,9 +20,9 @@
     --gray-2:#EAEAEA;
     --gray-1:#F4F4F4;
     --paper:#FFFFFF;
-    --display:'Inter Tight','Inter',system-ui,sans-serif;
-    --body:'Inter',system-ui,sans-serif;
-    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --display:'Bricolage Grotesque','Mona Sans',system-ui,sans-serif;
+    --body:'Mona Sans',system-ui,sans-serif;
+    --mono:'Mona Sans',system-ui,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -54,7 +54,15 @@
   }
   .logo{display:flex;align-items:center;gap:14px}
   .logo img{height:48px;width:auto}
-  /* Nav rules live in mam.css with proper > .nav-item > a scoping so they don't leak into mega-feat / mega-col links */
+  nav.primary a{
+    padding:10px 16px;font-weight:600;font-size:13px;letter-spacing:.02em;
+    color:var(--ink);position:relative;
+  }
+  nav.primary a:hover{color:var(--red)}
+  nav.primary a.on{color:var(--ink)}
+  nav.primary a.on::after{
+    content:"";position:absolute;left:16px;right:16px;bottom:-30px;height:3px;background:var(--red);
+  }
   .header-actions{display:flex;align-items:center;gap:10px}
   .icon-btn{width:40px;height:40px;border:1px solid var(--gray-2);background:#fff;display:grid;place-items:center;cursor:pointer;border-radius:0}
   .icon-btn:hover{border-color:var(--ink)}
@@ -310,7 +318,7 @@
     font-family:var(--display);font-weight:800;font-size:14px;color:var(--gray-7);letter-spacing:-.02em;
   }
   .club:hover .badge{background:var(--red);color:#fff}
-  .club .nm{font-size:11px;text-align:center;color:var(--ink);font-weight:500;line-height:1.2}
+  .club{text-decoration:none;color:inherit}.club .badge{display:block;width:72px;height:72px;padding:0;background:none;overflow:visible;position:relative}.club:hover .badge{background:none}.club .badge .slot-img{display:block;width:100%;height:100%;object-fit:contain}.clubs-grid{grid-template-columns:repeat(6,minmax(0,1fr))}@media (max-width:1100px){.clubs-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}@media (max-width:700px){.clubs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}.club .nm{font-size:11px;text-align:center;color:var(--ink);font-weight:500;line-height:1.2}
 
   /* ──────────── Newsletter / Social ──────────── */
   .nlw{display:grid;grid-template-columns:1.4fr 1fr;background:var(--ink);color:#fff}
@@ -409,6 +417,8 @@
   .feat-mini h4{font-family:var(--display);font-size:18px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
   .feat-mini .meta{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--gray-7);text-transform:uppercase;margin-top:auto}
 
+.disc-grid.six{grid-template-columns:repeat(3,minmax(0,1fr))}.disc-grid.six .disc{aspect-ratio:auto;min-height:260px}@media (max-width:900px){.disc-grid.six{grid-template-columns:1fr 1fr}}
+[id]{scroll-margin-top:110px}
 </style>
 </head>
 <body>
@@ -416,6 +426,7 @@
 <!-- 1+2. Shared chrome (util + header with mega menu) -->
 <div id="site-header"></div>
 <script src="mam-chrome.js"></script>
+
 
 <!-- 3. Hero -->
 <section class="hero" id="hero">
@@ -433,7 +444,7 @@
         <div class="eyebrow"><span class="pip"></span> Announcement · Leadership</div>
         <div>
           <h1>Jazeman Jaafar<br/><span class="em">joined MAM.</span></h1>
-          <p class="lead">Malaysia's GT and endurance veteran joins the federation to help shape the next era of national motorsport.</p>
+          <p class="lead">The Malaysian GT and endurance driver is MAM's new Treasurer.</p>
           <div class="ctas">
             <a href="news.html" class="btn primary">Read the announcement <span class="arr">→</span></a>
             <a href="about.html" class="btn light">About MAM</a>
@@ -448,7 +459,7 @@
         <div class="eyebrow"><span class="pip"></span> Featured Championship · Round 3 / 8</div>
         <div>
           <h1>Race weekend<br/>at <span class="em">Sepang.</span></h1>
-          <p class="lead">ARRC Round 3 · SS600 / AP250 / UB150 — lights out Saturday 14:00 MYT.</p>
+          <p class="lead">ARRC Round 3 · SS600 / AP250 / UB150 - lights out Saturday 14:00 MYT.</p>
           <div class="ctas">
             <a href="calendar.html" class="btn primary">View race weekend <span class="arr">→</span></a>
             <a href="news.html" class="btn light">Latest results</a>
@@ -465,8 +476,8 @@
           <h1>Where champions<br/><span class="em">begin.</span></h1>
           <p class="lead">Apply for your competition licence, find an affiliate club, or register your event with MAM.</p>
           <div class="ctas">
-            <a href="license.html#apply" class="btn primary">Apply for licence <span class="arr">→</span></a>
-            <a href="membership.html" class="btn light">Find a club</a>
+            <a href="downloads.html" class="btn primary">Apply for licence <span class="arr">→</span></a>
+            <a href="about.html" class="btn light">Find a club</a>
           </div>
         </div>
       </div>
@@ -497,13 +508,13 @@
 <!-- 4. Live ticker -->
 <div class="ticker">
   <div class="scroll">
-    <span>ARRC SS600 — Hafizh Syahrin P1 <i>·</i></span>
+    <span>ARRC SS600 - Hafizh Syahrin P1 <i>·</i></span>
     <span>National Karting R5 entries open <i>·</i></span>
     <span>Borneo Safari 2026 dates confirmed <i>·</i></span>
     <span>Drag Cup R2 live timing available <i>·</i></span>
     <span>Sporting Code 2026 published <i>·</i></span>
     <span>FIM Asia MoU signed <i>·</i></span>
-    <span>ARRC SS600 — Hafizh Syahrin P1 <i>·</i></span>
+    <span>ARRC SS600 - Hafizh Syahrin P1 <i>·</i></span>
     <span>National Karting R5 entries open <i>·</i></span>
     <span>Borneo Safari 2026 dates confirmed <i>·</i></span>
     <span>Drag Cup R2 live timing available <i>·</i></span>
@@ -526,7 +537,7 @@
   <div class="feat-side">
     <div class="feat-mini">
       <span class="cat">News</span>
-      <h4>2026 National Karting Series — Round 4 results</h4>
+      <h4>2026 National Karting Series - Round 4 results</h4>
       <span class="meta">2 hrs ago · Karting</span>
     </div>
     <div class="feat-mini">
@@ -579,7 +590,7 @@
 </section>
 
 <!-- 7. Latest news (4-up) -->
-<section class="section">
+<section id="news" class="section">
   <div class="wrap">
     <div class="sec-head">
       <div>
@@ -606,7 +617,7 @@
         </div>
         <div class="body">
           <div class="meta">05 May 2026 · 5 min</div>
-          <h3>Asia Pacific Motorsports Championship 2025 — Team Malaysia</h3>
+          <h3>Asia Pacific Motorsports Championship 2025 - Team Malaysia</h3>
         </div>
       </article>
       <article class="card">
@@ -634,113 +645,41 @@
 </section>
 
 <!-- 8. Disciplines grid -->
-<section class="section gray">
+<section id="disciplines" class="section gray">
   <div class="wrap">
     <div class="sec-head">
       <div>
         <div class="label">Sanctioned disciplines</div>
-        <h2>One sport. Every discipline.</h2>
+        <h2>Our disciplines</h2>
       </div>
-      <a href="#" class="more">All disciplines →</a>
+      <a href="team.html#commissions" class="more">Discipline commissions →</a>
     </div>
-    <div class="disc-grid">
-      <div class="disc" style="background-image:url('assets/disc-circuit.jpg')">
-        <div>
-          <span class="num">01</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Circuit</h4>
-          <p>ARRC · Time Attack · GT</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-rally.jpg')">
-        <div>
-          <span class="num">02</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><path d="M3 17l6-9 4 5 3-3 5 7"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Rally</h4>
-          <p>Borneo Safari · Sarawak Sprint</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-karting.jpg')">
-        <div>
-          <span class="num">03</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><path d="M5 17l4-4 3 3 7-7"/><path d="M14 9h6v6"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Karting</h4>
-          <p>National Series · CIK-FIA</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-drag.jpg')">
-        <div>
-          <span class="num">04</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><path d="M3 12h18M5 8l-2 4 2 4M19 8l2 4-2 4"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Drag</h4>
-          <p>Malaysia Drag Cup</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-motocross.jpg')">
-        <div>
-          <span class="num">05</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><path d="M4 17l4-7 4 4 4-6 4 9"/><circle cx="8" cy="18" r="1.5"/><circle cx="16" cy="18" r="1.5"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Motocross</h4>
-          <p>MX Nationals · Pit Bike</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-offroad.jpg')">
-        <div>
-          <span class="num">06</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><path d="M3 13c2-2 5-2 7 0s5 2 7 0 3-2 4-2"/><path d="M3 17c2-2 5-2 7 0s5 2 7 0 3-2 4-2"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Off-Road</h4>
-          <p>4×4 · Trial</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-eracing.jpg')">
-        <div>
-          <span class="num">07</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>E-Racing</h4>
-          <p>Sim · Esports · EV series</p>
-        </div>
-      </div>
-      <div class="disc" style="background-image:url('assets/disc-endurance.jpg')">
-        <div>
-          <span class="num">08</span>
-          <div class="icon" style="margin-top:14px">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-          </div>
-        </div>
-        <div>
-          <h4>Endurance</h4>
-          <p>Sepang 1000km · GT</p>
-        </div>
-      </div>
-    </div>
+    <div class="disc-grid six">
+<div class="disc" style="background-image:url('assets/disc-circuit.jpg')">
+<div><span class="num">01</span><div class="icon" style="margin-top:14px"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div></div>
+<div><h4>4 Wheels Racing</h4><p>MSF SuperTurismo · TGR Festival · Sepang 1000KM</p></div>
+</div>
+<div class="disc" style="background-image:url('assets/disc-endurance.jpg')">
+<div><span class="num">02</span><div class="icon" style="margin-top:14px"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div></div>
+<div><h4>2 Wheels Racing</h4><p>Cub Prix · Superbike · MSF SuperBikes</p></div>
+</div>
+<div class="disc" style="background-image:url('assets/disc-motocross.jpg')">
+<div><span class="num">03</span><div class="icon" style="margin-top:14px"><svg viewBox="0 0 24 24"><path d="M4 17l4-7 4 4 4-6 4 9"/><circle cx="8" cy="18" r="1.5"/><circle cx="16" cy="18" r="1.5"/></svg></div></div>
+<div><h4>2 Wheels Off Road</h4><p>Motocross · Cub Cross · Muda MX</p></div>
+</div>
+<div class="disc" style="background-image:url('assets/disc-rally.jpg')">
+<div><span class="num">04</span><div class="icon" style="margin-top:14px"><svg viewBox="0 0 24 24"><path d="M3 17l6-9 4 5 3-3 5 7"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></div></div>
+<div><h4>Rally</h4><p>KBS Rally Sprint · APRC</p></div>
+</div>
+<div class="disc" style="background-image:url('assets/disc-karting.jpg')">
+<div><span class="num">05</span><div class="icon" style="margin-top:14px"><svg viewBox="0 0 24 24"><path d="M5 17l4-4 3 3 7-7"/><path d="M14 9h6v6"/></svg></div></div>
+<div><h4>Karting</h4><p>MAM Karting Championship · Rotax · IAME</p></div>
+</div>
+<div class="disc" style="background-image:url('assets/disc-eracing.jpg')">
+<div><span class="num">06</span><div class="icon" style="margin-top:14px"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div></div>
+<div><h4>E-Sports</h4><p>Malaysia eRacing GP · Sim racing</p></div>
+</div>
+</div>
   </div>
 </section>
 
@@ -753,7 +692,7 @@
           <span style="width:24px;height:1px;background:var(--red)"></span> MAM at a glance
         </div>
         <h2>The national authority for<br/>Malaysian <span class="em">motorsport.</span></h2>
-        <p>Incorporated on 28 February 2007 and recognised by the Ministry of Youth and Sports, MAM is officially sanctioned by the FIA and FIM to govern every form of four-wheel and two-wheel motorsport in Malaysia — from grassroots karting to the Asia Road Racing Championship.</p>
+        <p>Incorporated on 28 February 2007 and recognised by the Ministry of Youth and Sports, MAM is sanctioned by the FIA and FIM to govern four-wheel and two-wheel motorsport in Malaysia, from grassroots karting to the Asia Road Racing Championship.</p>
       </div>
       <div class="stats-grid">
         <div class="stat"><div class="v">70<span class="em">.</span></div><div class="l">Years governing motorsport in Malaysia</div></div>
@@ -766,94 +705,79 @@
 </section>
 
 <!-- 10. Calendar preview -->
-<section class="section">
+<section id="upcoming" class="section">
   <div class="wrap">
     <div class="sec-head">
       <div>
         <div class="label">Sanctioned events · Across Malaysia</div>
         <h2>Upcoming events</h2>
       </div>
-      <a href="#" class="more">Full calendar →</a>
+      <a href="calendar.html" class="more">Full calendar →</a>
     </div>
     <div class="cal-list">
-      <div class="cal-row">
-        <div class="cal-date"><span class="d">10</span><span class="m">May 2026</span></div>
-        <div>
-          <h3>ARRC Round 3 — Sepang</h3>
-          <div class="org">Sepang International Circuit Sdn Bhd</div>
-        </div>
-        <div class="cal-venue">Sepang International Circuit<span class="state">📍 Selangor</span></div>
-        <div class="cal-tags"><span class="chip red">Circuit</span><span class="chip">Road Racing</span></div>
-        <a href="#" class="go">Details →</a>
-      </div>
-      <div class="cal-row">
-        <div class="cal-date"><span class="d">17</span><span class="m">May 2026</span></div>
-        <div>
-          <h3>MAM Motocross Nationals R3</h3>
-          <div class="org">Selangor Motorsports Club</div>
-        </div>
-        <div class="cal-venue">Bukit Jalil MX Track<span class="state">📍 Kuala Lumpur</span></div>
-        <div class="cal-tags"><span class="chip red">Motocross</span><span class="chip">Off-Road</span></div>
-        <a href="#" class="go">Details →</a>
-      </div>
-      <div class="cal-row">
-        <div class="cal-date"><span class="d">24</span><span class="m">May 2026</span></div>
-        <div>
-          <h3>National Karting Series R5</h3>
-          <div class="org">MAM Karting Commission</div>
-        </div>
-        <div class="cal-venue">City Karting Tangkak<span class="state">📍 Johor</span></div>
-        <div class="cal-tags"><span class="chip red">Karting</span></div>
-        <a href="#" class="go">Details →</a>
-      </div>
-      <div class="cal-row">
-        <div class="cal-date"><span class="d">07</span><span class="m">Jun 2026</span></div>
-        <div>
-          <h3>Malaysia Drag Cup R2</h3>
-          <div class="org">Malaysia Drag Racing Assoc.</div>
-        </div>
-        <div class="cal-venue">Batu Tiga Drag Strip<span class="state">📍 Selangor</span></div>
-        <div class="cal-tags"><span class="chip red">Drag</span></div>
-        <a href="#" class="go">Details →</a>
-      </div>
-      <div class="cal-row">
-        <div class="cal-date"><span class="d">14</span><span class="m">Jun 2026</span></div>
-        <div>
-          <h3>Borneo Safari — Recce</h3>
-          <div class="org">Sabah 4×4 Adventure Club</div>
-        </div>
-        <div class="cal-venue">Kota Kinabalu → Tambunan<span class="state">📍 Sabah</span></div>
-        <div class="cal-tags"><span class="chip red">Rally</span><span class="chip">4×4</span></div>
-        <a href="#" class="go">Details →</a>
-      </div>
-    </div>
+<div class="cal-row">
+<div class="cal-date"><span class="d">16</span><span class="m">16–18 Oct</span></div>
+<div><h3>MAM Malaysian Cub Prix Championship 2026 - Round 7</h3><div class="org">KSB PP</div></div>
+<div class="cal-venue">PETRONAS Sepang International Circuit (South)<span class="state">Selangor</span></div>
+<div class="cal-tags"><span class="chip red">Bike</span></div>
+<a href="event.html?id=22" class="go">Details →</a>
+</div>
+<div class="cal-row">
+<div class="cal-date"><span class="d">17</span><span class="m">17–18 Oct</span></div>
+<div><h3>MSF SuperTurismo - Round 4</h3><div class="org">KSB MSF</div></div>
+<div class="cal-venue">PETRONAS Sepang International Circuit<span class="state">Selangor</span></div>
+<div class="cal-tags"><span class="chip red">Car</span></div>
+<a href="event.html?id=23" class="go">Details →</a>
+</div>
+<div class="cal-row">
+<div class="cal-date"><span class="d">17</span><span class="m">17–18 Oct</span></div>
+<div><h3>MSF SuperBikes - Round 4</h3><div class="org">KSB MSF</div></div>
+<div class="cal-venue">PETRONAS Sepang International Circuit<span class="state">Selangor</span></div>
+<div class="cal-tags"><span class="chip red">Bike</span></div>
+<a href="event.html?id=24" class="go">Details →</a>
+</div>
+<div class="cal-row">
+<div class="cal-date"><span class="d">17</span><span class="m">17–18 Oct</span></div>
+<div><h3>KBS Rally Sprint - Round 2</h3><div class="org">X-One Motorsports Club</div></div>
+<div class="cal-venue">Tanamera Rally Park, Sg Buloh<span class="state">Selangor</span></div>
+<div class="cal-tags"><span class="chip red">Rally</span></div>
+<a href="event.html?id=25" class="go">Details →</a>
+</div>
+<div class="cal-row">
+<div class="cal-date"><span class="d">18</span><span class="m">18 Oct</span></div>
+<div><h3>MAM Malaysia Karting Championship - Round 6</h3><div class="org">KSB Dinamik</div></div>
+<div class="cal-venue">TBA</div>
+<div class="cal-tags"><span class="chip red">Kart</span></div>
+<a href="event.html?id=26" class="go">Details →</a>
+</div>
+</div>
   </div>
 </section>
 
 <!-- 11. Affiliate clubs -->
-<section class="section gray">
+<section id="clubs" class="section gray">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <div class="label">Members &amp; bodies</div>
+        <div class="label">Affiliate members</div>
         <h2>Affiliate clubs</h2>
       </div>
-      <a href="#" class="more">Full directory →</a>
+      <a href="clubs.html" class="more">All 28 clubs →</a>
     </div>
     <div class="clubs-grid">
-      <div class="club"><div class="badge">MSF</div><div class="nm">Kelab Sukan Bermotor MSF</div></div>
-      <div class="club"><div class="badge">AMC</div><div class="nm">Kelab Sukan Bermotor Maju (AMC)</div></div>
-      <div class="club"><div class="badge">PBA</div><div class="nm">Pocket Bike Association of Malaysia</div></div>
-      <div class="club"><div class="badge">KL</div><div class="nm">Persatuan Sukan Bermotor WP Kuala Lumpur</div></div>
-      <div class="club"><div class="badge">PMC</div><div class="nm">Penang Motor Sports Club</div></div>
-      <div class="club"><div class="badge">SMA</div><div class="nm">Sarawak Motorsports Association</div></div>
-      <div class="club"><div class="badge">MMA</div><div class="nm">Millennium Motorsport Adventures Club</div></div>
-      <div class="club"><div class="badge">MYK</div><div class="nm">My-Karting Club</div></div>
-      <div class="club"><div class="badge">ZK</div><div class="nm">Kelab Sukan Bermotor ZK</div></div>
-      <div class="club"><div class="badge">DNK</div><div class="nm">Kelab Sukan Bermotor Dinamik</div></div>
-      <div class="club"><div class="badge">LMC</div><div class="nm">Langkawi Motorsport Club</div></div>
-      <div class="club"><div class="badge">SBA</div><div class="nm">Sabah Motorsports Association</div></div>
-    </div>
+<a class="club" href="clubs.html#kelab-sukan-bermotor-msf"><div class="badge"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-msf.png" alt="MSF logo" loading="lazy" /></div><div class="nm">Kelab Sukan Bermotor MSF</div></a>
+<a class="club" href="clubs.html#kelab-sukan-bermotor-maju-amc"><div class="badge"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-maju-amc.webp" alt="AMC logo" loading="lazy" /></div><div class="nm">Kelab Sukan Bermotor Maju (AMC)</div></a>
+<a class="club" href="clubs.html#pocket-bike-association-of-malaysia"><div class="badge"><img class="slot-img" src="assets/clubs/pocket-bike-association-of-malaysia.png" alt="PBA logo" loading="lazy" /></div><div class="nm">Pocket Bike Association of Malaysia</div></a>
+<a class="club" href="clubs.html#persatuan-sukan-bermotor-wilayah-persekutuan-kuala-lumpur"><div class="badge"><img class="slot-img" src="assets/clubs/persatuan-sukan-bermotor-wilayah-persekutuan-kuala-lumpur.png" alt="KL logo" loading="lazy" /></div><div class="nm">Persatuan Sukan Bermotor Wilayah Persekutuan Kuala Lumpur</div></a>
+<a class="club" href="clubs.html#penang-motor-sports-club"><div class="badge"><img class="slot-img" src="assets/clubs/penang-motor-sports-club.png" alt="PMSC logo" loading="lazy" /></div><div class="nm">Penang Motor Sports Club</div></a>
+<a class="club" href="clubs.html#sarawak-motorsports-association"><div class="badge"><img class="slot-img" src="assets/clubs/sarawak-motorsports-association.webp" alt="SMA logo" loading="lazy" /></div><div class="nm">Sarawak Motorsports Association</div></a>
+<a class="club" href="clubs.html#millennium-motorsport-adventures-club"><div class="badge"><img class="slot-img" src="assets/clubs/millennium-motorsport-adventures-club.png" alt="MMAC logo" loading="lazy" /></div><div class="nm">Millennium Motorsport Adventures Club</div></a>
+<a class="club" href="clubs.html#my-karting-club"><div class="badge"><img class="slot-img" src="assets/clubs/my-karting-club.png" alt="MYK logo" loading="lazy" /></div><div class="nm">My-Karting Club</div></a>
+<a class="club" href="clubs.html#kelab-sukan-bermotor-zk"><div class="badge"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-zk.webp" alt="ZK logo" loading="lazy" /></div><div class="nm">Kelab Sukan Bermotor ZK</div></a>
+<a class="club" href="clubs.html#kelab-sukan-bermotor-dinamik"><div class="badge"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-dinamik.png" alt="DNK logo" loading="lazy" /></div><div class="nm">Kelab Sukan Bermotor Dinamik</div></a>
+<a class="club" href="clubs.html#langkawi-motorsport-club"><div class="badge"><img class="slot-img" src="assets/clubs/langkawi-motorsport-club.png" alt="LMC logo" loading="lazy" /></div><div class="nm">Langkawi Motorsport Club</div></a>
+<a class="club" href="clubs.html#kelab-sukan-bermotor-exquisite"><div class="badge"><img class="slot-img" src="assets/clubs/kelab-sukan-bermotor-exquisite.png" alt="EXQ logo" loading="lazy" /></div><div class="nm">Kelab Sukan Bermotor Exquisite</div></a>
+</div>
   </div>
 </section>
 
@@ -862,9 +786,9 @@
   <div class="wrap">
     <div class="auth">
       <div class="auth-copy">
-        <span class="lab">Sanctioned by FIA &amp; FIM</span>
-        <h3>MAM is the <em>official sanctioning body</em> for Malaysian motorsport, recognised by the FIA and FIM.</h3>
-        <p>The only body in Malaysia mandated to govern, sanction and represent the country in international four-wheel and two-wheel motorsport — under the global codes of the FIA and FIM.</p>
+        <span class="lab">National Sporting Authority</span>
+        <h3>MAM is the <em>National Sporting Authority</em> recognised by the FIA and FIM.</h3>
+        <p>MAM is the only body in Malaysia that governs and sanctions four-wheel and two-wheel motorsport, and it represents the country internationally under the FIA and FIM codes.</p>
         <span class="stamp">Established 1955 · Recognised since 1965</span>
       </div>
       <div class="auth-cards">
@@ -884,11 +808,11 @@
 </section>
 
 <!-- 13. Newsletter + social -->
-<section class="nlw">
+<section id="subscribe" class="nlw">
   <div class="nl">
     <div class="label">Newsletter</div>
-    <h3>Race-week briefing,<br/>every Thursday.</h3>
-    <p>Race results, regulation updates, and what's on across Malaysia — delivered to your inbox.</p>
+    <h3>Get the MAM<br/>newsletter.</h3>
+    <p>Race results, rule changes and upcoming events in Malaysia, sent to your inbox.</p>
     <form onsubmit="event.preventDefault()">
       <input type="email" placeholder="your.email@example.com" />
       <button type="submit">Subscribe →</button>
