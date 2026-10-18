@@ -32,7 +32,8 @@
         ]},
         { h: 'Members', links: [
           ['Affiliate clubs','clubs.html','28 affiliated clubs'],
-          ['Affiliate your club','contact.html#faq','How to apply'],
+          ['Affiliate your club','affiliation.html','New application, probation, membership'],
+          ['Fees','fees.html','Event inscription and licence fees'],
         ]},
       ],
       feat: { lab:'History', h:'From 1963 to today', p:'How Malaysian motorsport got its own sporting authority.', href:'about.html#timeline' }
@@ -94,6 +95,8 @@
         ]},
         { h: 'Apply', links: [
           ['Online licence application','https://license-mam.com/pubLicenseForm','license-mam.com'],
+          ['Fees','fees.html','Event inscription and licence fees'],
+          ['Affiliation','affiliation.html','Affiliate member process'],
         ]},
       ],
       feat: { lab:'Licence 2026', h:'Apply for a competition licence', p:'Forms, medical, payment and submission in six steps.', href:'licence.html' }
@@ -216,11 +219,13 @@
         <a href="licence.html">Licences</a>
         <a href="downloads.html#rules">Competition Rules</a>
         <a href="downloads.html#dtex">Duty &amp; Tax Exemption</a>
+        <a href="fees.html">Fees</a>
       </div>
       <div class="fcol">
         <h5>Connect</h5>
         <a href="news.html">News</a>
         <a href="clubs.html">Affiliate Clubs</a>
+        <a href="affiliation.html">Affiliate Your Club</a>
         <a href="contact.html#faq">FAQ</a>
         <a href="contact.html#message">Contact</a>
       </div>
